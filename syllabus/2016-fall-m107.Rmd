@@ -1,0 +1,118 @@
+---
+output: 
+  pdf_document:
+    keep_tex: true
+    fig_caption: yes
+    latex_engine: pdflatex
+    template: svm-latex-syllabus.tex
+geometry: margin=1in
+
+title: "Math 107: Elementary Statistics"
+author: Adam Loy
+date: "Fall 2016"
+
+email: "adam.m.loy@lawrence.edu"
+web: "math107-lu.github.io/"
+officehours: "MF 1:50-3:50; T 1:50-3:20, W 3:10-4:20"
+office: "410 Briggs Hall"
+classroom: "420 Briggs Hall"
+classhours: "MWF 11:10-12:20"
+
+fontfamily: mathpazo
+fontsize: 11pt
+header-includes:
+   - \linespread{1.05}
+---
+
+
+
+
+# What is this class about?
+
+The world is experiencing a flood of data. Everywhere we look—from our cell phones to our Amazon shopping carts—data are being collected. Often, these data only give a partial picture of the phenomenon of interest, so we must be able to learn from data in order to make objective decisions in the presence of uncertainty. This course aims to help you develop the tools to think with and about data in order to be informed citizens in a data-centric world. More specifically, this course will cover graphical and analytical tools to conduct data analysis essential for gaining knowledge in almost any field.
+
+# Expected Learning Outcomes
+After finishing this course, you should have:
+
+* An understanding of the importance of data collection, the ability to recognize limitations in data collection methods, and an awareness of the role that data collection plays in determining the scope of inference.
+* The ability to use technology to summarize data numerically and visually, and to perform straightfor- ward data analysis procedures.
+* A solid conceptual understanding of key concepts such as the logic of statistical inference, estimation with intervals, and testing for significance.
+* The knowledge of which statistical methods to use in which situations, the technological expertise to use the appropriate method(s), and the understanding necessary to interpret the results correctly, effectively, and in context.
+* The ability to understand and think critically about data-based claims.
+* An awareness of the power of data.
+
+# Course Logistics
+
+#### Mathematical background:
+This is a statistics course. We will use mathematics as a tool, but will concen- trate on the statistical ideas, not on mathematics. To this end, high school algebra is the only mathematical prerequisite for this course, and I will assume that everyone enrolled meets this requirement. If you need help with these skills, I encourage you to utilize the Center for Teaching and Learning.
+
+#### Required textbook:
+*Statistics: Unlocking the Power of Data*, Lock et al., 2013, John Wiley & Sons, ISBN 978-0-470-60187-7.
+
+
+#### Online discussion forum: 
+We’ll be using Piazza as our online forum. Piazza is your main venue to ask questions, discuss problems, and help each other out. Piazza is a question-and-answer system designed to streamline class discussion outside of the classroom.
+
+# Course Components
+
+#### Preparation and study: 
+You must read the assigned sections of the text before we discuss them in class so that you are already working with the ideas in advance of hearing about them from me. In addition, review your lecture notes after each lecture, carefully reconstructing for yourself the ideas, arguments, and overall story that is developing. Coming to class for 70 minutes 3 times a week is not sufficient to learn statistics and reorganize your thought processes.
+
+#### Class attendance: 
+During class we will explore the statistical thought process through lecture, discussion, and case studies. Remember that office hours are not substitutes for class attendance.
+
+#### Lab days:
+Weekly labs provide a chance for you to grapple with data and do statistics. Labs will focus on computation and critical thinking about correct and intelligent use of data and statistics. Generally, lab assignments will be due at the beginning of the next class period.
+
+#### Homework: 
+I will assign a few problems (~3-5) most Mondays and Fridays. You should start working on the problems as soon as they are assigned, and work on them a little (or a lot) every day. While the homework will help you grapple with the material, you may need more practice than the homework provides to master the material. I will highlight additional book problems that will help you master the material that have solutions in the back of the book.
+
+#### Quizzes: 
+There will be short quizzes on the daily reading assignments that are to be completed on Moodle prior to 9:00 am on most class meeting days. These are simple checks that you have completed the daily reading and know the basic definitions. You should check Moodle regularly so that you do not forget to complete them. There may be times when quizzes are given at the beginning of class.
+
+#### Exams: 
+There will be two midterm exams and a final exam. The midterm exams are (tentatively) scheduled for XXX, and XXX, during class. The final exam will be held on Tuesday November 22 from 8:00–10:30 a.m. The date and time of the final exam is set by the registrar, and under no circumstances will you be allowed to take the final at a different time due to early travel plans.
+
+# Course Policies
+
+#### Assessment Procedure: 
+Your final grade will be computed using the following weights. Your overall score will be the maximum of the two computed scores, based on the following two weighting schemes:
+
+Component | Scheme 1 | Scheme 2
+--------  | -------- | --------
+Quizzes   | 5%       | 5%
+Labs      | 10%      | 10%
+Homework  | 25%      | 25%
+Exam 1    | 10%      | 20%
+Exam 2    | 20%      | 20%
+Final     | 30%      | 20%
+
+
+Homework and classwork will be graded using the following 5-point scale:
+
+Points | Characteristics
+------ | -------------------------------------------------------------------------
+5  | Almost all problems are essentially correct with no major conceptual flaws. There may be some minor errors or calculation mistakes.
+4 | One problem is incomplete or contains a major conceptual flaw, but most problems are essentially correct. There may also be some minor errors or calculation mistakes.
+3 | At least two problems are incomplete or contain a major conceptual flaw, but most problems are essentially correct. There may also be some minor errors or calculation mistakes.
+2 | More than half the problems are incomplete or contain a major conceptual flaw, but there is evidence that the student made a serious attempt to solve most problems. Some parts of some problems are correct.
+1 | The assignment shows little progress toward a correct solution on any problem, but there is evidence that some serious effort was put forth on at least one problem.
+0 | The assignment is not turned in or contains no evidence of serious effort on any problem.
+
+
+#### Homework deadlines: 
+The problems assigned on Monday are due Friday by 4:00 p.m., while those as- signed Friday are due Tuesday by 4:00 p.m. Problems are due in my office and no late work will be accepted. I understand that this policy is strict, so I will drop your two lowest scores when computing your homework average.
+
+#### Classroom Culture: 
+If you would rather be talking, sleeping, reading the news, listening to music, or texting, I suggest that you do that somewhere much more comfortable than the classroom. When you attend class, please arrive on time and stay engaged throughout the entire class.
+
+#### Honor Code: 
+> *No Lawrence student will unfairly advance their own academic performance or in any way limit or impede the academic pursuits of other students of the Lawrence community.* 
+
+All students are expected to uphold Lawrence University’s Honor Code. All work on quizzes and exams must be your own. You may collaborate on homework but you must submit your own assignment that reflects your own thinking, work and organization. Any assignment you submit for a grade should be your own work, and not a facsimile of a classmate’s work, which would constitute academic dishonesty. To check if your homework meets this standard, imagine I asked you to explain your reasoning for each problem—you should be able to do so with ease using language similar to your submission. All written work must be accompanied by a reaffirmation of the Honor Code.
+
+#### Disability Policy: 
+If you have a documented disability that will impact your work in this class, please contact me to discuss your needs as soon as possible. Additionally, you will need to formally request these accommodations through Student Academic Services. Retroactive requests for accommodations will not be honored.
+
+#### Healthy Balance: 
+All members of the Lawrence community—students, staff, and faculty—have the responsibility to promote balance in their lives by making thoughtful choices. Balance results from two skills: avoiding imbalance through careful planning, and managing and containing imbalance when it occurs. This course will be demanding, but should not overwhelm your academic (let alone whole) life. If it threatens to, come talk to me, a tutor, friend, counselor, or advisor.
