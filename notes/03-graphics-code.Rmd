@@ -1,0 +1,20 @@
+---
+title: "R code for “Intro to statistical graphics""
+author: "Adam Loy"
+date: "September 5, 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## College majors that pay
+
+Motivation: [The Economic Guide to Picking a College Major](http://fivethirtyeight.com/features/the-economic-guide-to-picking-a-college-major/)
+
+```{r}
+# Load the data
+
+```
+
