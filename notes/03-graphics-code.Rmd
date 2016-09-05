@@ -18,3 +18,25 @@ Motivation: [The Economic Guide to Picking a College Major](http://fivethirtyeig
 
 ```
 
+## Age of Congress
+
+```{r}
+# load packages
+library(dplyr)
+library(ggplot2)
+
+# Load the data
+congress <- read.csv("https://raw.githubusercontent.com/fivethirtyeight/data/master/congress-age/congress-terms.csv", na.strings = "", as.is = TRUE)
+
+# Pull out 113 congress
+c113 <- filter(congress, congress == 113)
+c113$age <- as.numeric(c113$age)
+
+# density plot
+ggplot(data = c113, mapping = aes(x = age)) +
+  geom_density() + 
+  theme_minimal() +
+  ggtitle("Age of the 113th Congress")
+
+```
+

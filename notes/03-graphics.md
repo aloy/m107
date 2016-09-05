@@ -37,11 +37,11 @@
 
 ---
 
-Histogram
+![fit](03-figs/chipotle-calories.png)
 
 ---
 
-Density plot
+![fit](03-figs/age-congress.pdf)
 
 ---
 
@@ -66,9 +66,10 @@ Density plot
 
 scatterplots
 
+
 ---
 
-![fit](http://i1.wp.com/espnfivethirtyeight.files.wordpress.com/2014/04/hickey-bechdel-11.png?quality=90&strip=all&w=1150)
+![fit](http://i1.wp.com/www.microbrewdata.com/wp-content/uploads/2016/01/output.png)
 
 ---
 
