@@ -60,7 +60,8 @@ ggplot(data = ds_survey, mapping = aes(x = time, y = percentage, fill = time)) +
   scale_fill_viridis(discrete=TRUE) + 
   labs(y = "% respondents", x = "") + 
   ggtitle("Where does a data scientists' time go?") +
-   theme_minimal() + 
+  theme_minimal() + 
+  theme(legend.position="none")
 ```
 
 ## Movie data set

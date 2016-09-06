@@ -1,9 +1,36 @@
 # [fit] Math 107
-## [fit] Elementary Statistics
+# [fit] Elementary
+# [fit] Statistics
 
 ---
 
-EXAMPLE
+# [fit] What are we going to learn in this course?
+
+![inline 320%](01-figs/tidy1.png)
+
+#### Credit: [Hadley Wickham](http://hadley.nz/)
+
+---
+
+# Federal Election Committee Data
+
+* 2016 presidential election independent expenditures reported to the FEC
+
+* Independent expenditures: "spending by individual people, groups, political committees, corporations or unions expressly advocating the election or defeat of clearly identified federal candidates"
+
+* Information: who was paid, purpose, date, amount, for/against whom
+
+---
+
+![fit](01-figs/fec-screenshot.png)
+
+---
+
+# What questions might we ask this data set?
+
+---
+
+# How do these questions guide our analysis?
 
 ---
 
@@ -27,6 +54,8 @@ EXAMPLE
 
 Question-and-answer system designed to streamline class discussion outside of the classroom
 
+<br>
+
 Great first place to ask about the course, lecture/reading, or the assignments.
 
 ---
@@ -35,6 +64,8 @@ Great first place to ask about the course, lecture/reading, or the assignments.
 # Moodle
 
 Check your grades
+
+<br>
 
 Take reading quizzes
 
@@ -45,7 +76,7 @@ Take reading quizzes
 *Statistics: Unlocking the Power of Data*, Lock et al., 2013, John Wiley & Sons, 
 ISBN 978-0-470-60187-7.
 
-![left, 750%](http://www.lock5stat.com/Graphics/BookCover.jpg)
+![left 750%](http://www.lock5stat.com/Graphics/BookCover.jpg)
 
 ---
 
@@ -53,7 +84,7 @@ ISBN 978-0-470-60187-7.
 
 Assigned on Mondays (due Fridays by 4 pm) and Fridays (due Tuesdays by 4 pm). 
 
-No late work will be accepted.
+**No late work will be accepted.**
 
 20% of grade. Lowest two dropped.
 
@@ -63,21 +94,7 @@ Exceptionally messy, hard to read, or unstapled homework will receive a 20% pena
 
 # Homework Grading Scale
 
-5 = Almost all problems are essentially correct with no major conceptual flaws. There may be some minor errors or calculation mistakes.
-
-4 = One problem is incomplete or contains a major conceptual flaw, but most problems are essentially correct. There may also be some minor errors or calculation mistakes.
-
-3 = At least two problems are incomplete or contain a major conceptual flaw, but most problems are essentially correct. There may also be some minor errors or calculation mistakes.
-
----
-
-# Homework Grading Scale
-
-2 = More than half the problems are incomplete or contain a major conceptual flaw, but there is evidence that the student made a serious attempt to solve most problems. Some parts of some problems are correct.
-
-1 = The assignment shows little progress toward a correct solution on any problem, but there is evidence that some serious effort was put forth on at least one problem.
-
-0 = The assignment is not turned in or contains no evidence of serious effort on any problem.
+![inline](01-figs/hw-grading.png)
 
 ---
 
@@ -107,19 +124,9 @@ Final - Tuesday, November 22 at 8 a.m.
 
 # Final grade
 
-Maximum of the following two weighting schemes
+# Maximum of the following two weighting schemes
 
-**Scheme 1**
-
-5% Quizzes, 10% Labs, 25% Homework, 
-
-10% Exam 1, 20% Exam 2, 30 % Exam 3
-
-**Scheme 2**
-
-5% Quizzes, 10% Labs, 25% Homework, 
-
-20% Exam 1, 20% Exam 2, 20 % Exam 3
+![inline](01-figs/final-grades.png)
 
 ---
 
@@ -156,10 +163,23 @@ Friday 1:50-3:50
 
 # Computing
 
-Modern statistics relies on the use of computers.
-
 We will use the statistical language R to achieve our computational goals in this course. 
 
-R is a command line program—it may seem confusing at first, but hang in there.
+<br>
+
+
+![left inline 50%](https://www.r-project.org/Rlogo.png) ![left inline 200%](https://www.rstudio.com/wp-content/uploads/2014/03/blue-125.png)
+
+
 
 Install R and RStudio today so that you can resolve any issues before you need it for an assignment.
+
+---
+
+# rstudio.lawrence.edu
+
+![inline](https://ismayc.github.io/rbasics-book/screenshots/server_login.png)
+
+---
+
+![](https://ismayc.github.io/rbasics-book/screenshots/initial_rstudio.png)
