@@ -24,6 +24,7 @@ Motivation: [The Economic Guide to Picking a College Major](http://fivethirtyeig
 # load packages
 library(dplyr)
 library(ggplot2)
+library(ggthemes)
 
 # Load the data
 congress <- read.csv("https://raw.githubusercontent.com/fivethirtyeight/data/master/congress-age/congress-terms.csv", na.strings = "", as.is = TRUE)
@@ -36,7 +37,7 @@ c113$age <- as.numeric(c113$age)
 ggplot(data = c113, mapping = aes(x = age)) +
   geom_density() + 
   theme_minimal() +
-  ggtitle("Age of the 113th Congress")
+  ggtitle("How old was the 113th Congress?")
 
 ```
 
@@ -58,14 +59,15 @@ ggplot(data = ds_survey, mapping = aes(x = time, y = percentage, fill = time)) +
   coord_flip() + 
   scale_fill_viridis(discrete=TRUE) + 
   labs(y = "% respondents", x = "") + 
-  ggtitle("Where does a datat scientists' time go?") +
-   theme_fivethirtyeight()
+  ggtitle("Where does a data scientists' time go?") +
+   theme_minimal() + 
 ```
 
 ## Movie data set
 
 ```{r}
 load(url("https://stat.duke.edu/~mc301/data/movies.Rdata"))
+
 ggplot(data = movies, mapping = aes(x = critics_score, y = audience_score)) + 
   geom_point(alpha = 0.5) + 
   labs(x = "Critic score", y = "Audience score") +
@@ -109,7 +111,7 @@ ggplot(data = movies, mapping = aes(x = critics_score, y = audience_score)) +
 
 ```{r}
 # Movie histograms
-
+library(ggplot2movies)
 data("movies", package = "ggplot2movies")
 
 ggplot(data = movies, mapping = aes(x = length)) + 
@@ -132,4 +134,32 @@ ggplot(data = movies, mapping = aes(x = length)) +
 
 ```
 
+
+## Diamonds
+
+```{r}
+ggplot(data = diamonds, mapping = aes(x = carat)) + 
+  geom_histogram(binwidth = 1, color = "gray20") + 
+  theme_minimal() + 
+  ggtitle("biwidth = 1")
+
+ggplot(data = diamonds, mapping = aes(x = carat)) + 
+  geom_histogram(binwidth = .1, color = "gray20") + 
+  theme_minimal() + 
+  ggtitle("biwidth = .1")
+
+ggplot(data = diamonds, mapping = aes(x = carat)) + 
+  geom_histogram(binwidth = .01, color = "gray20") + 
+  theme_minimal() + 
+  ggtitle("biwidth = .01")
+
+```
+
+```{r}
+library(Lock5Data)
+data("HollywoodMovies2011")
+ggplot(data = filter(HollywoodMovies2011, Genre != "Adventure"), aes(x = reorder(Genre, Budget, median, na.rm = TRUE), y = Budget)) + 
+  geom_boxplot() + coord_flip() + labs(x = "Genre", y = "Budget (millions)") + 
+  ggtitle("Hollywood Budgets in 2011")
+```
 
