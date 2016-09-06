@@ -64,8 +64,8 @@
 
 ---
 
-scatterplots
 
+![fit](03-figs/movies-audience-critics.pdf)
 
 ---
 
@@ -85,31 +85,48 @@ using color/glyphs
 
 ---
 
-# [fit] Label
-# [fit] axes
+# [fit] good
+# [fit] practices
+
+
+---
+# 
+# don't use 
+# pie charts
+
+![right](03-figs/datasci-survey-original.jpg)
 
 ---
 
-# [fit] Include
-# [fit] units
+![fit](03-figs/datasci-survey.pdf)
 
 ---
 
-# [fit] Choose the
-# [fit] right
-# [fit] display
+# Label
+# axes
 
 ---
 
-# [fit] Use
-# [fit] color
-# [fit] strategically
+#  Include
+#  units
 
 ---
 
-# [fit] What
-# [fit] not
-# [fit] to do
+#  Choose the
+#  right
+#  display
+
+---
+
+#  Use
+#  color
+#  strategically
+
+---
+
+#  What
+#  not
+#  to do
 
 ---
 

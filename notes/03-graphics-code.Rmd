@@ -40,3 +40,96 @@ ggplot(data = c113, mapping = aes(x = age)) +
 
 ```
 
+## What do data scientists do all day?
+
+```{r}
+# Load the data
+library(readxl)
+library(viridis) # nicer color palettes
+library(forcats) # categorical variables
+library(ggthemes) # more plot themes
+ds_survey <- read_excel("03-data/datasci-survey.xlsx")
+ds_survey$time <- fct_inorder(ds_survey$time)
+
+# facetted bar chart
+ggplot(data = ds_survey, mapping = aes(x = time, y = percentage, fill = time)) + 
+  geom_bar(stat = "identity") + 
+  facet_wrap(~task) + 
+  coord_flip() + 
+  scale_fill_viridis(discrete=TRUE) + 
+  labs(y = "% respondents", x = "") + 
+  ggtitle("Where does a datat scientists' time go?") +
+   theme_fivethirtyeight()
+```
+
+## Movie data set
+
+```{r}
+load(url("https://stat.duke.edu/~mc301/data/movies.Rdata"))
+ggplot(data = movies, mapping = aes(x = critics_score, y = audience_score)) + 
+  geom_point(alpha = 0.5) + 
+  labs(x = "Critic score", y = "Audience score") +
+  ggtitle("Does the audience agree with the critics?") +
+  theme_minimal() +
+  coord_fixed()
+
+ggplot(data = movies, mapping = aes(x = critics_score, y = audience_score, color = best_pic_nom)) + 
+  geom_point(alpha = 0.7) + 
+  labs(x = "Critic score", y = "Audience score") +
+  ggtitle("Does the audience agree with the critics?") +
+  theme_minimal() +
+  coord_fixed() + 
+  scale_color_viridis(discrete = TRUE)
+
+ggplot(data = movies, mapping = aes(x = critics_score, y = audience_score, color = best_pic_nom, shape = best_pic_nom)) + 
+  geom_point(alpha = 0.7, data = filter(movies, best_pic_nom == "no")) + 
+  geom_point(alpha = 0.7, data = filter(movies, best_pic_nom == "yes")) +
+  labs(x = "Critic score", y = "Audience score") +
+  ggtitle("Does the audience agree with the critics?") +
+  theme_minimal() +
+  coord_fixed()
+
+ggplot(data = movies, mapping = aes(x = critics_score, y = audience_score)) + 
+  geom_point(alpha = 0.5) + 
+  labs(x = "Critic score", y = "Audience score") +
+  ggtitle("Does the audience agree with the critics?") +
+  theme_minimal() +
+  coord_fixed() + 
+  facet_wrap(~genre)
+
+ggplot(data = movies, mapping = aes(x = critics_score, y = audience_score)) + 
+  geom_point(alpha = 0.5) + 
+  labs(x = "Critic score", y = "Audience score") +
+  ggtitle("Does the audience agree with the critics?") +
+  theme_minimal() +
+  coord_fixed() + 
+  facet_wrap(~mpaa_rating)
+
+```
+
+```{r}
+# Movie histograms
+
+data("movies", package = "ggplot2movies")
+
+ggplot(data = movies, mapping = aes(x = length)) + 
+  geom_histogram(binwidth = 15, color = "gray20") +
+  labs(x = "movie length (minutes)") +
+  xlim(c(0,180))
+
+ggplot(data = movies, mapping = aes(x = length)) + 
+  geom_histogram(binwidth = 10, color = "gray20") +
+  labs(x = "movie length (minutes)")
+
+ggplot(data = movies, mapping = aes(x = length)) + 
+  geom_histogram(binwidth = 5, color = "gray20") +
+  labs(x = "movie length (minutes)")
+
+ggplot(data = movies, mapping = aes(x = length)) + 
+  geom_histogram(binwidth = 1, color = "gray20") +
+  labs(x = "movie length (minutes)")
+
+
+```
+
+
