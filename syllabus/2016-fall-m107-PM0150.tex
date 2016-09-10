@@ -109,8 +109,8 @@
 	\noindent \begin{tabular*}{\textwidth}{ @{\extracolsep{\fill}} lr @{\extracolsep{\fill}}}
 
 
-E-mail: \texttt{\href{mailto:adam.m.loy@lawrence.edu}{\nolinkurl{adam.m.loy@lawrence.edu}}} & Web: \href{http://math107-lu.github.io/}{\tt math107-lu.github.io/}\\
-Office Hours: MF 1:50-3:50; T 1:50-3:20, W 3:10-4:20  &  Class Hours: MWF 11:10-12:20\\
+E-mail: \texttt{\href{mailto:adam.m.loy@lawrence.edu}{\nolinkurl{adam.m.loy@lawrence.edu}}} & Web: \href{http://math107-lu.github.io}{\tt math107-lu.github.io}\\
+Office Hours: M 3:10-5:00; TR 1:50-3:20; F 3:10-4:20  &  Class Hours: MWF 1:50-3:00\\
 Office: 410 Briggs Hall  & Class Room: 420 Briggs Hall\\
 	&  \\
 	\hline
@@ -144,8 +144,8 @@ After finishing this course, you should have:
   the role that data collection plays in determining the scope of
   inference.
 \item
-  The ability to use technology to summarize data numerically and
-  visually, and to perform straightfor- ward data analysis procedures.
+  The ability to use R to summarize data numerically and visually, and
+  to perform straightforward data analysis procedures.
 \item
   A solid conceptual understanding of key concepts such as the logic of
   statistical inference, estimation with intervals, and testing for
@@ -167,16 +167,25 @@ After finishing this course, you should have:
 \paragraph{Mathematical background:}\label{mathematical-background}
 
 This is a statistics course. We will use mathematics as a tool, but will
-concen- trate on the statistical ideas, not on mathematics. To this end,
-high school algebra is the only mathematical prerequisite for this
-course, and I will assume that everyone enrolled meets this requirement.
-If you need help with these skills, I encourage you to utilize the
-Center for Teaching and Learning.
+concentrate on the statistical ideas, not on mathematics. To this end,
+algebra II is the only mathematical prerequisite for this course, and I
+will assume that everyone enrolled meets this requirement. If you need
+help with these skills, I encourage you to utilize the Center for
+Academic Success.
 
 \paragraph{Required textbook:}\label{required-textbook}
 
 \emph{Statistics: Unlocking the Power of Data}, Lock et al., 2013, John
 Wiley \& Sons, ISBN 978-0-470-60187-7.
+
+\paragraph{Computing:}\label{computing}
+
+Modern statistical analysis is done in a computing environment, so this
+course has a strong computational focus. We will use the R language,
+which is free and open-source. Lawrence has an R Studio server that you
+can access on campus by pointing a browser to
+\url{https://rstudio.lawrence.edu/}. Alternatively, you can install R
+and R Studio on your own computer.
 
 \paragraph{Online discussion forum:}\label{online-discussion-forum}
 
@@ -200,15 +209,16 @@ reorganize your thought processes.
 \paragraph{Class attendance:}\label{class-attendance}
 
 During class we will explore the statistical thought process through
-lecture, discussion, and case studies. Remember that office hours are
-not substitutes for class attendance.
+lecture, discussion, and lab activities. Office hours are not
+substitutes for class attendance.
 
 \paragraph{Lab days:}\label{lab-days}
 
 Weekly labs provide a chance for you to grapple with data and do
 statistics. Labs will focus on computation and critical thinking about
-correct and intelligent use of data and statistics. Generally, lab
-assignments will be due at the beginning of the next class period.
+correct and intelligent use of data and statistics. Additionally, labs
+will help you learn R. Generally, lab assignments will be due at the
+beginning of the next class period.
 
 \paragraph{Homework:}\label{homework}
 
@@ -216,27 +226,29 @@ I will assign a few problems (\textasciitilde{}3-5) most Mondays and
 Fridays. You should start working on the problems as soon as they are
 assigned, and work on them a little (or a lot) every day. While the
 homework will help you grapple with the material, you may need more
-practice than the homework provides to master the material. I will
-highlight additional book problems that will help you master the
-material that have solutions in the back of the book.
+practice than the homework provides to master the material. The textbook
+includes many problems at the end of each section. Working through these
+problems (the odd problems have solutions in the back) will help you
+solidify your understanding. I especially encourage you to work through
+the ``Skill Builder'' problems.
 
 \paragraph{Quizzes:}\label{quizzes}
 
-There will be short quizzes on the daily reading assignments that are to
-be completed on Moodle prior to 9:00 am on most class meeting days.
-These are simple checks that you have completed the daily reading and
-know the basic definitions. You should check Moodle regularly so that
-you do not forget to complete them. There may be times when quizzes are
-given at the beginning of class.
+There will be short quizzes on the reading/video assignments that are to
+be completed on Moodle prior to 10:30 am on most class meeting days.
+These are simple checks that you have completed the daily
+reading/viewing and know the basic ideas. You should check Moodle
+regularly so that you do not forget to complete them. There may be times
+when quizzes are given at the beginning of class.
 
 \paragraph{Exams:}\label{exams}
 
 There will be two midterm exams and a final exam. The midterm exams are
-(tentatively) scheduled for XXX, and XXX, during class. The final exam
-will be held on Tuesday November 22 from 8:00--10:30 a.m. The date and
-time of the final exam is set by the registrar, and under no
-circumstances will you be allowed to take the final at a different time
-due to early travel plans.
+(tentatively) scheduled for Wednesday, October 5, and Friday, October
+28, during class. The final exam will be held on Tuesday November 22
+from 11:30 a.m. to 2:00 p.m The date and time of the final exam is set
+by the registrar, and under no circumstances will you be allowed to take
+the final at a different time due to early travel plans.
 
 \section{Course Policies}\label{course-policies}
 
@@ -324,7 +336,7 @@ effort on any problem.
 \paragraph{Homework deadlines:}\label{homework-deadlines}
 
 The problems assigned on Monday are due Friday by 4:00 p.m., while those
-as- signed Friday are due Tuesday by 4:00 p.m. Problems are due in my
+assigned Friday are due Tuesday by 4:00 p.m. Problems are due in my
 office and no late work will be accepted. I understand that this policy
 is strict, so I will drop your two lowest scores when computing your
 homework average.
@@ -346,22 +358,23 @@ students of the Lawrence community.}
 
 All students are expected to uphold Lawrence University's Honor Code.
 All work on quizzes and exams must be your own. You may collaborate on
-homework but you must submit your own assignment that reflects your own
+homework, but you must submit your own assignment that reflects your own
 thinking, work and organization. Any assignment you submit for a grade
 should be your own work, and not a facsimile of a classmate's work,
 which would constitute academic dishonesty. To check if your homework
 meets this standard, imagine I asked you to explain your reasoning for
 each problem---you should be able to do so with ease using language
 similar to your submission. All written work must be accompanied by a
-reaffirmation of the Honor Code.
+reaffirmation of the Honor Code. Finally, cell phones will be prohibited
+during exams.
 
 \paragraph{Disability Policy:}\label{disability-policy}
 
-If you have a documented disability that will impact your work in this
-class, please contact me to discuss your needs as soon as possible.
-Additionally, you will need to formally request these accommodations
-through Student Academic Services. Retroactive requests for
-accommodations will not be honored.
+Lawrence University is committed to providing reasonable accommodations
+for students with disabilities. Students establish eligibility and
+request accommodations through the Center for Academic Success. View the
+Accessibility Services web page at go.lawrence.edu/cas for more
+information.
 
 \paragraph{Healthy Balance:}\label{healthy-balance}
 
