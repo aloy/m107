@@ -211,3 +211,20 @@ Install R and RStudio today so that you can resolve any issues before you need i
 ---
 
 ![fit](https://ismayc.github.io/rbasics-book/screenshots/initial_rstudio.png)
+
+---
+
+# Advice
+
+![inline 130%](https://uwaterloo.ca/counselling-services/sites/ca.counselling-services/files/resize/uploads/images/curve_0-500x231.gif)
+
+#### Source: [Curve of Forgetting](https://uwaterloo.ca/counselling-services/curve-forgetting)
+
+
+---
+
+# Adding the course
+
+If you are on the waiting list for this course, please complete the following questionnaire:
+
+https://goo.gl/forms/d7zis1YMntfZQJxJ2
