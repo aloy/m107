@@ -15,7 +15,7 @@ email: "adam.m.loy@lawrence.edu"
 web: "math107-lu.github.io"
 officehours: "M 3:10-5:00; TR 1:50-3:20; F 3:10-4:20"
 office: "410 Briggs Hall"
-classroom: "420 Briggs Hall"
+classroom: "224 Briggs Hall"
 classhours: "MWF 1:50-3:00"
 
 fontfamily: mathpazo
