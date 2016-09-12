@@ -11,19 +11,26 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+
 ## Problem 1
 
-*USA Today* maintains a data base of Major League Baseball player salaries (http://www.usatoday.com/sports/mlb/salaries/2016/player/all/). Answer the following questions about this data set.
+The Happy Planet Index (HPI) is an alternative measure of the well-being of people within countries that was developed by the New Economies Foundation. The `hpi.csv` data set contains the most recent index and supporting data. Download this data set from the course webpage and use it to answer the following questions.
 
 a. Identify the cases.
 b. Identify the variables.
 c. Classify each variable as either quantitative or categorical.
+d. Why is the data set tidy?
 
 ## Problem 2
 
+*USA Today* maintains a data base of Major League Baseball player salaries (http://www.usatoday.com/sports/mlb/salaries/2016/player/all/). 
+
+Answer the following questions about this data set.
+
 a. Identify the cases.
 b. Identify the variables.
 c. Classify each variable as either quantitative or categorical.
+d. Why is the data set <u>not</u> tidy?
 
 ## Problem 3
 
