@@ -1,0 +1,32 @@
+---
+title: "Homework 1"
+author: "Fall 2016, Math 107, Prof. Adam Loy"
+date: "Due Friday, September 16 by 4:00 p.m."
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Problem 1
+
+*USA Today* maintains a data base of Major League Baseball player salaries (http://www.usatoday.com/sports/mlb/salaries/2016/player/all/). Answer the following questions about this data set.
+
+a. Identify the cases.
+b. Identify the variables.
+c. Classify each variable as either quantitative or categorical.
+
+## Problem 2
+
+a. Identify the cases.
+b. Identify the variables.
+c. Classify each variable as either quantitative or categorical.
+
+## Problem 3
+
+a. Identify the cases.
+b. Identify the variables.
+c. Classify each variable as either quantitative or categorical.
