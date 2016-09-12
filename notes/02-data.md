@@ -1,60 +1,46 @@
-footer: Math 107, Fall 2016
-slidenumbers: true
 
 # [fit] Introduction to
 # [fit] data
 
 ---
 
-# Why statistics?
-
-Statistics is all about thinking with and
-about **_data_** <br/>
-
-Data are everywhere!
-
----
-
-# [fit] The basics
-
----
-
 # Data
 
-**Data** - a set of measurements taken on a set of individuals
-
-**Format** - data come in many shapes and sizes
-
-- dataset - variables measured on cases
+A set of measurements taken on a set of individuals
 
 ---
 
-# Example
+![fit](01-figs/fec-screenshot.png)
 
 ---
 
-# Categorical vs. Quantitative
+#  What are the **cases** (what do the rows represent)?
 
-A *categorical* variable divides cases into groups, and is recorded as a label
- 
-A *quantitative* variable measures 
-
-- a numerical quantity
-recorded and used as a number 
-- arithmetic makes sense
+![fit](01-figs/fec-screenshot.png)
 
 ---
 
-# Example
+![fit](01-figs/fec-screenshot.png)
 
 ---
 
-# Explanatory vs. Response
+# What **variables** do we have (what characteristics do we have on each case)?
 
-When we are investigating relationships between variables, we often think about two types of variables.
+![fit](01-figs/fec-screenshot.png)
 
-- The result/outcome of interest is called the response variable
-- The variable(s) used to understand/ called explanatory variables
+---
+
+![fit](01-figs/fec-screenshot.png)
+
+---
+
+# Are the variables **categorical** (values that are names of categories) or **quantitative** (measured numerical values with units)?
+
+![fit](01-figs/fec-screenshot.png)
+
+---
+
+![fit](01-figs/fec-screenshot.png)
 
 ---
 
@@ -63,7 +49,7 @@ When we are investigating relationships between variables, we often think about 
 
 ---
 
-# Definition
+# Data are tidy if...
 
 Each variable forms a column
 
@@ -74,3 +60,17 @@ Each value of a variable is stored in a cell
 No footnotes
 
 No units
+
+---
+
+# Why do we care?
+
+Tidy data sets are easy to manipulate, visualize and model. 
+
+---
+
+Example - Tidy
+
+---
+
+Example - Untidy
