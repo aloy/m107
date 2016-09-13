@@ -3,8 +3,8 @@ title: "Homework 1"
 author: "Fall 2016, Math 107, Prof. Adam Loy"
 date: "Due Friday, September 16 by 4:00 p.m."
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Problem 1
 
-The Happy Planet Index (HPI) is an alternative measure of the well-being of people within countries that was developed by the New Economies Foundation. The `hpi.csv` data set contains the most recent index and supporting data. Download this data set from the course webpage and use it to answer the following questions.
+The Happy Planet Index (HPI) is an alternative measure of the well-being of people within countries that was developed by the New Economies Foundation. The `hpi.csv` data set contains the most recent index and supporting data. Download this data set from the course webpage and use it to answer the following.
 
 a. Identify the cases.
 b. Identify the variables.
@@ -31,9 +31,3 @@ a. Identify the cases.
 b. Identify the variables.
 c. Classify each variable as either quantitative or categorical.
 d. Why is the data set <u>not</u> tidy?
-
-## Problem 3
-
-a. Identify the cases.
-b. Identify the variables.
-c. Classify each variable as either quantitative or categorical.
