@@ -137,7 +137,7 @@
 
 ---
 
-# Label your axes, includng units
+# Label your axes, including units
 
 ![inline 110%](03-figs/unlabeled-axes.png)
 
@@ -161,6 +161,7 @@
 
 ---
 
-# Additional reading for the interested student
+# Additional reading if you're interested
 
 ![inline](http://www.analyticspress.com/Images/NYSI_cover.jpg) ![inline](http://www.analyticspress.com/Images/SMTN_2nd_ed_Cover.jpg) ![inline](https://images.tandf.co.uk/common/jackets/amazon/978149871/9781498715232.jpg)
+
