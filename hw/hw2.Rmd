@@ -72,14 +72,18 @@ c. Which graph would you prefer to use for displaying these categorical data?
 
 ## Problem 2
 
-```{r echo=FALSE, fig.height=3, fig.width=9}
+In this problem we will explore a data set containing the velocity (in km/sec) of 82 planets.
+
+```{r echo=FALSE, fig.height=3, fig.width=7, warning=FALSE}
 library(ggplot2)
 library(MASS)
 library(gridExtra)
 galaxy <- data.frame(velocity = galaxies)
 p1 <- ggplot(data = galaxy, mapping = aes(velocity)) +
   geom_histogram(binwidth = 1000, color = "gray20") + 
-  theme(axis.text.x = element_text(size = rel(.8)))
+  labs(x= "velocity (km/sec)") +
+  theme(axis.text.x = element_text(size = rel(.8))) +
+  theme_bw()
 
 p2 <- ggplot(data = galaxy, mapping = aes(velocity)) +
   geom_density() + 
@@ -87,30 +91,101 @@ p2 <- ggplot(data = galaxy, mapping = aes(velocity)) +
 
 p3 <- ggplot(data = galaxy, mapping = aes("var", velocity)) +
   geom_boxplot() +
-  labs(x = "", y = "velocity") +
-  scale_x_discrete(breaks = NULL)
+  labs(x = "", y = "velocity (km/sec)") +
+  scale_x_discrete(breaks = NULL) +
+  theme_bw()
 
-grid.arrange(p1, p2, p3, ncol = 3)
+grid.arrange(p1, p3, ncol = 2)
 ```
 
 a. Describe the shape of the distribution of velocities. Specifically address the number of modes, symmetry/skew, and any unusual features present.
-b. What features are apparent in the histogram but not in the density plot?
-c. What features are apparent in the histogram and density plot but not in the boxplot?
-d. Which graph would you prefer to use for displaying these data? Justify your answer.
-
-
-
-```{r include=FALSE}
-library(ggplot2movies)
-
-```
-
+b. What features are apparent in the histogram but not in the boxplot?
+c. Which graph would you prefer to use for displaying these data? Justify your answer.
 
 ## Problem 3
 
-SIDE-by-SIDE plots
+In this problem we will explore the length of movies released
+
+```{r echo=FALSE, fig.height=3, fig.width=5, warning=FALSE}
+data("movies", package="bigvis")
+
+ggplot(data = movies, mapping = aes(x = length)) + 
+  geom_histogram(binwidth = 1) +
+  labs(x = "Movie lengths (minutes)", y = "Count") +
+  xlim(0, 180) +
+  theme_bw()
+```
+
+a. Describe the shape of the distribution of velocities. Specifically address the number of modes, symmetry/skew, and any unusual features present.
+b. Below is a density plot displaying the same data. What features are easier to see in the density plot? What features are easier to see in the histogram?
+
+```{r echo=FALSE, fig.height=3, fig.width=5, warning=FALSE}
+ggplot(data = movies, mapping = aes(x = length)) + 
+  geom_density() +
+  labs(x = "Movie lengths (minutes)", y = "Density") +
+  xlim(0, 180) +
+  theme_bw()
+```
+
+c. Below is a side-by-side (i.e. faceted) histogram of movie lengths based on whether the film is classified as a "short" film. Have films been classified as a "short" in a consistent way? Explain briefly.
+
+```{r echo=FALSE, fig.height=4.5, fig.width=5, warning=FALSE, message=FALSE}
+library(dplyr)
+movies <- movies %>%
+  mutate(short_lab = ifelse(Short==0, "Feature", "Short"))
+
+ggplot(data = movies, mapping = aes(x = length)) + 
+  geom_histogram(binwidth = 1) +
+  facet_wrap(~short_lab, ncol=1) +
+  labs(x = "Movie lengths (minutes)", y = "Count") +
+  xlim(0, 180) +
+  theme_bw()
+```
+
+
+b. The below plot displays the same data, but uses overlaid density plots instead of histograms. What features are easier to see with the density plots? What features are easier to see in the histograms?
+
+```{r echo=FALSE, fig.height=3, fig.width=5, warning=FALSE, message=FALSE}
+library(viridis) # nicer color palettes
+ggplot(data = movies, mapping = aes(x = length, fill = short_lab)) + 
+  geom_density(alpha = 0.5) +
+  labs(x = "Movie lengths (minutes)", y = "Density") +
+  xlim(0, 180) +
+  scale_fill_viridis('Type', discrete = TRUE) +
+  theme_bw()
+```
+
 
 ## Problem 4
 
-SCATTERPLOT
+```{r echo=FALSE, fig.width=10, fig.height=10, cache=TRUE, warning=FALSE}
+library(extracat)
+library(GGally)
+
+data("olives")
+ggpairs(olives[,3:10], 
+        lower = list(continuous = wrap("points", alpha = 0.3)),
+                     title = "Olive Oil Fatty Acids") +
+  theme_bw()
+```
+
+```{r echo=FALSE, fig.width=10, fig.height=10, cache=TRUE, warning=FALSE}
+library(ggthemes)
+p <- ggpairs(olives[,2:10], 
+        mapping = ggplot2::aes(color = Region),
+        lower = list(continuous = wrap("points", alpha = 0.3)),
+                     title = "Olive Oil Fatty Acids") +
+  theme_bw()
+for(i in 1:p$nrow) {
+  for(j in 1:p$ncol){
+    p[i,j] <- p[i,j] + 
+        scale_fill_colorblind() +
+        scale_color_colorblind()  
+  }
+}
+
+p
+```
+
+
 

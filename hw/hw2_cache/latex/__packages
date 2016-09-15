@@ -1,0 +1,11 @@
+base
+ggplot2
+MASS
+gridExtra
+ggplot2movies
+dplyr
+forcats
+extracat
+GGally
+viridis
+ggthemes
