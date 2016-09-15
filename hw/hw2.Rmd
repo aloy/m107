@@ -1,0 +1,84 @@
+---
+title: "Homework 2"
+author: "Fall 2016, Math 107, Prof. Adam Loy"
+date: "Due Tuesday, September 20 by 4:00 p.m."
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Problem 1
+The bar chart and the pie chart below show the distribution of pre-existing medical 
+conditions of children involved in a study on the optimal duration of 
+antibiotic use in treatment of tracheitis, which is an upper respiratory 
+infection.
+
+```{r eval=FALSE, include=FALSE}
+<<include=FALSE>>=
+# load openintro package for colors ---------------------------------
+library(openintro)
+
+# create data -------------------------------------------------------
+library(forcats)
+conditions = c(rep("Prematurity", 33),
+               rep("Neuromuscular", 10),
+               rep("Cardiovascular", 16),
+               rep("Genetic/metabolic", 6),
+               rep("Respiratory", 13),
+               rep("Trauma", 10),
+               rep("Gastrointestinal", 2),
+               rep("Immunocompromised", 2)
+               )
+
+conditions <- fct_relevel(conditions, "Prematurity", "Cardiovascular", "Respiratory", "Trauma", "Neuromuscular", "Genetic/metabolic", "Immunocompromised", "Gastrointestinal")
+
+conditions <- fct_rev(conditions)
+
+conditions_df <- data.frame(conditions = conditions)
+rm(conditions)
+
+
+
+# bar chart -----------------------------------------------------------
+library(ggplot2)
+library(viridis) # nicer color palettes
+bar <- 
+  ggplot(data = conditions_df, mapping = aes(x = conditions, fill = conditions)) + 
+  geom_bar() + 
+  coord_flip() +
+  scale_fill_viridis(discrete=TRUE)
+
+# pie chart ---------------------------------------------------------
+pie <- 
+  ggplot(data = conditions_df, mapping = aes(x = factor(1), fill = conditions)) + 
+  geom_bar(width=1) + 
+  coord_polar(theta = "y") +
+  scale_fill_viridis(discrete=TRUE) +
+  labs(x = NULL, y = NULL)
+
+require(gridExtra)
+grid.arrange(bar, pie, ncol = 2)
+```
+
+a. What features are apparent in the bar chart but not in the pie chart?
+b. What features are apparent in the pie chart but not in the bar chart?
+c. Which graph would you prefer to use for displaying these categorical data?
+
+
+## Problem 2
+
+HISTOGRAMS/DENSITY PLOTS
+
+## Problem 3
+
+SIDE-by-SIDE plots
+
+## Problem 4
+
+SCATTERPLOT
+
