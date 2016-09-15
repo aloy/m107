@@ -72,7 +72,39 @@ c. Which graph would you prefer to use for displaying these categorical data?
 
 ## Problem 2
 
-HISTOGRAMS/DENSITY PLOTS
+```{r echo=FALSE, fig.height=3, fig.width=9}
+library(ggplot2)
+library(MASS)
+library(gridExtra)
+galaxy <- data.frame(velocity = galaxies)
+p1 <- ggplot(data = galaxy, mapping = aes(velocity)) +
+  geom_histogram(binwidth = 1000, color = "gray20") + 
+  theme(axis.text.x = element_text(size = rel(.8)))
+
+p2 <- ggplot(data = galaxy, mapping = aes(velocity)) +
+  geom_density() + 
+  theme(axis.text.x = element_text(size = rel(.8)))
+
+p3 <- ggplot(data = galaxy, mapping = aes("var", velocity)) +
+  geom_boxplot() +
+  labs(x = "", y = "velocity") +
+  scale_x_discrete(breaks = NULL)
+
+grid.arrange(p1, p2, p3, ncol = 3)
+```
+
+a. Describe the shape of the distribution of velocities. Specifically address the number of modes, symmetry/skew, and any unusual features present.
+b. What features are apparent in the histogram but not in the density plot?
+c. What features are apparent in the histogram and density plot but not in the boxplot?
+d. Which graph would you prefer to use for displaying these data? Justify your answer.
+
+
+
+```{r include=FALSE}
+library(ggplot2movies)
+
+```
+
 
 ## Problem 3
 
