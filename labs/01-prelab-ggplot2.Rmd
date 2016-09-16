@@ -1,0 +1,104 @@
+---
+title: "Creating Graphs with ggplot2"
+author: "Lab 1, Fall 2016"
+output:
+  html_document:
+    fig_height: 2
+    fig_width: 5
+  word_document:
+    fig_height: 2
+    fig_width: 5
+---
+
+### 1. Introduction
+It is often necessary to create graphics to effectively communicate key patterns within a data set. While many software packages allow the user to make basic plots, it can be challenging to create plots that are customized to address a specific idea. While there are numerous ways to create graphs, this tutorial will focus on the R package `ggplot2`, created by Hadley Wickham.
+
+
+In this lab, we will focus on building plots in layers using the `ggplot2` package. This approach uses a particular grammar inspired by Leland Wilkinson's landmark book, *The Grammar of Graphics*, that focused on thinking about, reasoning with and communicating with graphics. It enables layering of independent components to create custom graphics for tidy data sets.
+
+To begin, load the `ggplot2` package using the following command
+```{r message = FALSE}
+library(ggplot2)
+```
+
+If you have not yet installed the package, you can do so with the following command
+
+```{r eval=FALSE}
+install.packages("ggplot2")
+```
+
+
+**Data**: In this tutorial, we will use the  [AmesHousing](http://www.amstat.org/publications/jse/v19n3/decock.pdf) data set, which provides information on the sales of individual residential properties in Ames, Iowa from 2006 to 2010. The data set contains 2930 observations, and a large number of explanatory variables involved in assessing home values. A full description of this data set can be found [here](http://www.amstat.org/publications/jse/v19n3/Decock/DataDocumentation.txt).
+
+If you have saved the data file in the data folder of your R Studio project, then you can load it using the following command. Alternatively, you can use "Import Dataset" button in the Environment tab.
+
+```{r}
+AmesHousing <- read.csv("data/AmesHousing.csv")
+# str(AmesHousing)
+```
+
+### 2. Building your first plot
+
+To see how plots are constructed, let's first create a histogram of the sales price (`SalePrice`) of homes in Ames, IA. To do this, we will use the `ggplot` function which expects at a bare minimal as arguments:
+
+* the data frame where the variables exist (the `data` argument) and
+* the names of the variables to be plotted (the `mapping` argument).
+
+The names of the variables will be entered into the aes function as arguments where aes stands for "aesthetics".
+
+With that in mind, we start by creating the base layer, or the backdrop on which we will layer the elements of our histogram.
+
+```{r}
+ggplot(data = AmesHousing, mapping = aes(x = SalePrice))
+```
+
+We next proceed by adding a layer---hence, the use of the + symbol---to the plot to produce a histogram.
+
+Note: You are encouraged to enter **Return** on your keyboard after entering the `+`. As we add more and more elements, it will be nice to keep them indented as you see below. Note that this will not work if you begin the line with the `+`.
+
+```{r}
+ggplot(data = AmesHousing, mapping = aes(x = SalePrice)) +
+  geom_histogram()
+```
+
+Here, we are warned that the histogram was been drawn with 30 bins, a rather arbitrary choice. We can customize our histogram by adding a `binwidth` argument to the `geom_histogram` command:
+
+```{r}
+ggplot(data = AmesHousing, mapping = aes(x = SalePrice)) +
+  geom_histogram(binwidth=10000)
+```
+
+We can also add some color to the plot by invoking the fill and color arguments.
+
+```{r}
+ggplot(data = AmesHousing, mapping = aes(x = SalePrice)) +
+  geom_histogram(binwidth=10000, fill = "steelblue2", color = "black")
+```
+
+Currently, the x-axis label does not contain units. To change the axis labels we add a layer to our plot
+
+```{r}
+ggplot(data = AmesHousing, mapping = aes(x = SalePrice)) +
+  geom_histogram(binwidth=10000, fill = "steelblue2", color = "black") +
+  labs(x = "Sale Price (in dollars)")
+```
+
+Note that we can also tweak the y-axis label with the addition of a `y` argument in the `labs` function.
+
+Finally, we can easily add a title to our plot with the addition of another layer
+
+```{r}
+ggplot(data = AmesHousing, mapping = aes(x = SalePrice)) +
+  geom_histogram(binwidth=10000, fill = "steelblue2", color = "black") +
+  labs(x = "Sale Price (in dollars)") +
+  ggtitle("Sales Prices of Homes in Ames, IA")
+```
+
+
+Throughout the remainder of this lab we will explore how to create and customize the basic plot types:
+
+* histograms,
+* bar charts,
+* density plots,
+* scatterplots,
+*  and side-by-side plots.

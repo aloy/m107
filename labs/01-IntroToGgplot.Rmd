@@ -14,85 +14,101 @@ output:
 It is often necessary to create graphics to effectively communicate key patterns within a dataset. While many software packages allow the user to make basic plots, it can be challenging to create plots that are customized to address a specific idea. While there are numerous ways to create graphs, this tutorial will focus on the R package `ggplot2`, created by Hadley Wickham.
 
 
-There are two key functions that are used in `ggplot2`:
+In this lab, we will focus on building plots in layers using the `ggplot2` package. This approach uses a particular grammar inspired by Leland Wilkinson's landmark book, *The Grammar of Graphics*, that focused on thinking about, reasoning with and communicating with graphics. It enables layering of independent components to create custom graphics for tidy data sets.
 
-* `qplot()`or *quick plot* is similar to base plotting functions in R and is primarily used to produce quick and easy graphics.
-* `ggplot()`the *grammar of graphics plot* is different from other graphics funcitons because it uses a particular grammar inspired by Leland Wilkinson's landmark book, *The Grammar of Graphics*, that focused on thinking about, reasoning with and communicating with graphics. It enables layering of independent components to create custom graphics.
-
+To begin, load the `ggplot2` package using the following command
 ```{r message = FALSE}
-# This tutorial will use the following two packages
 library(ggplot2)
 library(mosaic)
 ```
 
-**Data**: In this tutorial, we will use the  [AmesHousing](http://www.amstat.org/publications/jse/v19n3/decock.pdf) data, which provides information on the sales of individual residential properties in Ames, Iowa from 2006 to 2010. The data set contains 2930 observations, and a large number of explanatory variables involved in assessing home values. A full description of this dataset can be found [here](http://www.amstat.org/publications/jse/v19n3/Decock/DataDocumentation.txt).
+If you have not yet installed the package, you can do so with the following command
+
+```{r eval=FALSE}
+install.packages("ggplot2")
+```
+
+
+**Data**: In this tutorial, we will use the  [AmesHousing](http://www.amstat.org/publications/jse/v19n3/decock.pdf) data set, which provides information on the sales of individual residential properties in Ames, Iowa from 2006 to 2010. The data set contains 2930 observations, and a large number of explanatory variables involved in assessing home values. A full description of this dataset can be found [here](http://www.amstat.org/publications/jse/v19n3/Decock/DataDocumentation.txt).
+
+If you have saved the data file in the data folder of your RStudio project, then you can load it using the following command. Alternatively, you can use "Import Dataset" button in the Enrivonment tab.
 
 ```{r}
-# The csv file should be imported into rstudio:
 AmesHousing <- read.csv("data/AmesHousing.csv")
 # str(AmesHousing)
 ```
 
-### 2. The `qplot` function
+### 2. Building your first plot
 
-In this section, we will briefly provide examples of how the `qplot` function can be used to create basic graphs. Run the code below and answer Questions 1)-5).
+To see how plots are constructed, let's first create a histogram of the sales price (`SalePrice`) of homes in Ames, IA. To do this, we will use the `ggplot` function which expects at a bare minimal as arguments:
 
-```{r eval=FALSE}
-# Create a histogram of housing prices
-qplot(data=AmesHousing, x=SalePrice, main ="Histogram of Housing Prices in Ames, Iowa")
+* the data frame where the variables exist (the `data` argument) and
+* the names of the variables to be plotted (the `mapping` argument).
 
-# Create a scatterplot of above ground living area by sales price
-qplot(data=AmesHousing,x=Gr.Liv.Area, y=SalePrice)
+The names of the variables will be entered into the aes function as arguments where aes stands for "aesthetics".
 
-# Create a scatterplot with log transformed variables, coloring by a third variable
-qplot(data=AmesHousing,x=log(Gr.Liv.Area),y=log(SalePrice),color=Kitchen.Qual)
+With that in mind, we start by creating the base layer, or the backdrop on which we will layer the elements of our histogram.
 
-# Create distinct scatterplots for each type of kitchen quality and number of fireplaces
-qplot(data=AmesHousing,x=Gr.Liv.Area,y=SalePrice,facets=Kitchen.Qual~Fireplaces)
-
-# Create a dotplot of sale prices by kitchen quality
-qplot(data=AmesHousing,x=Kitchen.Qual,y=SalePrice)
-
-# Create a boxplot of sale prices by kitchen quality
-qplot(data=AmesHousing,x=Kitchen.Qual,y=log(SalePrice),geom="boxplot")
+```{r}
+ggplot(data = AmesHousing, mapping = aes(x = SalePrice))
 ```
 
-**Questions**:  
+We next proceed by adding a layer---hence, the use of the + symbol---to the plot to produce a histogram.
 
-1) In this dataset, how many houses were sold with four fireplaces?
-2) What is the `facet` argument used for?
-3) Based upon the data documentation, what are the five different levels for kitchen quality?
-4) Do these graphs indicate that the quality of a kitchen could be related to the sale price?
-5) In the RStudio console, type `?qplot`. Modify the above code to create a barchart (`geom=bar`) of sales by kitchen quality. Modify the x-axis label to state "Sale Price of Individual Home" instead of "SalePrice"
+Note: You are encouraged to enter **Return** on your keyboard after entering the `+`. As we add more and more elements, it will be nice to keep them indented as you see below. Note that this will not work if you begin the line with the `+`.
 
-
-### 3. The basic structure of the `ggplot` function
-
-All `ggplot` functions must have at least three components:
-
-*  **data frame**: In this activity we will be using the `AmesHousing` data.
-*  **geom**: to determine the type of geometric shape used to display the data, such as line, bar, point, or area.
-*  **aes**: to determine how variables in the data are mapped to visual properties (aesthetics) of geoms. This can include x position, y position, color, shape, fill, and size.
-
-Thus the simplest code for a graphic made with `ggplot()` would have one of the the following forms: 
-
-* `ggplot(data, aes(x, y)) + geom_line()` or 
-* `ggplot(data) + geom_line(aes(x, y))`. 
-
-Note the two lines of code above would provide identical results. In the first case, the `aes` is set as the default for all `geoms`. In essense, the same `x` and `y` variables are used throughout the entire graphic. However, as graphics get more complex, it is often best to creating local `aes` mappings for each `geom` as shown in the second line of code.
-
-```{r message=FALSE}
-# Create a histogram of housing prices
-ggplot(data=AmesHousing) + geom_histogram(mapping = aes(SalePrice))
+```{r}
+ggplot(data = AmesHousing, mapping = aes(x = SalePrice)) +
+  geom_histogram()
 ```
 
-In the above code, the terms `data=` and `mapping=` are not required, but are used for clarification. For example, the following code will produce identical results:  
-          `ggplot(AmesHousing) + geom_histogram(aes(SalePrice))`.
+Here, we are warned that the histogram was been drawn with 30 bins, a rather arbitrary choice. We can customize our histogram by adding a `binwidth` argument to the `geom_histogram` command:
 
-```{r message=FALSE}
-# Create a scatterplot of above ground living area by sales price
-ggplot(data=AmesHousing) + geom_point(mapping= aes(x=Gr.Liv.Area, y=SalePrice))
+```{r}
+ggplot(data = AmesHousing, mapping = aes(x = SalePrice)) +
+  geom_histogram(binwidth=10000)
 ```
+
+We can also add some color to the plot by invoking the fill and color arguments.
+
+```{r}
+ggplot(data = AmesHousing, mapping = aes(x = SalePrice)) +
+  geom_histogram(binwidth=10000, fill = "steelblue2", color = "black")
+```
+
+Currently, the x-axis label does not contain units. To change the axis labels we add a layer to our plot
+
+```{r}
+ggplot(data = AmesHousing, mapping = aes(x = SalePrice)) +
+  geom_histogram(binwidth=10000, fill = "steelblue2", color = "black") +
+  labs(x = "Sale Price (in dollars)")
+```
+
+Note that we can also tweak the y-axis label with the addition of a `y` argument in the `labs` function.
+
+Finally, we can easily add a title to our plot with the addition of another layer
+
+```{r}
+ggplot(data = AmesHousing, mapping = aes(x = SalePrice)) +
+  geom_histogram(binwidth=10000, fill = "steelblue2", color = "black") +
+  labs(x = "Sale Price (in dollars)") +
+  ggtitle("Sales Prices of Homes in Ames, IA")
+```
+
+
+Throughout the remainder of this lab we will explore how to create and customize the basic plot types:
+
+* histograms,
+* bar charts,
+* density plots,
+* scatterplots,
+*  and side-by-side plots.
+
+### 3. Building basic univariate plots
+
+### 4. Building bivariate plots
+
+### 5. Building side-by-side plots
 
 **Questions:**  
 
@@ -100,7 +116,7 @@ ggplot(data=AmesHousing) + geom_point(mapping= aes(x=Gr.Liv.Area, y=SalePrice))
 7) Create a scatterplot using `ggplot` with **Fireplaces** as the x-axis and **SalePrice** as the y-axis.
 
 
-### 4. Customizing graphics using the `ggplot` function
+### 3. Customizing graphics
 
 In the following code, we layer additional components onto the two graphs shown above.
 
@@ -186,25 +202,8 @@ ggplot(data=AmesHousing, aes(x=Year.Built, y=SalePrice, color=Overall.Qual)) +
 
 ```
 
-### 5. The `mplot` function
 
-The `mosaic` package includes an `mplot` function that involves a helpful pull-down menu for graphic options. 
-
-**Questions:**  
-
-11) In the RStudio Console, type `> mplot(AmesHousing)` and select `2` for a two-variable plot. Select the gear symbol in the top right corner of the graphics window and choose the following items:
-
-* Graphics System: `ggplot2`
-* Type of Plot: `boxplot`
-* x-variable: `Kitchen.Qual` representing the condition of the sale
-* y-variable: `SalePrice`
-
-After selecting these items, click the `Show Expression` to see the `ggplot2` code used to make the boxplot. Now modify the code to include an appropriate title to the plot.
-
-12) Explore the `mplot` function by creating two new graphs that provide information on the `SalePrice` of homes in Ames, Iowa.
-
-
-### 6. Additional Considerations with R graphics
+### 5. Additional Considerations with R graphics
 
 **Influence of data types on graphics:** If you use the `str` command after reading data into R, you will notice that each variable is assigned one of the following `types`: Character, Numeric (real numbers), Integer, Complex, or Logical (TRUE/FALSE). In particular, the variable **Fireplaces** in considered an integer. In the code below we try to `color` and `fill` a density graph by an integer value. Notice that the color and fill commands appear to be ignored in the graph.
 ```{r}
