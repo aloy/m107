@@ -18,8 +18,7 @@ conditions of children involved in a study on the optimal duration of
 antibiotic use in treatment of tracheitis, which is an upper respiratory 
 infection.
 
-```{r eval=FALSE, include=FALSE}
-<<include=FALSE>>=
+```{r echo=FALSE, message=FALSE, fig.width=8, fig.height=3}
 # load openintro package for colors ---------------------------------
 library(openintro)
 
@@ -46,23 +45,59 @@ rm(conditions)
 
 # bar chart -----------------------------------------------------------
 library(ggplot2)
+library(ggthemes)
 library(viridis) # nicer color palettes
 bar <- 
   ggplot(data = conditions_df, mapping = aes(x = conditions, fill = conditions)) + 
   geom_bar() + 
   coord_flip() +
-  scale_fill_viridis(discrete=TRUE)
+  scale_fill_colorblind() + 
+  theme_bw()
 
 # pie chart ---------------------------------------------------------
 pie <- 
   ggplot(data = conditions_df, mapping = aes(x = factor(1), fill = conditions)) + 
   geom_bar(width=1) + 
   coord_polar(theta = "y") +
-  scale_fill_viridis(discrete=TRUE) +
-  labs(x = NULL, y = NULL)
+  scale_fill_colorblind() +
+  labs(x = NULL, y = NULL) +
+  theme_few() +
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(),
+        axis.title.y=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank(),
+        panel.border = element_blank())
 
+library(grid)
 require(gridExtra)
-grid.arrange(bar, pie, ncol = 2)
+grid_arrange_shared_legend <- function(..., nrow = 1, ncol = length(list(...)), position = c("bottom", "right")) {
+
+  plots <- list(...)
+  position <- match.arg(position)
+  g <- ggplotGrob(plots[[1]] + theme(legend.position = position))$grobs
+  legend <- g[[which(sapply(g, function(x) x$name) == "guide-box")]]
+  lheight <- sum(legend$height)
+  lwidth <- sum(legend$width)
+  gl <- lapply(plots, function(x) x + theme(legend.position = "none"))
+  gl <- c(gl, nrow = nrow, ncol = ncol)
+
+  combined <- switch(position,
+                     "bottom" = arrangeGrob(do.call(arrangeGrob, gl),
+                                            legend,
+                                            ncol = 1,
+                                            heights = unit.c(unit(1, "npc") - lheight, lheight)),
+                     "right" = arrangeGrob(do.call(arrangeGrob, gl),
+                                           legend,
+                                           ncol = 2,
+                                           widths = unit.c(unit(1, "npc") - lwidth, lwidth)))
+  grid.newpage()
+  grid.draw(combined)
+
+}
+
+grid_arrange_shared_legend(bar, pie, nrow=1, ncol = 2)
 ```
 
 a. What features are apparent in the bar chart but not in the pie chart?
@@ -74,7 +109,7 @@ c. Which graph would you prefer to use for displaying these categorical data?
 
 In this problem we will explore a data set containing the velocity (in km/sec) of 82 planets.
 
-```{r echo=FALSE, fig.height=3, fig.width=7, warning=FALSE}
+```{r echo=FALSE, fig.height=2.5, fig.width=6, warning=FALSE, message=FALSE}
 library(ggplot2)
 library(MASS)
 library(gridExtra)
@@ -104,10 +139,10 @@ c. Which graph would you prefer to use for displaying these data? Justify your a
 
 ## Problem 3
 
-In this problem we will explore the length of movies released
+In this problem we will explore the length of 58,788 movies released between 1890 and 2005.
 
 ```{r echo=FALSE, fig.height=3, fig.width=5, warning=FALSE}
-data("movies", package="bigvis")
+data("movies", package="ggplot2movies")
 
 ggplot(data = movies, mapping = aes(x = length)) + 
   geom_histogram(binwidth = 1) +
@@ -116,7 +151,7 @@ ggplot(data = movies, mapping = aes(x = length)) +
   theme_bw()
 ```
 
-a. Describe the shape of the distribution of velocities. Specifically address the number of modes, symmetry/skew, and any unusual features present.
+a. Using the histogram, describe the shape of the distribution of velocities. Specifically address the number of modes, symmetry/skew, and any unusual features present.
 b. Below is a density plot displaying the same data. What features are easier to see in the density plot? What features are easier to see in the histogram?
 
 ```{r echo=FALSE, fig.height=3, fig.width=5, warning=FALSE}
@@ -143,7 +178,7 @@ ggplot(data = movies, mapping = aes(x = length)) +
 ```
 
 
-b. The below plot displays the same data, but uses overlaid density plots instead of histograms. What features are easier to see with the density plots? What features are easier to see in the histograms?
+d. The below plot displays the same data, but uses overlaid density plots instead of histograms. What features are easier to see with the density plots? What features are easier to see in the histograms?
 
 ```{r echo=FALSE, fig.height=3, fig.width=5, warning=FALSE, message=FALSE}
 library(viridis) # nicer color palettes
@@ -158,33 +193,33 @@ ggplot(data = movies, mapping = aes(x = length, fill = short_lab)) +
 
 ## Problem 4
 
-```{r echo=FALSE, fig.width=10, fig.height=10, cache=TRUE, warning=FALSE}
-library(extracat)
-library(GGally)
+Below are two scatterplots displaying the relationship between the percentage composition (% $\times$ 100) of different fatty acids found in the lipid fraction of 572 Italian olive oils. The data is part of a quality control study of olive oils. 
 
+
+```{r echo=FALSE, fig.width=7, fig.height=3, cache=TRUE, warning=FALSE}
+library(extracat)
 data("olives")
-ggpairs(olives[,3:10], 
-        lower = list(continuous = wrap("points", alpha = 0.3)),
-                     title = "Olive Oil Fatty Acids") +
+
+s1 <- ggplot(data=olives, mapping = aes(x=oleic, y=linoleic)) +
+  geom_point(alpha = 0.5) +
   theme_bw()
+
+s2 <- ggplot(data=olives, mapping = aes(x=palmitoleic, y=linoleic)) +
+  geom_point(alpha = 0.5) +
+  theme_bw()
+
+grid.arrange(s1, s2, ncol=2)
 ```
 
-```{r echo=FALSE, fig.width=10, fig.height=10, cache=TRUE, warning=FALSE}
-library(ggthemes)
-p <- ggpairs(olives[,2:10], 
-        mapping = ggplot2::aes(color = Region),
-        lower = list(continuous = wrap("points", alpha = 0.3)),
-                     title = "Olive Oil Fatty Acids") +
-  theme_bw()
-for(i in 1:p$nrow) {
-  for(j in 1:p$ncol){
-    p[i,j] <- p[i,j] + 
-        scale_fill_colorblind() +
-        scale_color_colorblind()  
-  }
-}
+a. Describe the relationship between the percentage composition of oleic and linoleic fatty acids.
+b. Describe the relationship between the percentage composition of palmitoleic and linoleic fatty acids.
+c. It is proposed that the olive oils from different regions have different fatty acid signatures. The below scatterplot uses color and shapes to represent the region of Italy each olive oil is from. What additional information does this provide about the relationship between oleic and linoleic fatty acids?
 
-p
+```{r echo=FALSE, fig.width=5, fig.height=3, cache=TRUE, warning=FALSE}
+ggplot(data=olives, mapping = aes(x=oleic, y=linoleic, colour=Region, shape=Region)) +
+  geom_point(alpha = 0.5) +
+  theme_bw() +
+  scale_color_viridis(discrete=TRUE)
 ```
 
 
