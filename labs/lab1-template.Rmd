@@ -1,0 +1,137 @@
+---
+title: "Lab Report 1"
+author: "A. Student, B. Student"
+date: "Today's date here"
+output: html_document
+---
+
+## Instructions
+
+> Fill in this lab worksheet at your own pace. Knit it periodically to check that things are working the same way they are when you are working in RStudio interactively. Ask questions, consult the tutorials, use Google, etc. At the end of the class session, make sure that you save a copy of the Rmd file so you don't lose progress, and finish it by 4 pm on Wednesday, September 21. You will submit this as Lab 1 on Moodle  (both Rmd and HTML files).
+
+
+```{r setup, include=FALSE}
+# Don't delete this chunk if you are using the ggplot2 package
+# This loads the ggplot2 package
+library(ggplot2)
+```
+
+```{r}
+# Load the data set next
+# I have stored the data set in the data folder of my R project
+AmesHousing <- read.csv("data/AmesHousing.csv")
+```
+
+
+### Q: Create a histogram of the above grade living area (in ft$^2$). This is the `Gr.Liv.Area` variable in the data set. Remember to experiment with the bin width!
+
+```{r}
+# PUT YOUR CODE HERE
+```
+
+
+### Q: Would you classify the distribution of above grade living area as symmetric or skewed?
+
+SOLUTION: (Write your answer here.)
+
+### Q: What would you guess is the "center" value in this distribution? Why did you make that choice?
+
+SOLUTION: (Write your answer here.)
+
+### Q: Use the color and fill arguments to customize the density plot or sale price, and change the x-axis label to "Sale Price (in dollars)."
+
+```{r}
+# PUT YOUR CODE HERE
+```
+
+### Q: Create a bar chart of the type of heating system (`Heating`). 
+
+```{r}
+# PUT YOUR CODE HERE
+```
+
+### Q: Which type of heating system is the most common?
+
+SOLUTION: (Write your answer here.)
+
+### Q: Create a bar chart of the number of `Fireplaces`. What does the bar chart reveal?
+
+SOLUTION: (Write your answer here.)
+
+### Q: Recreate the above bar chart.
+
+```{r}
+# PUT YOUR CODE HERE
+```
+
+### Q: What kinds of questions are not easily answered by looking at the above figure?
+
+SOLUTION: (Write your answer here.)
+
+### Q: What can you say about the relationship between the number of bedrooms and the number of full bath rooms?
+
+SOLUTION: (Write your answer here.)
+
+### Q: Recreate the above plot.
+
+```{r}
+# PUT YOUR CODE HERE
+```
+
+### Q: What kinds of questions are more easily answered by looking at the above figure?
+
+SOLUTION: (Write your answer here.)
+
+### Q: Recreate the above plot.
+
+```{r}
+# PUT YOUR CODE HERE
+```
+
+### Q: What kinds of questions are more easily answered by looking at the above figure?
+
+SOLUTION: (Write your answer here.)
+
+### Q: Recreate the above scatterplot.
+
+```{r}
+# PUT YOUR CODE HERE
+```
+
+### Q: Describe the relationship between the above grade living area and sales price of a home.
+
+SOLUTION: (Write your answer here.)
+
+### Q: Recreate the above scatterplot.
+
+```{r}
+# PUT YOUR CODE HERE
+```
+
+### Q: Why is setting the alpha argument value useful with scatterplots? What further information does it give you that a regular scatterplot cannot?
+
+SOLUTION: (Write your answer here.)
+
+### Q: Recreate the faceted histogram and overlaid density plots.
+
+```{r}
+# PUT YOUR CODE HERE
+```
+
+### Q: What do these plots reveal about the impact of central air on the price of a home?
+
+SOLUTION: (Write your answer here.)
+
+### Q: Which plot did you find most helpful? Why?
+
+SOLUTION: (Write your answer here.)
+
+### Q: Create side-by-side boxplots of sale price by building type (`Bldg.Type`).
+
+```{r}
+# PUT YOUR CODE HERE
+```
+
+### Q: Describe what you can learn from this plot about the relationship between sale price and building type.
+
+SOLUTION: (Write your answer here.)
