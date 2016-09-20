@@ -2,8 +2,8 @@
 title: "Creating Graphs with ggplot2"
 author: "Lab 1, Fall 2016"
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
 ---
 
 ### 1. Introduction
@@ -59,21 +59,21 @@ ggplot(data = AmesHousing, mapping = aes(x = SalePrice)) +
 
 Here, we are warned that the histogram was been drawn with 30 bins, a rather arbitrary choice. We can customize our histogram by adding a `binwidth` argument to the `geom_histogram` command:
 
-```{r fig.height=2, fig.width=5}
+```{r fig.height=2, fig.width=5, eval=FALSE}
 ggplot(data = AmesHousing, mapping = aes(x = SalePrice)) +
   geom_histogram(binwidth=10000)
 ```
 
 We can also add some color to the plot by invoking the fill and color arguments.
 
-```{r fig.height=2, fig.width=5}
+```{r fig.height=2, fig.width=5, eval=FALSE}
 ggplot(data = AmesHousing, mapping = aes(x = SalePrice)) +
   geom_histogram(binwidth=10000, fill = "steelblue2", color = "black")
 ```
 
 Currently, the x-axis label does not contain units. To change the axis labels we add a layer to our plot
 
-```{r fig.height=2, fig.width=5}
+```{r fig.height=2, fig.width=5, eval=FALSE}
 ggplot(data = AmesHousing, mapping = aes(x = SalePrice)) +
   geom_histogram(binwidth=10000, fill = "steelblue2", color = "black") +
   labs(x = "Sale Price (in dollars)")
@@ -83,7 +83,7 @@ Note that we can also tweak the y-axis label with the addition of a `y` argument
 
 Finally, we can easily add a title to our plot with the addition of another layer
 
-```{r fig.height=2, fig.width=5}
+```{r fig.height=2, fig.width=5, eval=FALSE}
 ggplot(data = AmesHousing, mapping = aes(x = SalePrice)) +
   geom_histogram(binwidth=10000, fill = "steelblue2", color = "black") +
   labs(x = "Sale Price (in dollars)") +
@@ -116,14 +116,14 @@ In the previous section you learned how to create a histogram, which can be used
 
 Density plots are also useful in exploring the shape of the distribution of  a quantitative variable. To create a density plot, we start with the same base layer as a histogram, but add the `geom_density` layer rather than the `geom_histogram` layer. For example, the below code creates a density plot for the sale price.
 
-```{r fig.height=2, fig.width=5}
+```{r fig.height=2, fig.width=5, eval=FALSE}
 ggplot(data = AmesHousing, mapping = aes(x = SalePrice)) +
   geom_density()
 ```
 
 We can customize a density plot using the same options as a histogram.
 
-**Questions**
+**Question**
 
 4) Use the color and fill arguments to customize the density plot or sale price. You should also change the x-axis label to "Sale Price (in dollars)."
 
@@ -134,7 +134,7 @@ Both histograms and density plots display the distribution of a quantitative var
 
 As a first example, we'll explore the number of houses in Ames with central air (`Central.Air`). To do this, we'll use the `geom_bar` layer:
 
-```{r fig.height=2, fig.width=5}
+```{r fig.height=2, fig.width=5, eval=FALSE}
 ggplot(data = AmesHousing, mapping = aes(x = Central.Air)) +
   geom_bar()
 ```
@@ -143,7 +143,7 @@ Clearly, the vast majority of houses sold in Ames, IA have central air.
 
 One common customization for bar charts is to make each bar a different color. To do this we need to add the fill argument to the aesthetic mapping:
 
-```{r fig.height=2, fig.width=5}
+```{r fig.height=2, fig.width=5, eval=FALSE}
 ggplot(data = AmesHousing, mapping = aes(x = Central.Air, fill = Central.Air)) +
   geom_bar()
 ```
@@ -157,13 +157,13 @@ ggplot(data = AmesHousing, mapping = aes(x = Central.Air, fill = Central.Air)) +
 
 Categorical variables are often coded numerically. For example, in the **AmesHousing** data set the garage capacity (`Garage.Cars`, the number of cars the garage can hole) is coded as an integer (0, 1, 2, 3, 4, or 5). This variable can be considered categorical, as the number of cars can be viewed as a label. To create a bar chart for the `Garage.Cars` variable, we must tell `ggplot` to treat it as a factor
 
-```{r fig.height=2, fig.width=5}
+```{r fig.height=2, fig.width=5, eval=FALSE}
 ggplot(data = AmesHousing, mapping = aes(x = as.factor(Garage.Cars))) +
   geom_bar() +
   labs(x = "Garage capacity in cars")
 ```
 
-**Questions:**
+**Question**
 
 7) Create a bar chart of the number of `Fireplaces`. What does the bar chart reveal?
 
@@ -177,13 +177,13 @@ When we wish to compare the distribution of two categorical variables, we can ag
 
 One option is to create a segmented bar chart. A segmented bar chart displays a bar chart for one of the categorical variables, and uses color to fill in the bars proportional to the occurrence of the other variable within that category. For our example, we can create a bar chart of the number of bedrooms and use color to represent the number of full bathrooms.
 
-```{r fig.height=2, fig.width=5}
+```{r fig.height=2, fig.width=5, eval=FALSE}
 ggplot(data = AmesHousing, mapping = aes(x = as.factor(Bedroom.AbvGr), fill = as.factor(Full.Bath))) +
   geom_bar() +
   labs(x = "Number of bedrooms above grade")
 ```
 
-**Question**
+**Questions**
 
 8) Recreate the above bar chart.
 9) What kinds of questions are not easily answered by looking at the above figure?
@@ -191,7 +191,7 @@ ggplot(data = AmesHousing, mapping = aes(x = as.factor(Bedroom.AbvGr), fill = as
 
 Instead of displaying counts on the y-axis, we could also display proportions. To do this, we add `position = "fill"` to the `geom_bar` layer.
 
-```{r fig.height=2, fig.width=5}
+```{r fig.height=2, fig.width=5, eval=FALSE}
 ggplot(data = AmesHousing, mapping = aes(x = as.factor(Bedroom.AbvGr), fill = as.factor(Full.Bath))) +
   geom_bar(position = "fill") +
   labs(x = "Number of bedrooms above grade")
@@ -204,7 +204,7 @@ ggplot(data = AmesHousing, mapping = aes(x = as.factor(Bedroom.AbvGr), fill = as
 
 Another option would be to create a side-by-side bar chart, which is often called a faceted bar chart. Faceting is used when we'd like to create small multiples of the same plot over a different categorical variable. By default, all of the small multiples will have the same vertical axis.
 
-```{r}
+```{r, eval=FALSE}
 ggplot(data = AmesHousing, mapping = aes(x = as.factor(Bedroom.AbvGr), fill = as.factor(Full.Bath))) +
   geom_bar() +
   facet_wrap(~ Full.Bath) +
@@ -213,7 +213,7 @@ ggplot(data = AmesHousing, mapping = aes(x = as.factor(Bedroom.AbvGr), fill = as
 
 It is often easier to compare small multiples if they are either displayed in a row or a column. To specify the layout of the panels, you can add arguments specifying the number of rows (`nrow`) and the number of columns (`ncol`). For example, we can arrange all of the panels in one column:
 
-```{r}
+```{r, eval=FALSE}
 ggplot(data = AmesHousing, mapping = aes(x = as.factor(Bedroom.AbvGr), fill = as.factor(Full.Bath))) +
   geom_bar() +
   facet_wrap(~ Full.Bath, ncol = 1) +
@@ -231,13 +231,13 @@ ggplot(data = AmesHousing, mapping = aes(x = as.factor(Bedroom.AbvGr), fill = as
 
 To display the relationship of two quantitative variables, we can use a scatterplot. For example, we can look at the relationship between the above grade living area and sales price of a home. To create this scatterplot, we need to add a `geom_point` layer to our base layer.
 
-```{r fig.height=3, fig.width=5}
+```{r fig.height=3, fig.width=5, eval=FALSE}
 ggplot(data = AmesHousing, mapping = aes(x = Gr.Liv.Area, y = SalePrice)) +
   geom_point() +
   labs(x = "Above grade living area (sq. ft)", y = "Sale price ($)")
 ```
 
-**Question**
+**Questions**
 
 15) Recreate the above scatterplot.
 16) Describe the relationship between the above grade living area and sales price of a home.
@@ -246,7 +246,7 @@ The large mass of points near the bottom left of the scatterplot can cause some 
 
 One way of relieving this issue of over-plotting is to make the points somewhat transparent. The amount of transparency of a point can be set using the `alpha` argument in `geom_point`. By default, this value is set to 1 (non-transparent), but can be changed to any number between 0 and 1. Smaller values correspond to more transparency.
 
-```{r fig.height=3, fig.width=5}
+```{r fig.height=3, fig.width=5, eval=FALSE}
 ggplot(data = AmesHousing, mapping = aes(x = Gr.Liv.Area, y = SalePrice)) +
   geom_point(alpha = 0.2) +
   labs(x = "Above grade living area (sq. ft)", y = "Sale price ($)")
@@ -264,7 +264,7 @@ Many times we are interested in comparing the distribution of a quantitative var
 
 One way to create a plot for each category is to use faceting. For example, we can create faceted histograms of sale price by the number of bedrooms:
 
-```{r}
+```{r, eval=FALSE}
 ggplot(data = AmesHousing, mapping = aes(x = SalePrice)) +
   geom_histogram() +
   facet_wrap(~ Central.Air, ncol = 1)
@@ -272,7 +272,7 @@ ggplot(data = AmesHousing, mapping = aes(x = SalePrice)) +
 
 Another option is to overlay density plots
 
-```{r fig.height=2, fig.width=5}
+```{r fig.height=2, fig.width=5, eval=FALSE}
 ggplot(data = AmesHousing, mapping = aes(x = SalePrice, fill = Central.Air)) +
   geom_density(alpha = 0.5)
 ```
@@ -285,7 +285,7 @@ ggplot(data = AmesHousing, mapping = aes(x = SalePrice, fill = Central.Air)) +
 
 A third option is to create side-by-side boxplots. To do this we use the `geom_boxplot` layer, where we display the categories on the x-axis and the quantitative variable on the y-axis.
 
-```{r fig.height=3, fig.width=5}
+```{r fig.height=3, fig.width=5, eval=FALSE}
 ggplot(data = AmesHousing, mapping = aes(x = Central.Air, y = SalePrice)) +
   geom_boxplot()
 ```
@@ -303,7 +303,7 @@ For all of the graphics created so far we have used the default color options. U
 One color scheme option is to use `RColorBrewer` to generate a better color palette. There are many [color palette options](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/figure/unnamed-chunk-14-1.png), but one reasonable choice for categorical data is the `Dark2` palette. To use this palette as the fill color, we utilize the `scale_fill_brewer` function. An additional perk of changing the color palette is that we can also change the legend title.
 
 
-```{r fig.height=3, fig.width=5}
+```{r fig.height=3, fig.width=5, eval=FALSE}
 ggplot(data = AmesHousing, mapping = aes(x = as.factor(Bedroom.AbvGr), fill = as.factor(Full.Bath))) +
   geom_bar(position = "fill") +
   labs(x = "No. bedrooms above grade") +
@@ -312,7 +312,7 @@ ggplot(data = AmesHousing, mapping = aes(x = as.factor(Bedroom.AbvGr), fill = as
 
 While this is a nicer palette, it is not totally colorblind safe. A better palette to ensure that everyone can perceive the differences in categories is to use the `scale_fill_colorblind` function found in the `ggthemes` package. (You'll need to install this package first!)
 
-```{r fig.height=3, fig.width=5}
+```{r fig.height=3, fig.width=5, eval=FALSE}
 library(ggthemes)
 
 ggplot(data = AmesHousing, mapping = aes(x = as.factor(Bedroom.AbvGr), fill = as.factor(Full.Bath))) +
@@ -323,7 +323,7 @@ ggplot(data = AmesHousing, mapping = aes(x = as.factor(Bedroom.AbvGr), fill = as
 
 The color can be change using analogous functions as fill. For example, we can color points on a scatterplot by a categorical variable. 
 
-```{r fig.height=3, fig.width=5}
+```{r fig.height=3, fig.width=5, eval=FALSE}
 ggplot(data = AmesHousing, mapping = aes(x = Gr.Liv.Area, y = SalePrice, color = Central.Air)) +
   geom_point(alpha = 0.2) +
   labs(x = "Above grade living area (sq. ft)", y = "Sale price ($)") +
