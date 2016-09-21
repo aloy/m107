@@ -1,7 +1,7 @@
 ---
 title: "Homework 3"
 author: "Fall 2016, Math 107, Prof. Adam Loy"
-date: "Due Friday, September 23 by 4:00 p.m."
+date: "Due Monday, September 26 in class"
 output:
   pdf_document: default
   html_document: default
@@ -35,7 +35,7 @@ The website TED.com offers free short presentations, called TED Talks, on a vari
 
 [^1]: Marks, N. "The Happy Planet Index," www.TED.com/talks, August 29, 2010.
 
-You can find a tidy version of the 2012 Happy Planet Index (`hpi-tidy.csv`) on the course webpage (An messy version can be downloaded from http://www.happyplanetindex.org/data/). In this homework problem you will explore the Happy Planet Index using R. **Please use R markdown to complete this part of the assignment.** You should **knit to Word or PDF** and submit this document. You can find an R markdown template on the course webpage.
+You can find a tidy version of the 2012 Happy Planet Index (`hpi-tidy.csv`) on the course webpage (An messy version can be downloaded from http://www.happyplanetindex.org/data/). In this homework problem you will explore the Happy Planet Index using R. **Please use R markdown to complete this part of the assignment.** You should **knit to Word or PDF** and submit this document. See https://ismayc.github.io/rbasics-book/4-rmarkdown.html for help with R markdown.
 
 A basic description of all of the variables included in the data set is given below:
 
