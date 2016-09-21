@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 ## Problem 1
-For each of the following, describe whether you expect the distribution to be symmetric, right-skewed, or left-skewed. Also specify whether the mean or median would best represent a typical observation.
+For each of the following, describe whether you expect the distribution to be symmetric, right-skewed, or left-skewed. Also specify whether the mean or median would best represent a typical observation, and whether the variability of observations would be best represented using the standard deviation or IQR.
 
 a. Housing prices in a country where 25% of the houses cost below $350,000, 
 50% of the houses cost below $450,000, 75% of the houses cost below $1,000,000 
@@ -31,9 +31,11 @@ d. Annual salaries of the employees at a Fortune 500 company where only a few
 high level executives earn much higher salaries than all the other employees.
 
 ## Problem 2
-The website TED.com offers free short presentations, called TED Talks, on a variety of interesting subjects. One of the talks is called "The Happy Planet Index," by Nic Marks. {Marks, N. "The Happy Planet Index,"" www.TED.com/talks, August 29, 2010.} Marks comments that we regularly measure and report economic data on countries, such as Gross National Product, when we really ought to be measuring the well-being of the people in the countries. He calls this measure Happiness, with larger numbers indicating greater happiness, health, and well-being. 
+The website TED.com offers free short presentations, called TED Talks, on a variety of interesting subjects. One of the talks is called "The Happy Planet Index," by Nic Marks. [^1]  Marks comments that we regularly measure and report economic data on countries, such as Gross National Product, when we really ought to be measuring the well-being of the people in the countries. He calls this measure Happiness, with larger numbers indicating greater happiness, health, and well-being. 
 
-You can find a tidy version of the 2012 Happy Planet Index (`hpi-tidy.csv`) on the course webpage (An messy version can be downloaded from http://www.happyplanetindex.org/data/). In this homework problem you will explore the Happy Planet Index using R. Please copy all plots from RStudio into a typesetting program to reduce wasted paper.
+[^1]: Marks, N. "The Happy Planet Index," www.TED.com/talks, August 29, 2010.
+
+You can find a tidy version of the 2012 Happy Planet Index (`hpi-tidy.csv`) on the course webpage (An messy version can be downloaded from http://www.happyplanetindex.org/data/). In this homework problem you will explore the Happy Planet Index using R. **Please use R markdown to complete this part of the assignment.** You should **knit to Word or PDF** and submit this document. You can find an R markdown template on the course webpage.
 
 A basic description of all of the variables included in the data set is given below:
 
