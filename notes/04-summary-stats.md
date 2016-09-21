@@ -80,7 +80,7 @@ When using statistics that are not resistant to outliers:
 
 # Percentiles
 
-The $$p^{\text{th}}$$ percentils is the value that is greater than $$p%$$ of the data.
+The $$p^{\text{th}}$$ percentile is the value that is greater than $$p\%$$ of the data.
 
 ---
 
@@ -92,7 +92,7 @@ The $$p^{\text{th}}$$ percentils is the value that is greater than $$p%$$ of the
 
 ---
 
-## Five number summary
+# Five number summary
 
 ![inline](04-figs/quartiles.png)
 
@@ -111,7 +111,7 @@ The $$p^{\text{th}}$$ percentils is the value that is greater than $$p%$$ of the
 
 # Standard deviation
 
-Formula: $$\sqrt{\frac{1}{n-1} \sum_{i=1}^n (x_i - \overline{x})^2}$$
+Formula: $$s=\sqrt{\frac{1}{n-1} \sum_{i=1}^n (x_i - \overline{x})^2}$$
 
 Interpretation: "average" distance a typical value falls from the mean <br>
 
@@ -174,8 +174,41 @@ For populations: $$z = \frac{x - \mu}{\sigma}$$
 
 ---
 
-# Example
+# Properties of z-scores
+
+- unitless
+- z < 0 $$\rightarrow$$ data value is below the mean
+- z > 0 $$\rightarrow$$ data value is above the mean
+- The larger the z-score, the more unusual the data value
+
+---
+
+# Properties of z-scores
+
+- All observations are on the same scale
+	- mean 0
+	- standard deviation 1
+	
+- Standardizing does not change shape of the distribution
+	- shifts location (by subtracting off mean)
+	- rescales distribution (by dividing by the standard deviation)
 
 ---
 
 # Example
+
+The average score on the ACT English exam is 21.0 with a standard deviation of 4.0. 
+
+The average score on the SAT Verbal exam is 520 with a standard deviation of 100.
+
+If Ann scores a 27 on the ACT English exam and Denise scores a 770 on the SAT Verbal exam, who has the better score?
+
+----
+
+# Example
+
+The average score on the ACT Math exam is 20.7 with a standard deviation of 4.1. 
+
+The average score on the SAT Math exam is 510 with a standard deviation of 100.
+
+If Jim scores a 15 on the ACT Math exam and Dwight scores a 340 on the SAT Math exam, who has the better score?
