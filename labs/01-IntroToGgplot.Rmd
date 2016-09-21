@@ -6,6 +6,8 @@ output:
   pdf_document: default
 ---
 
+> Complete this lab at your own pace with your assigned lab group. You should create a new R project on the R Studio server for this lab and share the project with me. Within this R project, you should create an R markdown file with your solutions. An R markdown template for this lab can be found at [bit.ly/math107-lab1](http://bit.ly/math107-lab1). Please complete your solutions by 4 pm on Wednesday, September 21. 
+
 ### 1. Introduction
 It is often necessary to create graphics to effectively communicate key patterns within a data set. While many software packages allow the user to make basic plots, it can be challenging to create plots that are customized to address a specific idea. While there are numerous ways to create graphs, this tutorial will focus on the R package `ggplot2`, created by Hadley Wickham.
 
