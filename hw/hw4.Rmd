@@ -1,0 +1,50 @@
+---
+title: "Homework 4"
+author: "Fall 2016, Math 107, Prof. Adam Loy"
+date: "Due Tuesday, September 27 by 4 p.m."
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Problem 1
+Sophia took the Graduate Record Examination (GRE) scored 160 on the Verbal Reasoning section and 157 on the quantitative reasoning section. The mean score for verbal reasoning section for all test takers was 151 with a standard deviation of 7, and the mean score for the Quantitative Reasoning was 153 with a standard deviation of 7.67. Suppose that both distributions are approximately symmetric and bell-shaped.
+
+a. What is Sophia’s z-score on the verbal reasoning section?
+b. What is Sophia’s z-score on the quantitative reasoning section?
+c. What do the Z-scores from parts (a) and (b) tell you?
+d. Approximately 95% of quantitative reasoning scores fall between what two values?
+
+## Problem 2
+910 randomly sampled registered 
+voters from Tampa, FL were asked if they thought workers who have illegally 
+entered the US should be (i) allowed to keep their jobs and apply for 
+US citizenship, (ii) allowed to keep their jobs as temporary guest workers 
+but not allowed to apply for US citizenship, or (iii) lose their jobs and 
+have to leave the country. The results of the survey by political ideology 
+are shown below.
+                          
+
+Response/Political ideology| Conservative  | Moderate  | Liberal   | Total
+---------------------------|---------------:|-----------:|----------:|---------:
+ (i) Apply for citizenship | 57            | 120       | 101       | 278
+ (ii) Guest worker         | 121           | 113       | 28        | 262
+ (iii) Leave the country    | 179       | 126       | 45        | 350  
+ (iv) Not sure             | 15            | 4         | 1         | 20
+ **Total**                     | 372           | 363       | 175       | 910
+ 
+ 
+a. What percent of these Tampa, FL voters identify themselves as conservatives?
+b. What percent of these Tampa, FL voters are in favor of the citizenship option?
+c. What percent of these Tampa, FL voters identify themselves as conservatives
+and are in favor of the citizenship option?
+d. What percent of these Tampa, FL voters who identify themselves as 
+conservatives are also in favor of the citizenship option? What percent of 
+moderates share this view? What percent of liberals share this view?
+e. Do political ideology and views on immigration appear to be associated? 
+Explain your reasoning.
