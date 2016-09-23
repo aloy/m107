@@ -1,0 +1,91 @@
+---
+title: "Basic Summary Statistics in R"
+author: "Prof. Adam Loy"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2) # for plots
+library(dplyr)   # for data manipulation
+```
+
+## Data
+
+Let's again consider the [AmesHousing](http://www.amstat.org/publications/jse/v19n3/decock.pdf) data set, which provides information on the sales of individual residential properties in Ames, Iowa from 2006 to 2010. The data set contains 2930 observations, and a large number of explanatory variables involved in assessing home values. A full description of this data set can be found [here](http://www.amstat.org/publications/jse/v19n3/Decock/DataDocumentation.txt).
+
+```{r}
+AmesHousing <- read.csv("data/AmesHousing.csv")
+```
+
+After we load any data set, it can be useful to see how big it is
+
+```{r}
+dim(AmesHousing)
+```
+
+what variable types we have
+
+```{r}
+str(AmesHousing)
+```
+
+and the first few rows
+
+```{r}
+head(AmesHousing)
+```
+
+
+
+## Displaying the distribution of sales price
+
+In lab we saw how to display univariate and bivariate distributions. For example, we can easily create a histogram of the sale price:
+
+```{r}
+ggplot(data = AmesHousing, mapping = aes(x = SalePrice)) +
+  geom_histogram(fill = "steelblue2", color = "black", binwidth = 10000) +
+  labs(x = "Sale price (in $)")
+```
+
+## Summarizing distributions
+
+How much is a typical home in Ames, IA? The median seems like a reasonable choice.
+
+```{r}
+median(AmesHousing$SalePrice)
+```
+
+We can find out more information via the five-number summary:
+
+```{r}
+quantile(AmesHousing$SalePrice)
+```
+
+If we need to calculate the IQR, we can do so by hand from the above table, or use the `IQR` function.
+
+```{r}
+IQR(AmesHousing$SalePrice)
+```
+
+Another useful function is the `summary` function, which can be run a single variable, or an entire data set.
+
+```{r}
+# example with single quantitative variable
+summary(AmesHousing$SalePrice)
+
+# example with single categorical variable
+summary(AmesHousing$Central.Air)
+
+# example with entire data set
+summary(AmesHousing)
+```
+
+
+Other useful summary statistics functions
+
+- `mean`
+- `sd`
+- `min`
+- `max`
+
