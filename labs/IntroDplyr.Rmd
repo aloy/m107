@@ -1,8 +1,8 @@
 ---
 title: "Introduction to dplyr"
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
   word_document: default
 ---
 
@@ -23,6 +23,8 @@ In this example we will explore how to use each of these functions, as well as h
 To begin, let's make sure that our data set and the `dplyr` package are loaded
 
 ```{r message=FALSE, warning=FALSE}
+# I stored colleges2015.csv in the data folder,
+# if you are doing something else, then change the file path
 colleges <- read.csv("data/colleges2015.csv")
 library(dplyr)
 ```

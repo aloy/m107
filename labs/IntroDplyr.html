@@ -152,7 +152,9 @@ $(document).ready(function () {
 </table>
 <p>In this example we will explore how to use each of these functions, as well as how to combine them with the <code>group_by</code> function for groupwise manipulations.</p>
 <p>To begin, let’s make sure that our data set and the <code>dplyr</code> package are loaded</p>
-<pre class="r"><code>colleges &lt;- read.csv(&quot;data/colleges2015.csv&quot;)
+<pre class="r"><code># I stored colleges2015.csv in the data folder,
+# if you are doing something else, then change the file path
+colleges &lt;- read.csv(&quot;data/colleges2015.csv&quot;)
 library(dplyr)</code></pre>
 <p><strong>Data</strong>: The file <code>college2015.csv</code> contains information on predominantly bachelor’s-degree granting institutions from 2015 that might be of interest to a college applicant.</p>
 <p>To get a feel for what data are available, look at the first six rows</p>
