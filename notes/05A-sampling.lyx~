@@ -1,0 +1,935 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{fullpage}
+\usepackage[pdftex]{graphicx}
+\DeclareGraphicsExtensions{.png,.pdf}\usepackage{hyperref}
+\usepackage{verbatim}
+\renewcommand\rmdefault{bch}
+\usepackage[margin=.75in]{geometry}
+\usepackage[small]{caption}
+\usepackage[medium]{titlesec}
+\linespread{1.07} 
+\end_preamble
+\use_default_options true
+\begin_modules
+enumitem
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+
+\lang american
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+Large 
+\backslash
+bf Collecting Data: Sampling from a Population}
+\backslash
+
+\backslash
+[1em]
+\end_layout
+
+\begin_layout Plain Layout
+
+Math 107, Fall 2016
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+The authorship of literary works is often a topic for debate.
+ For example, researchers have tried to determine whether some of the works
+ attributed to Shakespeare were actually written by Bacon or Marlow.
+ The field of 
+\begin_inset Quotes eld
+\end_inset
+
+literary computing
+\begin_inset Quotes erd
+\end_inset
+
+ examines ways of numerically analyzing authors' works, looking at variables
+ such as sentence length and rate of occurrence of specific words.
+ In this exploration we will conduct a very basic text analysis.
+\end_layout
+
+\begin_layout Enumerate
+The entire text of Lincoln’s Gettysburg Address is given below.
+
+\lang american
+ Select a representative set of 10 words from the Gettysburg Address by
+ circling them with your pen or pencil.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series medium
+Four score and seven years ago our fathers brought forth, on this continent,
+ a new nation, conceived in Liberty, and dedicated to the proposition that
+ all men are created equal.
+ Now we are engaged in a great civil war, testing whether that nation, or
+ any nation so conceived and so dedicated, can long endure.
+ We are met on a great battle-field of that war.
+ We have come to dedicate a portion of that field, as a final resting place
+ for those who here gave their lives that that nation might live.
+ It is altogether fitting and proper that we should do this.
+ But, in a larger sense, we can not dedicate—we can not consecrate—we can
+ not hallow—this ground.
+ The brave men, living and dead, who struggled here, have consecrated it,
+ far above our poor power to add or detract.
+ The world will little note, nor long remember what we say here, but it
+ can never forget what they did here.
+ It is for us the living, rather, to be dedicated here to the unfinished
+ work which they who fought here have thus far so nobly advanced.
+ It is rather for us to be here dedicated to the great task remaining before
+ us—that from these honored dead we take increased devotion to that cause
+ for which they here gave the last full measure of devotion—that we here
+ highly resolve that these dead shall not have died in vain—that this nation,
+ under God, shall have a new birth of freedom—and that government of the
+ people, by the people, for the people, shall not perish from the earth.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+A population consists all units of interest while a sample consists of all
+ cases on which we have collected data.
+ In this situation, what is the population and what is the sample?
+\begin_inset VSpace 0.5in
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate-Resume
+
+\lang american
+Record each word from your sample, and then indicate the length of the word
+ (number of letters) and whether or not the word contains at least on letter
+ 
+\emph on
+e
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\lang american
+\begin_inset Tabular
+<lyxtabular version="3" rows="11" columns="4">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="2.5in">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang american
+Word
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang american
+Length (no.
+ of letters)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang american
+Contains 
+\emph on
+e
+\emph default
+? (Y or N)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang american
+1.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang american
+2.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang american
+3.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang american
+4.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang american
+5.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang american
+6.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang american
+7.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang american
+8.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang american
+9.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang american
+10.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang british
+The table you filled in above is your dataset.
+\end_layout
+
+\begin_layout Enumerate-Resume
+
+\lang british
+Identify the cases and the variables you have recorded on those cases.
+\lang english
+
+\begin_inset VSpace 1in
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate-Resume
+
+\lang british
+Is the variable 
+\begin_inset Quotes eld
+\end_inset
+
+length of word
+\begin_inset Quotes erd
+\end_inset
+
+ quantitative or categorical?
+\lang english
+
+\begin_inset VSpace 0.5in
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate-Resume
+
+\lang british
+Calculate the average length of the 10 words in your sample.
+ 
+\lang english
+
+\begin_inset VSpace 0.5in
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate-Resume
+
+\lang british
+A 
+\emph on
+parameter 
+\emph default
+is a number that describes some aspect of a population.
+ A 
+\emph on
+statistic 
+\emph default
+is a number that is computed from the data in a sample.
+ Is the average you found in part 6 a parameter or a statistic?
+\lang english
+
+\begin_inset VSpace 0.5in
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate-Resume
+
+\lang british
+The average length of the 268 words in the entire speech is 4.29 letters.
+ Is this number a parameter or a statistic?
+\lang english
+
+\begin_inset VSpace 0.5in
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate-Resume
+
+\lang british
+Calculate the proportion of words in your sample that contain at least one
+ 
+\emph on
+e
+\emph default
+.
+ Is this number a parameter or a statistic? 
+\lang english
+
+\begin_inset VSpace 1in
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate-Resume
+
+\lang british
+The proportion of all words that contain at least one 
+\emph on
+e
+\emph default
+ is 
+\begin_inset Formula $125/268\approx0.47$
+\end_inset
+
+.
+ Is this number a parameter or a statistic? 
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate-Resume
+
+\lang british
+Do you think the words you selected are representative of the 268 words
+ in this passage? Suggest a method for deciding whether you have a representativ
+e sample.
+ (Hint: Whereas any one sample may not produce statistics that exactly equal
+ the population parameters, what would we like to be true in general?)
+\lang english
+
+\begin_inset VSpace 2.5in
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate-Resume
+
+\lang british
+Combine your results with your classmates' by recording your average word
+ count on the google form: https://goo.gl/forms/XSuZcwLk1orthhiW2.
+ We will create a histogram of the word lengths as a class.
+\lang english
+
+\begin_inset VSpace 1.5in
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate-Resume
+
+\lang british
+Comment on the shape and location of the distribution of average word count.
+\end_layout
+
+\begin_layout Enumerate-Resume
+
+\lang british
+Let's compare your sample statistics to the population parameters.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate-Resume
+
+\lang british
+How many, and what proportion, of students in your class obtained a sample
+ average word length larger than 4.29 letters?
+\lang english
+
+\begin_inset VSpace 1in
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate-Resume
+
+\lang british
+How many, and what proportion, of students in your class obtained a sample
+ proportion of 
+\emph on
+e
+\emph default
+-words larger than 0.47?
+\lang english
+
+\begin_inset VSpace 1in
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\lang british
+A sampling method is biased if, when using the sampling method, statistics
+ from different samples 
+\emph on
+consistently
+\emph default
+ overestimate or underestimate the population parameter of interest.
+ 
+\end_layout
+
+\begin_layout Enumerate-Resume
+
+\lang british
+What do your answers to the previous question tell you about whether the
+ sampling method used (i.e., asking students to quickly pick 10 representative
+ words) is biased or unbiased? If biased, what is the direction of the bias
+ (i.e., the tendency to overestimate or underestimate)?
+\lang english
+
+\begin_inset VSpace 2.5in
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate-Resume
+
+\lang british
+Explain why we might have expected this sampling method to be biased.
+\lang english
+
+\begin_inset VSpace 2.5in
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate-Resume
+
+\lang british
+Do you think asking each student to pick 20 words instead of 10 words would
+ have helped with this issue? Explain.
+\lang english
+
+\begin_inset VSpace 2in
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

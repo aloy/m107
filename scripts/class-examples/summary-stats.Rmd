@@ -7,7 +7,6 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(ggplot2) # for plots
-library(dplyr)   # for data manipulation
 ```
 
 ## Data
@@ -73,10 +72,14 @@ Another useful function is the `summary` function, which can be run a single var
 ```{r}
 # example with single quantitative variable
 summary(AmesHousing$SalePrice)
+```
 
+```{r}
 # example with single categorical variable
 summary(AmesHousing$Central.Air)
+```
 
+```{r}
 # example with entire data set
 summary(AmesHousing)
 ```
