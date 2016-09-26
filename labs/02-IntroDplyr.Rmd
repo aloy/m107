@@ -1,10 +1,12 @@
 ---
-title: "Introduction to dplyr"
+title: "Introduction to Data Manipulation in R"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
   word_document: default
 ---
+
+> **Intructions:** Complete this lab at your own pace with your assigned lab group. Remember to work in the R project that you created for labs, and to store the data set, `colleges2015.csv`, in your data folder. Within this R project, you should create an R markdown file with your solutions. Please complete your solutions by 4 pm on Wednesday, September 28 and submit one solution per group on Moodle (you should submit both an .rmd and .html file).  
 
 Data manipulation is central to data analysis and is often the most time consuming portion of an analysis. The `dplyr` package contains a suite of functions to make data manipulation easier. The core functions of the `dplyr` package can be thought of as verbs for data manipulation.
 
@@ -18,12 +20,12 @@ Verb(s)               | Meaning
 `summarize`           | aggregate many rows into a single row 
 
 
-In this example we will explore how to use each of these functions, as well as how to combine them with the `group_by` function for groupwise manipulations.
+In this example we will explore how to use each of these functions, as well as how to combine them with the `group_by` function for group-wise manipulations.
 
 To begin, let's make sure that our data set and the `dplyr` package are loaded
 
 ```{r message=FALSE, warning=FALSE}
-# I stored colleges2015.csv in the data folder,
+# I stored colleges2015.csv in the data folder of my lab project
 # if you are doing something else, then change the file path
 colleges <- read.csv("data/colleges2015.csv")
 library(dplyr)
@@ -307,7 +309,7 @@ head(colleges_by_state)
 1. Filter the rows for colleges in Great Lakes or Plains regions.
 2. Arrange the subset from part #1 to reveal what school has the highest first-year retention rate in this reduced data set.
 3. Arrange the subset from part #1 to reveal what school has the lowest admissions rate in this reduced data set.
-4. Using the full data set, create a column giving the cumulative average cost of attendance, assuming that students finish in four years and that costs increase 3% per year. Name this new column `total.avg.cost4`.
+4. Using the full data set, create a column giving the average cost of attendance in 2016, assuming that costs increased 3% for all institutions. Name this new column `cost2016`.
 5. Using the full data set, summarize the distribution of total cost of attendance by region using the five number summary. Briefly describe any differences in total cost that you observe.
 
 
