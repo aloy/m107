@@ -835,6 +835,12 @@ Combine your results with your classmates' by recording your average word
 
 \lang british
 Comment on the shape and location of the distribution of average word count.
+\lang english
+
+\begin_inset VSpace 1in
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate-Resume
@@ -873,6 +879,10 @@ e
 \lang english
 
 \begin_inset VSpace 1in
+\end_inset
+
+
+\begin_inset Newpage clearpage
 \end_inset
 
 

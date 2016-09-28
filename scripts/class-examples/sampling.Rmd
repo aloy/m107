@@ -1,7 +1,7 @@
 ---
-title: "Sampling from a Population"
-author: "Prof. Adam Loy"
-output: html_document
+title: "Collecting Data: Sampling from a Population Part II"
+author: "Math 107, Fall 2016"
+output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
@@ -27,26 +27,43 @@ gettysburg <- read.csv("data/gettysburg.csv", as.is = TRUE)
 library(dplyr)
 ```
 
-3. Use the `sample_n` function to draw a simple random sample of size $n$ rows from a data set.
+3. Use the `sample_n` function to draw a simple random sample of size $n$ rows from a data set. Note that this will change every time you run the code since it will obtain a different simple random sample.
 ```{r}
 sample_n(gettysburg, size = 10)
 ```
 
+\newpage
 
 ## On Your Own
 
-1. Randomly draw a random sample of size $n=10$ from the `gettysburg` data set. Record the words selected, the length of the word (i.e., the number of letters), and whether the word contains the letter "e" (yes or no). If you do not have a computer with you, ask a classmate if you can pair up with them.
+1. Randomly draw a random sample of size $n=10$ from the `gettysburg` data set. Record the words selected, the length of the word (i.e., the number of letters), and whether the word contains the letter "e" (yes or no). If you do not have a computer with you, ask a classmate if you can pair up with them. 
+
+\vspace{1in}
+
 2. Calculate the average length of the words in your sample.
+
+\vspace{.5in}
+
 3. Calculate the proportion of e-words in your random sample.
+
+\vspace{.5in}
+
 4. Fill out the google form: https://goo.gl/forms/BeTwHT6yhxss2Tsx1. This will create allow us to create a data set for the entire class.
 
 ## As a class/group
 
 5. We will create a histogram of the word lengths as a class. Comment on how this distribution compares to the one based on non-random sampling.
+
+\vspace{1in}
+
 6. Let's compare your sample statistics to the population parameters.
  
     a. How many and what proportion of students in your class obtained a sample average word length larger than the population average (4.29 letters)?
+    
+    \clearpage
 
     b. How many and what proportion of students in your class obtained a sample proportion of e-words larger than the population proportion (0.47)?
+    
+    \vspace{1in}
 
     c. What do these answers reveal about whether simple random sampling is an unbiased sampling method? Explain.
