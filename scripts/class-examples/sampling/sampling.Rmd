@@ -1,7 +1,7 @@
 ---
-title: "Collecting Data: Sampling from a Population Part II"
+title: 'Collecting Data: Sampling from a Population Part II'
 author: "Math 107, Fall 2016"
-output: pdf_document
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 A sample is only useful to us if the data we collect on our sample are similar to the results we would find in the entire population. In this sense, we say the sample is **representative** of the population. The key to obtaining a representative sample is using some type of random mechanism to select the observational units from the population, rather than relying on convenience samples or any type of human judgement. Instead of choosing arbitrary words using your own judgement, in this part of the exploration you will take a **simple random sample** (a sample in which every sample of size $n$ is equally likely to be chosen) of words and evaluate your results. 
 
-The first step in obtaining a simple random sample is to construct a **sampling frame**---a complete list of every member of the population where each member can be assigned an ID number. The file gettysburg.csv provides such a sampling frame, a complete list of the words in the Gettysburg Address.
+The first step in obtaining a simple random sample is to construct a **sampling frame**---a complete list of every member of the population where each member can be assigned an ID number. The file `gettysburg.csv` provides such a sampling frame, a complete list of the words in the Gettysburg Address.
 
 
 Once the sampling frame is established, then we need to randomly pick $n$ rows of the sampling frame in order to choose a simple random sample of size $n$. All of this can be done in R
@@ -48,7 +48,7 @@ sample_n(gettysburg, size = 10)
 
 \vspace{.5in}
 
-4. Fill out the google form: https://goo.gl/forms/BeTwHT6yhxss2Tsx1. This will create allow us to create a data set for the entire class.
+4. Fill out the Google form: https://goo.gl/forms/BeTwHT6yhxss2Tsx1. This will create allow us to create a data set for the entire class.
 
 ## As a class/group
 
