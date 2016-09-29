@@ -90,12 +90,16 @@ The researcher manipulates at least one explanatory variable (treatment)
 
 ---
 
-An article about handwriting appeared in the October 11, 2006 issue of the Washington Post. The article mentioned that among students who took the essay portion of the SAT exam in 2005-06, those who wrote in cursive scored significantly higher on the essay, on average, than students who used printed block letters.
+# Example
+
+An article about handwriting appeared in the October 11, 2006 issue of the *Washington Post*. The article mentioned that among students who took the essay portion of the SAT exam in 2005-2006, those who wrote in cursive scored significantly higher on the essay, on average, than students who used printed block letters.
 
 
 ---
 
-The same Washington Post article also mentioned a different study in which the identical essay was shown to many graders, but some graders were randomly chosen to see a cursive version of the essay and the other graders were shown a version with printed block letters. The average score assigned to the essay with the cursive style was significantly higher than the average score assigned to the essay with the printed block letters.
+# Example
+
+The same *Washington Post* article also mentioned a different study in which the identical essay was shown to many graders, but some graders were randomly chosen to see a cursive version of the essay and the other graders were shown a version with printed block letters. The average score assigned to the essay with the cursive style was significantly higher than the average score assigned to the essay with the printed block letters.
 
 ---
 
@@ -113,4 +117,4 @@ In order to establish causation, an experiment must
 
 # Key idea
 
-If the treatment groups are similar apart from the treatment, then a difference in outcomes can be ascribed to the treatment.
+If the treatment groups are similar apart from the treatment, then a difference in outcomes can be attributed to the treatment.
