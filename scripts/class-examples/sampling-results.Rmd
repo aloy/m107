@@ -1,0 +1,71 @@
+---
+title: "Gettysburg Address Sampling Results"
+author: "Prof. Adam Loy"
+date: "September 28, 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+# Load the packages necessary
+library(googlesheets)
+library(dplyr)
+library(ggplot2)
+
+# Grab list of my google sheets
+my_sheets <- gs_ls()
+
+# Grab the specific sheets
+arbitrary <- gs_title("Arbitrary Sampling from the Gettysburg Address") %>%
+  gs_read() 
+
+colnames(arbitrary) <- c("timestamp", "word.length", "ewords")
+
+random <- gs_title("Random Sampling from the Gettysburg Address") %>%
+  gs_read()
+
+colnames(random) <- c("timestamp", "word.length", "ewords")
+```
+
+## Arbitrary sampling from the *Gettysburg Address*
+
+```{r}
+ggplot(data = arbitrary, mapping = aes(x = word.length)) + 
+  geom_histogram(fill = "red", color = "aquamarine") + 
+  geom_vline(xintercept = 4.29) +
+  xlim(1, 12)
+
+
+ggplot(data = arbitrary, mapping = aes(x = word.length)) + 
+  geom_density(fill = "aquamarine", color = "gray80") + 
+  geom_vline(xintercept = 4.29) +
+  xlim(1, 12)
+
+
+ggplot(data = arbitrary, mapping = aes(x = ewords)) + 
+  geom_histogram(fill = "hotpink", color = "gray80", binwidth=.1) +
+  geom_vline(xintercept=.47)
+```
+
+
+## Simple random sampling from the *Gettysburg Address*
+
+```{r}
+ggplot(data = random, mapping = aes(x = word.length)) + 
+  geom_histogram() + 
+  xlim(0, 7)
+```
+
+## Comparing the two
+
+```{r}
+arbitrary <- mutate(arbitrary, scheme = "arbitrary")
+random <- mutate(arbitrary, scheme = "random")
+
+combined <- rbind(arbitrary, random)
+
+ggplot(data = combined, mapping = aes(x = word.length, fill = scheme)) +
+  geom_density()
+```
+

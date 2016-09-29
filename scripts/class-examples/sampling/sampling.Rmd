@@ -29,7 +29,8 @@ library(dplyr)
 
 3. Use the `sample_n` function to draw a simple random sample of size $n$ rows from a data set. Note that this will change every time you run the code since it will obtain a different simple random sample.
 ```{r}
-sample_n(gettysburg, size = 10)
+my_sample <- sample_n(gettysburg, size = 10)
+my_sample
 ```
 
 \newpage
