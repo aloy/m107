@@ -53,19 +53,24 @@ ggplot(data = arbitrary, mapping = aes(x = ewords)) +
 
 ```{r}
 ggplot(data = random, mapping = aes(x = word.length)) + 
-  geom_histogram() + 
-  xlim(0, 7)
+  geom_histogram(binwidth=.5, fill = "steelblue", color = "black") + 
+  xlim(0, 10) +
+  geom_vline(xintercept = 4.29)
 ```
 
 ## Comparing the two
 
 ```{r}
+library(ggthemes)
 arbitrary <- mutate(arbitrary, scheme = "arbitrary")
-random <- mutate(arbitrary, scheme = "random")
+random <- mutate(random, scheme = "random")
 
 combined <- rbind(arbitrary, random)
 
 ggplot(data = combined, mapping = aes(x = word.length, fill = scheme)) +
-  geom_density()
+  geom_density(alpha = 0.4) + 
+  scale_fill_colorblind() +
+  geom_vline(xintercept = 4.29)
+
 ```
 
