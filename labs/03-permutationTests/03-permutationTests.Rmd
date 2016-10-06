@@ -15,8 +15,10 @@ Today's lab will explore the idea of hypothesis testing using random permutation
 ### 0.1 Administrative details
 Lab submissions are due by Monday, October 10 at 4:00 p.m. To submit your assignment, please upload both the .Rmd and .html files on Moodle.
 
-### 0.2 Set up
-You can download the .rmd file for this lab and the data from...
+### 0.2 Setup
+You can download the .Rmd file for this lab and the data from the course [webpage](http://math107-lu.github.io/) as a zip file. If you are using a Mac, then you will need to use a browser other than Safari for the download. 
+
+If you are using the RStudio server, then you can upload the entire zip folder directly onto the server using.
 
 We will use the following packages during this lab. Make sure that you have downloaded all of them before running the commands.
 
@@ -35,11 +37,11 @@ generate a table that describes multiple attributes for each element in a sample
 
 Both observational studies and experiments rely on samples from a population of interest, so there is a chance that the association we observe is due to the composition of the sample we drew rather than truly existing in the population. Stated another way, the response variable may appear associated with the explanatory variable because there is in fact an association in the population, or simply because the sample happened to come out that way. The purpose of statistical hypothesis testing is to quantitatively account for the possibility that two attributes may appear related in a sample even though they are not related in the population.
 
-In this lab, we will explore the permutation test techique from [John Rauser's keynote address at Strata + Hadoop 2014](https://youtu.be/5Dnw46eC-0o), investigating how to formalize this test and implement it in R. 
+In this lab, we will explore the permutation test technique from [John Rauser's keynote address at Strata + Hadoop 2014](https://youtu.be/5Dnw46eC-0o), investigating how to formalize this test and implement it in R. 
 
 ## 1.1. The data
 
-Does consuming beer make you more attractive to mosquitoes? This is the question Levre et al. (2010) strove to answer. In this study conducted in Burkina Faso, Africa, 42 volunteers were recruited and randomly assigned to a treatment group: 25 volunteers consumed a liter of beer and 18 volunteers consumed a liter of water. The attractiveness of the volunteers to mosquitoes was then tested. Mosquitoes were released and cought in traps as they approached the volunteers. The resulting data are recorded in the file `mosquitoes.csv`.
+Does consuming beer make you more attractive to mosquitoes? This is the question Levre et al. (2010) strove to answer. In this study conducted in Burkina Faso, Africa, 42 volunteers were recruited and randomly assigned to a treatment group: 25 volunteers consumed a liter of beer and 18 volunteers consumed a liter of water. The attractiveness of the volunteers to mosquitoes was then tested. Mosquitoes were released and caught in traps as they approached the volunteers. The resulting data are recorded in the file `mosquitoes.csv`.
 
 
 **Question 1.** Is this an observational study or an experiment? Briefly justify your answer.
@@ -55,12 +57,12 @@ The rows describe the individual participants. The columns describe:
 
 - **id**: An identifier for each participant
 - **treatment**: Consumption of a liter of `beer` or a liter of `water`
-- **count**: The number of mosquitos...
+- **count**: The number of mosquitoes...
 
 
 ### 1.2. Exploring the association
 
-Before conducting a statistical test for whether the association between beer consumption and attractiveness to mosquitos is likely to be due to chance (as opposed to an association in the population), we will explore the possible association.
+Before conducting a statistical test for whether the association between beer consumption and attractiveness to mosquitoes is likely to be due to chance (as opposed to an association in the population), we will explore the possible association.
 
 **Question 2.** Create side-by-side boxplots of the number of mosquitoes captured by group.
 
@@ -71,7 +73,7 @@ Before conducting a statistical test for whether the association between beer co
 **Question 5.** Calculate the following summary statistics for each treatment group: the five number summary, the mean, the standard deviation. Do these summary statistics support what you observed in the previous question?
 
 
-## 2. Random Permutations
+## 2. Using Random Permutations
 
 From the above summary statistics you should find that the difference in the mean number of mosquitoes attracted between the two groups is $\overline{x}_{\text{beer}} - \overline{x}_{\text{water}} = 4.4$. Is this a large enough difference to suggest that there are <u>significantly</u> more mosquitoes attracted to the beer group, on average? 
 
@@ -90,7 +92,7 @@ A **permutation test** (your book calls it a randomization test) generates group
 
 Each hypothesis test has four steps. 
 
-**Step 1** is to **state the null and alternative hypotheses**. For example, if we are intereted in whether beer increases the average number of mosquitoes attracted, we would state the following:
+**Step 1** is to **state the null and alternative hypotheses**. For example, if we are interested in whether beer increases the average number of mosquitoes attracted, we would state the following:
 
 <u>Null hypothesis:</u> The true difference the average number of mosquitoes attracted  between the treatment groups is the same, so the observed difference is due to randomness introduced by random assignment.
 
@@ -119,11 +121,11 @@ mean_shuffled <- shuffled %>%
 diff(mean_shuffled$avg)
 ```
 
-Alternatively, we can use the `permTest` function in R carryout the entire permutation test. Note that the below code prints the results of the test on the screen and also produces a histgoram of the permutation distribution. `permTest` requires the following arguments:
+Alternatively, we can use the `permTest` function in R carryout the entire permutation test. Note that the below code prints the results of the test on the screen and also produces a histogram of the permutation distribution. `permTest` requires the following arguments:
 
 - a formula of the form `response_variable ~ explanatory_variable`,
 - a `data` set,
-- and the `alternative` hypothesis.
+- and the `alternative` hypothesis. We use `greater` or `less` if the alternative hypothesis specifies if the difference is likely to be positive or negative; otherwise, we use `two.sided` (i.e. the difference could fall in either tail).
 
 ```{r results='hide', fig.show='hide'}
 permutations <- permTest(count ~ treatment, data = mosquitos, alternative = "greater")
@@ -144,24 +146,14 @@ A p-value of 0.05 or below is conventionally called "statistically significant" 
 
 **Question 10.** Is the observed difference in average mosquito attractiveness statistically significant? Is it highly statistically significant?
 
-**Question 11.** If the results are statistically significant, what does this indicate about beer's impact on moquito attractiveness?
+**Question 11.** If the results are statistically significant, what does this indicate about beer's impact on mosquito attractiveness?
 
-```{r}
-observed <- 4.4
-permutations <- data.frame(mean.diff = permutations)
+## 3. Wrapping Up
 
-ggplot(data = permutations, mapping = aes(x = mean.diff)) +
-  geom_dotplot(method="histodot", binwidth = .025) +
-  scale_y_continuous(NULL, breaks = NULL) + 
-  geom_vline(xintercept = observed, color = "orange")
-```
+Congratulations, you just carried out your first hypothesis test by using random permutations! Be sure to review the four steps of hypothesis tests and the underlying logic of permutation tests before our next class. We will see more examples of permutation tests and discuss some important issues surrounding hypothesis testing, but the underlying logic won't change.
 
+## References
 
-```{r}
-# proportion of observations greater than or equal to 
-# the observed test statistic
-mean(permutations$mean.diff >= observed)
-```
+[John Rauser's keynote address at Strata + Hadoop 2014](https://youtu.be/5Dnw46eC-0o) serves as great motivation to learn about permutation tests, and reference bootstrapping. (We will do that too!)
 
-
-
+Lefèvre, Thierry, et al. "Beer consumption increases human attractiveness to malaria mosquitoes." *PloS one* 5.3 (2010): e9546. http://dx.doi.org/10.1371/journal.pone.0009546
