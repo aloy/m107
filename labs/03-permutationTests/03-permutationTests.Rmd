@@ -20,7 +20,7 @@ You can download the .rmd file for this lab and the data from...
 
 We will use the following packages during this lab. Make sure that you have downloaded all of them before running the commands.
 
-```{r}
+```{r message=FALSE}
 library(ggplot2)
 library(dplyr)
 library(CarletonStats)
@@ -57,27 +57,6 @@ The rows describe the individual participants. The columns describe:
 - **treatment**: Consumption of a liter of `beer` or a liter of `water`
 - **count**: The number of mosquitos...
 
-```{r}
-mosquitos %>%
-  group_by(treatment) %>%
-  summarise(n = n(), 
-            min = min(count),
-            Q1 = quantile(count, probs = .25),
-            median = median(count),
-            Q3 = quantile(count, probs = .75),
-            max = max(count),
-            mean = mean(count),
-            sd = sd(count))
-```
-
-```{r}
-ggplot(data = mosquitos, mapping = aes(x = count, fill = treatment)) +
-  geom_density(alpha = 0.4)
-
-ggplot(data = mosquitos, mapping = aes(x = treatment, y = count, fill = treatment)) +
-  geom_boxplot(alpha = 0.6)
-```
-
 
 ### 1.2. Exploring the association
 
@@ -89,7 +68,7 @@ Before conducting a statistical test for whether the association between beer co
 
 **Question 4.** What do the plots created in the previous two questions reveal about the association between beer consumption and one's attractiveness to mosquitoes?
 
-**Question 4.** Calculate the following summary statistics for each treatment group: the five number summary, the mean, the standard deviation. Do these summary statistics support what you observed in the previous question?
+**Question 5.** Calculate the following summary statistics for each treatment group: the five number summary, the mean, the standard deviation. Do these summary statistics support what you observed in the previous question?
 
 
 ## 2. Random Permutations
@@ -123,13 +102,11 @@ The alternative is an explanation that is exclusive of the null hypothesis: ther
 
 <u>Test statistic:</u> The difference in the average number of mosquitoes attracted between the two treatment groups: $\overline{x}_{\text{beer}} - \overline{x}_{\text{water}}$.
 
-```{r}
-## CODE
-```
+**Question 6.** Calculate the observed test statistic.
 
 **Step 3** is to estimate the distribution of the test statistic assuming that the null hypothesis is true. Given only a sample, we cannot draw new samples directly from the population. Instead, we randomly permute the pairings of conditions and values to see how the test statistic would vary for a sample of the given size, the split between conditions, and the observed difference in means.
 
-
+We could do this manually using code similar to the below, though we would need to repeat it a large number of times, say 9,999.
 ```{r}
 ## We could manually reshuffle the treatment column
 ## and recompute the difference in means
@@ -142,14 +119,32 @@ mean_shuffled <- shuffled %>%
 diff(mean_shuffled$avg)
 ```
 
+Alternatively, we can use the `permTest` function in R carryout the entire permutation test. Note that the below code prints the results of the test on the screen and also produces a histgoram of the permutation distribution. `permTest` requires the following arguments:
+
+- a formula of the form `response_variable ~ explanatory_variable`,
+- a `data` set,
+- and the `alternative` hypothesis.
 
 ```{r results='hide', fig.show='hide'}
-## We can automate this to obtain a large number of these differences
-permutations <- permTest(count ~ treatment, data = mosquitos)
+permutations <- permTest(count ~ treatment, data = mosquitos, alternative = "greater")
 head(permutations)
 ```
 
-**Step 4** is to interpret the result and draw a conclusion. A P-value of 0.05 or below is conventionally called "statistically significant" and a P-value of 0.01 or below is conventionally called "highly statistically significant", although these thresholds are arbitrary.
+**Question 7.** What is the mean of the permutation distribution? (Note: this will change each time you run the code.)
+
+**Step 4** is to interpret the result and draw a conclusion. If the observed test statistic is "too far out" in the tails of the permutation distribution, then it would rarely happen by chance alone, providing evidence that something else is likely happening.
+
+**Question 8.** Do you think that the observed test statistic is too far out in the tail of the permutation distribution to be due to chance alone? Why or why not?
+
+Instead of visually comparing the observed test statistic to the permutation distribution, we can also calculate the proportion of simulated test statistics in the permutation distribution that are at least as far out in the tail of the permutation distribution as the observed test statistic. This proportion is called the **p-value**, and is reported in the output of the `permTest` function.
+
+**Question 9.** What p-value was reported for your permutation test?
+
+A p-value of 0.05 or below is conventionally called "statistically significant" and a p-value of 0.01 or below is conventionally called "highly statistically significant", although these thresholds are arbitrary.
+
+**Question 10.** Is the observed difference in average mosquito attractiveness statistically significant? Is it highly statistically significant?
+
+**Question 11.** If the results are statistically significant, what does this indicate about beer's impact on moquito attractiveness?
 
 ```{r}
 observed <- 4.4
