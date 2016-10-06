@@ -1,0 +1,172 @@
+---
+title: "Lab 3: Introduction to Hypothesis Testing"
+output:
+  html_document: default
+  pdf_document: default
+  word_document: default
+---
+
+## 0. Intro
+
+Welcome to Lab 3!
+
+Today's lab will explore the idea of hypothesis testing using random permutations. This technique is described in the chapter 4 of the textbook, in [John Rauser's keynote address at Strata + Hadoop 2014](https://youtu.be/5Dnw46eC-0o), and is used often in practice.
+
+### 0.1 Administrative details
+Lab submissions are due by DAY, MONTH ## at TIME PM...
+
+### 0.2 Set up
+You can download the .rmd file for this lab and the data from...
+
+We will use the following packages during this lab. Make sure that you have downloaded all of them before running the commands.
+
+```{r}
+library(ggplot2)
+library(dplyr)
+library(CarletonStats)
+```
+
+
+## 1. Comparing Two Groups
+
+Many studies focus on the comparison of groups. In observational studies, this comparison focuses on the how an attribute (response variable) differs between naturally occurring groups in a sample from the population of interest. In experiments, this comparison focuses on how an attribute differs across treatment groups. 
+
+generate a table that describes multiple attributes for each element in a sample of a population. One important step in studying some aspect of the world via such a sample is to identify associations. An association between a treatment attribute and an outcome attribute in a population is any relation between them: the outcome varies in some way with the treatment.
+
+Both observational studies and experiments rely on samples from a population of interest, so there is a chance that the association we observe is due to the composition of the sample we drew rather than truly existing in the population. Stated another way, the response variable may appear associated with the explanatory variable because there is in fact an association in the population, or simply because the sample happened to come out that way. The purpose of statistical hypothesis testing is to quantitatively account for the possibility that two attributes may appear related in a sample even though they are not related in the population.
+
+In this lab, we will explore the permutation test techique from [John Rauser's keynote address at Strata + Hadoop 2014](https://youtu.be/5Dnw46eC-0o), investigating how to formalize this test and implement it in R. 
+
+## 1.1. The data
+
+Does consuming beer make you more attractive to mosquitoes? This is the question Levre et al. (2010) strove to answer. In this study conducted in Burkina Faso, Africa, 42 volunteers were recruited and randomly assigned to a treatment group: 25 volunteers consumed a liter of beer and 18 volunteers consumed a liter of water. The attractiveness of the volunteers to mosquitoes was then tested. Mosquitoes were released and cought in traps as they approached the volunteers. The resulting data are recorded in the file `mosquitoes.csv`.
+
+
+**Question 1.** Is this an observational study or an experiment? Briefly justify your answer.
+
+Now that we understand the study design, let's read in the data set.
+
+```{r}
+mosquitos <- read.csv("data/mosquitos.csv")
+summary(mosquitos)
+```
+
+The rows describe the individual participants. The columns describe:
+
+- **id**: An identifier for each participant
+- **treatment**: Consumption of a liter of `beer` or a liter of `water`
+- **count**: The number of mosquitos...
+
+```{r}
+mosquitos %>%
+  group_by(treatment) %>%
+  summarise(n = n(), 
+            min = min(count),
+            Q1 = quantile(count, probs = .25),
+            median = median(count),
+            Q3 = quantile(count, probs = .75),
+            max = max(count),
+            mean = mean(count),
+            sd = sd(count))
+```
+
+```{r}
+ggplot(data = mosquitos, mapping = aes(x = count, fill = treatment)) +
+  geom_density(alpha = 0.4)
+
+ggplot(data = mosquitos, mapping = aes(x = treatment, y = count, fill = treatment)) +
+  geom_boxplot(alpha = 0.6)
+```
+
+
+### 1.2. Exploring the association
+
+Before conducting a statistical test for whether the association between beer consumption and attractiveness to mosquitos is likely to be due to chance (as opposed to an association in the population), we will explore the possible association.
+
+**Question 2.** Create side-by-side boxplots of the number of mosquitoes captured by group.
+
+**Question 3.** Create overlaid density plots of the number of mosquitoes captured by group.
+
+**Question 4.** What do the plots created in the previous two questions reveal about the association between beer consumption and one's attractiveness to mosquitoes?
+
+**Question 4.** Calculate the following summary statistics for each treatment group: the five number summary, the mean, the standard deviation. Do these summary statistics support what you observed in the previous question?
+
+
+## 2. Random Permutations
+
+From the above summary statistics you should find that the difference in the mean number of mosquitoes attracted between the two groups is $\overline{x}_{\text{beer}} - \overline{x}_{\text{water}} = 4.4$. Is this a large enough difference to suggest that there are <u>significantly</u> more mosquitoes attracted to the beer group, on average? 
+
+There is no universal threshold for how large a difference in means must be to be "significantly different from zero." Instead, we compare the observed test statistic ($\overline{x}_{\text{beer}} - \overline{x}_{\text{water}}$) to a distribution that is generated empirically by randomly permuting the values in the data set. 
+
+The purpose of this comparison is to help us choose between two hypotheses:
+
+<u>**Null hypothesis**</u>: The observed difference between distributions for the two treatments is due to chance because we randomly assigned the volunteers to a treatment group.
+
+<u>**Alternative hypothesis**</u>: The observed difference is **not** due to random chance, but instead due to the treatment.
+
+A **permutation test** (your book calls it a randomization test) generates groups that look like the groups we would see <u>if the null hypothesis were true</u>.
+
+
+### 2.1. Hypothesis Tests
+
+Each hypothesis test has four steps. 
+
+**Step 1** is to **state the null and alternative hypotheses**. For example, if we are intereted in whether beer increases the average number of mosquitoes attracted, we would state the following:
+
+<u>Null hypothesis:</u> The true difference the average number of mosquitoes attracted  between the treatment groups is the same, so the observed difference is due to randomness introduced by random assignment.
+
+The alternative is an explanation that is exclusive of the null hypothesis: there is a systematic difference that cannot be blamed on random assignment.
+
+<u>Alternative hypothesis:</u> The difference in the average number of mosquitoes attracted is not due to chance, but instead due to the treatment.
+
+**Step 2** is to **select and compute a test statistic** that summarizes the data relevant to the null hypothesis. The test statistic should be a statistic that generally looks one way if the null hypothesis is true and another way if the alternative hypothesis is true. 
+
+<u>Test statistic:</u> The difference in the average number of mosquitoes attracted between the two treatment groups: $\overline{x}_{\text{beer}} - \overline{x}_{\text{water}}$.
+
+```{r}
+## CODE
+```
+
+**Step 3** is to estimate the distribution of the test statistic assuming that the null hypothesis is true. Given only a sample, we cannot draw new samples directly from the population. Instead, we randomly permute the pairings of conditions and values to see how the test statistic would vary for a sample of the given size, the split between conditions, and the observed difference in means.
+
+
+```{r}
+## We could manually reshuffle the treatment column
+## and recompute the difference in means
+shuffled <- mutate(mosquitos, treatment = sample(treatment))
+
+mean_shuffled <- shuffled %>%
+  group_by(treatment) %>%
+  summarize(avg = mean(count))
+  
+diff(mean_shuffled$avg)
+```
+
+
+```{r results='hide', fig.show='hide'}
+## We can automate this to obtain a large number of these differences
+permutations <- permTest(count ~ treatment, data = mosquitos)
+head(permutations)
+```
+
+**Step 4** is to interpret the result and draw a conclusion. A P-value of 0.05 or below is conventionally called "statistically significant" and a P-value of 0.01 or below is conventionally called "highly statistically significant", although these thresholds are arbitrary.
+
+```{r}
+observed <- 4.4
+permutations <- data.frame(mean.diff = permutations)
+
+ggplot(data = permutations, mapping = aes(x = mean.diff)) +
+  geom_dotplot(method="histodot", binwidth = .025) +
+  scale_y_continuous(NULL, breaks = NULL) + 
+  geom_vline(xintercept = observed, color = "orange")
+```
+
+
+```{r}
+# proportion of observations greater than or equal to 
+# the observed test statistic
+mean(permutations$mean.diff >= observed)
+```
+
+
+
