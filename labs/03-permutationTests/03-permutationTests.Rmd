@@ -13,7 +13,7 @@ Welcome to Lab 3!
 Today's lab will explore the idea of hypothesis testing using random permutations. This technique is described in the chapter 4 of the textbook, in [John Rauser's keynote address at Strata + Hadoop 2014](https://youtu.be/5Dnw46eC-0o), and is used often in practice.
 
 ### 0.1 Administrative details
-Lab submissions are due by DAY, MONTH ## at TIME PM...
+Lab submissions are due by Monday, October 10 at 4:00 p.m. To submit your assignment, please upload both the .Rmd and .html files on Moodle.
 
 ### 0.2 Set up
 You can download the .rmd file for this lab and the data from...
