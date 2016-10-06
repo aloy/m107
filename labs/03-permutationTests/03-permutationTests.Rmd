@@ -1,5 +1,5 @@
 ---
-title: "Lab 3: Introduction to Hypothesis Testing"
+title: 'Lab 3: Introduction to Hypothesis Testing'
 output:
   html_document: default
   pdf_document: default
@@ -127,9 +127,8 @@ Alternatively, we can use the `permTest` function in R carryout the entire permu
 - a `data` set,
 - and the `alternative` hypothesis. We use `greater` or `less` if the alternative hypothesis specifies if the difference is likely to be positive or negative; otherwise, we use `two.sided` (i.e. the difference could fall in either tail).
 
-```{r results='hide', fig.show='hide'}
+```{r fig.height=3, fig.width=5}
 permutations <- permTest(count ~ treatment, data = mosquitos, alternative = "greater")
-head(permutations)
 ```
 
 **Question 7.** What is the mean of the permutation distribution? (Note: this will change each time you run the code.)
