@@ -13,12 +13,12 @@ Welcome to Lab 3!
 Today's lab will explore the idea of hypothesis testing using random permutations. This technique is described in the chapter 4 of the textbook, in [John Rauser's keynote address at Strata + Hadoop 2014](https://youtu.be/5Dnw46eC-0o), and is used often in practice.
 
 ### 0.1 Administrative details
-Lab submissions are due by Monday, October 10 at 4:00 p.m. To submit your assignment, please upload both the .Rmd and .html files on Moodle.
+Lab submissions are due by Monday, October 10 by 4:00 p.m. To submit your assignment, please upload both the .Rmd and .html files on Moodle.
 
 ### 0.2 Setup
 You can download the .Rmd file for this lab and the data from the course [webpage](http://math107-lu.github.io/) as a zip file. If you are using a Mac, then you will need to use a browser other than Safari for the download. 
 
-If you are using the RStudio server, then you can upload the entire zip folder directly onto the server using.
+If you are using the RStudio server, then you can upload the entire zip folder directly onto the server.
 
 We will use the following packages during this lab. Make sure that you have downloaded all of them before running the commands.
 
@@ -31,13 +31,9 @@ library(CarletonStats)
 
 ## 1. Comparing Two Groups
 
-Many studies focus on the comparison of groups. In observational studies, this comparison focuses on the how an attribute (response variable) differs between naturally occurring groups in a sample from the population of interest. In experiments, this comparison focuses on how an attribute differs across treatment groups. 
+Many studies focus on the comparison of groups. In observational studies, this comparison focuses on the how an attribute (response variable) differs between naturally occurring groups in a sample from the population of interest. In experiments, this comparison focuses on how an attribute differs across treatment groups. Both observational studies and experiments rely on samples from a population of interest, so there is a chance that the association we observe is due to the composition of the sample we drew rather than truly existing in the population. Stated another way, the response variable may appear associated with the explanatory variable because there is in fact an association in the population, or simply because the sample happened to come out that way. The purpose of statistical hypothesis testing is to quantitatively account for the possibility that two attributes may appear related in a sample even though they are not related in the population.
 
-generate a table that describes multiple attributes for each element in a sample of a population. One important step in studying some aspect of the world via such a sample is to identify associations. An association between a treatment attribute and an outcome attribute in a population is any relation between them: the outcome varies in some way with the treatment.
-
-Both observational studies and experiments rely on samples from a population of interest, so there is a chance that the association we observe is due to the composition of the sample we drew rather than truly existing in the population. Stated another way, the response variable may appear associated with the explanatory variable because there is in fact an association in the population, or simply because the sample happened to come out that way. The purpose of statistical hypothesis testing is to quantitatively account for the possibility that two attributes may appear related in a sample even though they are not related in the population.
-
-In this lab, we will explore the permutation test technique from [John Rauser's keynote address at Strata + Hadoop 2014](https://youtu.be/5Dnw46eC-0o), investigating how to formalize this test and implement it in R. 
+In this lab, we will explore the permutation test discussed in [John Rauser's keynote address at Strata + Hadoop 2014](https://youtu.be/5Dnw46eC-0o), investigating how to formalize this test and implement it in R. 
 
 ## 1.1. The data
 
@@ -46,7 +42,7 @@ Does consuming beer make you more attractive to mosquitoes? This is the question
 
 **Question 1.** Is this an observational study or an experiment? Briefly justify your answer.
 
-Now that we understand the study design, let's read in the data set.
+Now that we understand the study design, we can load the data set.
 
 ```{r}
 mosquitos <- read.csv("data/mosquitos.csv")
@@ -57,7 +53,7 @@ The rows describe the individual participants. The columns describe:
 
 - **id**: An identifier for each participant
 - **treatment**: Consumption of a liter of `beer` or a liter of `water`
-- **count**: The number of mosquitoes...
+- **count**: The number of mosquitoes caught in traps as they approached the volunteer
 
 
 ### 1.2. Exploring the association
@@ -92,19 +88,20 @@ A **permutation test** (your book calls it a randomization test) generates group
 
 Each hypothesis test has four steps. 
 
+
 **Step 1** is to **state the null and alternative hypotheses**. For example, if we are interested in whether beer increases the average number of mosquitoes attracted, we would state the following:
 
-<u>Null hypothesis:</u> The true difference the average number of mosquitoes attracted  between the treatment groups is the same, so the observed difference is due to randomness introduced by random assignment.
+<u>Null hypothesis:</u> The true average number of mosquitoes attracted  between the treatment groups is the same, so the observed difference is due to randomness introduced by random assignment.
 
-The alternative is an explanation that is exclusive of the null hypothesis: there is a systematic difference that cannot be blamed on random assignment.
+The alternative is an explanation that contradicts the null hypothesis: there is a systematic difference that cannot be blamed on random assignment.
 
 <u>Alternative hypothesis:</u> The difference in the average number of mosquitoes attracted is not due to chance, but instead due to the treatment.
+
 
 **Step 2** is to **select and compute a test statistic** that summarizes the data relevant to the null hypothesis. The test statistic should be a statistic that generally looks one way if the null hypothesis is true and another way if the alternative hypothesis is true. 
 
 <u>Test statistic:</u> The difference in the average number of mosquitoes attracted between the two treatment groups: $\overline{x}_{\text{beer}} - \overline{x}_{\text{water}}$.
 
-**Question 6.** Calculate the observed test statistic.
 
 **Step 3** is to estimate the distribution of the test statistic assuming that the null hypothesis is true. Given only a sample, we cannot draw new samples directly from the population. Instead, we randomly permute the pairings of conditions and values to see how the test statistic would vary for a sample of the given size, the split between conditions, and the observed difference in means.
 
@@ -125,31 +122,38 @@ Alternatively, we can use the `permTest` function in R carryout the entire permu
 
 - a formula of the form `response_variable ~ explanatory_variable`,
 - a `data` set,
-- and the `alternative` hypothesis. We use `greater` or `less` if the alternative hypothesis specifies if the difference is likely to be positive or negative; otherwise, we use `two.sided` (i.e. the difference could fall in either tail).
+- and the `alternative` hypothesis. We use `greater` or `less` if the alternative hypothesis specifies that the difference is likely to be positive or negative; otherwise, we use `two.sided` (i.e. the difference could fall in either tail).
 
 ```{r fig.height=3, fig.width=5}
 permutations <- permTest(count ~ treatment, data = mosquitos, alternative = "greater")
 ```
 
-**Question 7.** What is the mean of the permutation distribution? (Note: this will change each time you run the code.)
+**Question 6.** What is the mean of the permutation distribution? (Note: this will change each time you run the code.)
+
 
 **Step 4** is to interpret the result and draw a conclusion. If the observed test statistic is "too far out" in the tails of the permutation distribution, then it would rarely happen by chance alone, providing evidence that something else is likely happening.
 
-**Question 8.** Do you think that the observed test statistic is too far out in the tail of the permutation distribution to be due to chance alone? Why or why not?
+
+**Question 7.** Do you think that the observed test statistic is too far out in the tail of the permutation distribution to be due to chance alone? Why or why not?
+
 
 Instead of visually comparing the observed test statistic to the permutation distribution, we can also calculate the proportion of simulated test statistics in the permutation distribution that are at least as far out in the tail of the permutation distribution as the observed test statistic. This proportion is called the **p-value**, and is reported in the output of the `permTest` function.
 
-**Question 9.** What p-value was reported for your permutation test?
+
+**Question 8.** What p-value was reported for your permutation test?
+
 
 A p-value of 0.05 or below is conventionally called "statistically significant" and a p-value of 0.01 or below is conventionally called "highly statistically significant", although these thresholds are arbitrary.
 
-**Question 10.** Is the observed difference in average mosquito attractiveness statistically significant? Is it highly statistically significant?
 
-**Question 11.** If the results are statistically significant, what does this indicate about beer's impact on mosquito attractiveness?
+**Question 9.** Is the observed difference in average mosquito attractiveness statistically significant? Is it highly statistically significant?
+
+**Question 10.** If the results are statistically significant, what does this indicate about beer's impact on mosquito attractiveness?
+
 
 ## 3. Wrapping Up
 
-Congratulations, you just carried out your first hypothesis test by using random permutations! Be sure to review the four steps of hypothesis tests and the underlying logic of permutation tests before our next class. We will see more examples of permutation tests and discuss some important issues surrounding hypothesis testing, but the underlying logic won't change.
+Congratulations, you just carried out your first hypothesis test using random permutations! Be sure to review the four steps of hypothesis tests and the underlying logic of permutation tests before our next class. We will see more examples of permutation tests and discuss some important issues surrounding hypothesis testing, but the underlying logic won't change.
 
 ## References
 
