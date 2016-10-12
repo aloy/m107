@@ -1,0 +1,93 @@
+---
+title: 'Lab 3: Introduction to Hypothesis Testing'
+output:
+  html_document: default
+  pdf_document: default
+  word_document: default
+---
+
+## 0. Intro
+
+Welcome to Lab 4!
+
+Today's lab will continue to explore the idea of hypothesis testing using permutation tests.
+
+### 0.1 Administrative details
+Lab submissions are due by Friday, October 14 by 4:00 p.m. To submit your assignment, please upload both the .Rmd and .html files on Moodle.
+
+### 0.2 Setup
+You can download the .Rmd file for this lab and the data from the course [webpage](http://math107-lu.github.io/) as a zip file. If you are using a Mac, then you will need to use a browser other than Safari for the download. 
+
+If you are using the RStudio server, then you can upload the entire zip folder directly onto the server.
+
+We will use the following packages during this lab. Make sure that you have downloaded all of them before running the commands.
+
+```{r message=FALSE}
+library(ggplot2)
+library(dplyr)
+library(CarletonStats)
+```
+
+
+## Data
+
+GET FROM OTHER COMPUTER...
+
+```{r}
+library(ggplot2)
+library(CarletonStats)
+```
+
+
+```{r}
+yawning <- read.csv("data/yawning.csv")
+```
+
+
+
+Recall that we use the `permTest` function to create a permutation distribution consisting of 9999 simulations. 
+
+```{r}
+test1 <- permTest(as.numeric(Response == "Yawn") ~ YawnSeed, data = yawning, alt = "less")
+```
+
+
+**Question #.** Is the permutation distribution centered around 0? (Note: this will change each time you run the code.) Explain why this makes sense.
+
+**Question #.** Is the observed value of the statistic out in the tail of the permutation distribution or not so much? In other words, does the observed result appear to be typical or surprising when teh null hypothesis is true?
+
+**Question #.** What is the p-value reported by the output of the `permTest` function?
+
+**Question #.** Using the guidelines for assessing the *strength of evidence* from p-values, would you conclude that the *MythBusters* result provides much evidence that yawning is contagious?
+
+**Question #.** If you have decided that the two groups differ significantly, would you be justified in drawing a cause-and-effect conclusion between the yawn seed and an increased probability of yawning? Explain, based on how this study was conducted.
+
+**Question #.** Based on how the sample was selected, to what larger population would you feel comfortable generalizingt the results of this study? Justify your answer.
+
+## Effect of sample size
+
+What if the the yawning study involved 500 people, 10 times as many as the actual study, but that the proportions of subjects who yawned in each group are unchanged? The file `yawning500.csv` contains these hypothetical data.
+
+**Question #** Use the `permTest` function to create a permutation distribution consisting of 9999 simulations. Create a histogram of the permutation distribution with a superimposed marker representing the observed difference in the proportion of yawns between the yawn seed and control groups.
+
+```{r}
+test1 <- permTest(as.numeric(Response == "Yawn") ~ YawnSeed, data = yawning500, alt = "less")
+```
+
+**Question #** How did the permutation distribution change?
+
+**Question #** What is the new p-value?
+
+What if the the yawning study involved 5000 people, 100 times as many as the actual study, but that the proportions of subjects who yawned in each group are unchanged? The file `yawning5000.csv` contains these hypothetical data.
+
+**Question #** Use the `permTest` function to create a permutation distribution consisting of 9999 simulations. Create a histogram of the permutation distribution with a superimposed marker representing the observed difference in the proportion of yawns between the yawn seed and control groups.
+
+```{r}
+test1 <- permTest(as.numeric(Response == "Yawn") ~ YawnSeed, data = yawning5000, alt = "less")
+```
+
+**Question #** How did the permutation distribution change?
+
+**Question #** What is the new p-value?
+
+**Question #** What is happening to the p-value as the sample size is increasing?
