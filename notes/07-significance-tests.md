@@ -24,8 +24,8 @@ Basic summary statistics from R:
 		# A tibble: 2 × 9
 		     type   min    Q1 median    Q3   max  mean    SD     n
 		   <fctr> <dbl> <dbl>  <dbl> <dbl> <dbl> <dbl> <dbl> <int>
-		1 private  4.79 10.12   4.79 15.16 55.31 13.84  7.28    85
-		2  public  0.88 15.39   0.88 20.35 28.93 17.60  4.57    57
+		1 private  4.79 10.12   11.53 15.16 55.31 13.84  7.28    85
+		2  public  0.88 15.39   17.29 20.35 28.93 17.60  4.57    57
 
 ---
 # Example: Student-to-faculty ratio
@@ -110,7 +110,7 @@ Centered around the parameter value specified in H<sub>0</sub>
 
 ---
 
-`permTest(sf_ratio ~ type, data = colleges)`
+#[fit] `permTest(sf_ratio ~ type, data = colleges)`
 
 			** Permutation test **
 
@@ -139,11 +139,13 @@ Centered around the parameter value specified in H<sub>0</sub>
 
 # Quantifying evidence
 
-An observed test statistic is rare if it is "too far out" in the tails of the randomization distribution
+An observed test statistic is rare if it is "too far out in the tails" of the randomization distribution
 
 <br>
 
 **p-value**: <br>Proportion of statistics in a randomization distribution that are at least as extreme as the observed test statistic
+
+---
 
 ---
 

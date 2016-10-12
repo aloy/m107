@@ -1,0 +1,93 @@
+---
+title: 'Lab 3: Introduction to Hypothesis Testing'
+output:
+  html_document: default
+  pdf_document: default
+  word_document: default
+---
+
+## 0. Intro
+
+Welcome to Lab 4!
+
+Today's lab will continue to explore the idea of hypothesis testing permutation tests, but this lab will focus on the situation where we have two categorical variables.
+
+### 0.1 Administrative details
+Lab submissions are due by Friday, October 14 by 4:00 p.m. To submit your assignment, please upload both the .Rmd and .html files on Moodle.
+
+### 0.2 Setup
+You can download the .Rmd file for this lab and the data from the course [webpage](http://math107-lu.github.io/) as a zip file. If you are using a Mac, then you will need to use a browser other than Safari for the download. 
+
+If you are using the RStudio server, then you can upload the entire zip folder directly onto the server.
+
+We will use the following packages during this lab. Make sure that you have downloaded all of them before running the commands.
+
+```{r message=FALSE}
+library(ggplot2)
+library(dplyr)
+library(CarletonStats)
+```
+
+
+## 1. Comparing Two Proportions
+
+## 1.1. The data
+
+Is yawning contagious? Conventional wisdom says yes: When we see someone else yawn, we're prone to let out a yawn ourselves, but will data support this claim if we put it to a scientific test?
+
+The folks at *MythBusters*, a popular television program on teh Discovery Channel, investigated this issue by using a hidden camera. Fifty people attending a local flea market were recruisted to participate. Subjects were ushered, one at a time, into one of three rooms by co-host Kari. She yawned (planting a yawn "seed") as she ushered subjects into two of the rooms, and for the other room she did not yawn. The researchers decided in advance, with a random mechanism, which subjects went to which room. As time passed, the researchers watched to see which subjects yawned.
+
+The data for this study are found in the `yawning.csv` data file.
+
+
+**Question 1.** Is this an observational study or an experiment? Briefly justify your answer.
+
+**Question 2.** Why did the researchers randomly assign subjects to the "yawn seed" group?
+
+Now that we understand the study design, we can load the data set.
+
+```{r}
+yawning <- read.csv("data/yawning.csv")
+summary(yawning)
+```
+
+The rows describe the individual subjects. The columns describe:
+
+- **YawnSeed**: Whether or not the "yawn seed" was planted (`Control` or `Seeded`)
+- **Response**: Whether or not the subject yawned (`NoYawn` or `Yawn`)
+
+The researchers wish to determine whether or not yawning is contagious.
+
+**Question 3.** State the null and alternative hypotheses using words and notation.
+
+
+### 1.2. Exploring the association
+
+Before conducting a statistical test for whether or not yawning is contagious, we will explore the possible association.
+
+**Question 2.** Create a bar chart of whether or not the subject yawned (`Response`) segmented by whether or not the "yawn seed" was planted (`YawnSeed`).
+
+**Question 4.** Fill in the following table:
+
+                     | Yawn seed planted | Yawn seed not planted | Total
+                     |-------------------|-----------------------|----------------
+Subject yawned       |-------------------|-----------------------|----------------
+Subject did not yawn |-------------------|-----------------------|----------------
+Total                |-------------------|-----------------------|----------------
+
+
+**Question 5.** Calculate the proportion of subjects in the "yawn seed" group that yawned.
+
+**Question 5.** Calculate the proportion of subjects in the control group that yawned.
+
+**Question** Describe the apparent association between the variables revealed by the plot and summary statistics.
+
+## 2. Using Random Permutations
+
+
+
+## References
+
+[John Rauser's keynote address at Strata + Hadoop 2014](https://youtu.be/5Dnw46eC-0o) serves as great motivation to learn about permutation tests, and reference bootstrapping. (We will do that too!)
+
+Lefèvre, Thierry, et al. "Beer consumption increases human attractiveness to malaria mosquitoes." *PloS one* 5.3 (2010): e9546. http://dx.doi.org/10.1371/journal.pone.0009546

@@ -21,7 +21,7 @@ sum_tab <- d %>%
   group_by(type) %>%
   summarize(min = round(min(rat), 2),
             Q1 = round(quantile(rat, .25), 2),
-            median = round(min(rat), 2),
+            median = round(median(rat), 2),
             Q3 = round(quantile(rat, .75), 2),
             max = round(max(rat), 2),
     mean = round(mean(rat), 2), 
