@@ -23,7 +23,7 @@ The threshold below which the p-value is deemed small enough to reject the null 
 If p-value < $$\alpha$$, then reject H<sub>0</sub> 
 <br>
 
-If p-value ≥ $$\alpha$$, then reject H<sub>0</sub> 
+If p-value ≥ $$\alpha$$, then do not reject H<sub>0</sub> 
 
 ---
 
