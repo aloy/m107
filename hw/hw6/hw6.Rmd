@@ -72,7 +72,7 @@ The researchers were investigating whether people who hold "high-power poses" ar
 
 First, run the below code chunk to load the `poses.csv` data set.
 
-```{r include=FALSE}
+```{r}
 poses <- read.csv("data/poses.csv")
 ```
 
@@ -128,7 +128,7 @@ In this problem, we will explore properties of the sampling distribution and how
 
 First, run the below code chunk to load the `mlb2016.csv` data set.
 
-```{r include=FALSE}
+```{r}
 mlb2016 <- read.csv("data/mlb2016.csv")
 ```
 
