@@ -20,3 +20,62 @@
 ### Using the margin of error
 
 ---
+
+# Sampling distribution of a statistic
+
+Distribution of a statistic calculated from different samples of size n drawn from the same population
+
+<br>
+
+Summarizes the behavior of the statistic calculated from n observations
+
+---
+
+# Example
+
+The 2015 college scorecard data set comprised of the 1,776 non-profit colleges/universities in the U.S.
+
+<br>
+
+Average cost of attendance = µ = $31,336
+
+---
+
+# Properties
+
+Centered around the true parameter if the sampling scheme is unbiased
+
+![left 175%](09-figs/samp_dsn50_mean.pdf)
+
+---
+
+![inline](09-figs/samp_dsn50.pdf)
+
+---
+
+![inline](09-figs/samp_dsn100.pdf)
+
+---
+
+![inline](09-figs/samp_dsn250.pdf)
+
+---
+
+# Standard error (SE)
+
+The standard deviation of the sampling distribution
+
+<br> 
+
+Smaller for larger sample sizes
+
+![left 175%](09-figs/samp_dsn50.pdf)
+
+---
+
+# Confidence intervals
+
+For a bell-shaped sampling distribution 
+
+ME ≈ 2 • SE for 95% confidence intervals
+
