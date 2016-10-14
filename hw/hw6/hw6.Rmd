@@ -1,0 +1,253 @@
+---
+title: "Homework 6"
+author: "Fall 2016, Math 107, Prof. Adam Loy"
+date: "Due Wednesday, October 19 in class"
+output: html_document
+---
+
+## Instructions
+
+Please complete your homework in this R markdown file. When you are don, please knit the document to Word and print a hard copy for submission. Make sure to change the `author:` so that you get credit for your work!
+
+The below code chunk loads all of the necessary R packages. Note that we will use the `mosaic` package. If you are using your personal computer, you will need to install this package **before** attempting to knit the document.
+
+```{r message=FALSE}
+library(ggplot2)
+library(dplyr)
+library(CarletonStats)
+library(mosaic)
+```
+
+
+## Problem 1
+
+A food safety inspector is called upon to investigate a restaurant with a few customer reports of poor sanitation practices. The food safety inspector uses a hypothesis testing framework to evaluate whether regulations are not being met. If they decide the restaurant is in gross violation, its license to serve food will be revoked.
+
+#### Part a
+Write the hypotheses in words.
+
+**Null hypothesis:**
+
+**Alternative hypothesis:**
+
+
+#### Part b
+What is a Type 1 Error in this context?
+
+*Write your answer here, replacing this text.*
+
+
+#### Part c 
+
+What is a Type 2 Error in this context?
+
+*Write your answer here, replacing this text.*
+
+
+#### Part d 
+
+Which error is more problematic for the restaurant owner? Why?
+
+*Write your answer here, replacing this text.*
+
+
+#### Part e
+
+Which error is more problematic for the diners? Why?
+
+*Write your answer here, replacing this text.*
+
+
+#### Part f
+
+As a diner, would you prefer that the food safety inspector requires strong evidence or very strong evidence of health concerns before revoking a restaurant’s license? Explain your reasoning.
+
+*Write your answer here, replacing this text.*
+
+## Problem 2
+
+In September 2010, *Psychological Science* published the article "Power Posing: Brief Nonverbal Displays Affect Neuroendorcrine Levels and Risk Tolerance," describing an experiment involving 42 participants, where 20 participants were randomly assigned to hold low-power poses (contractive positions, closed limbs) and 22 participants were randomly assigned to hold high-power poses (expansive positions, open limbs) for two minutes. All participants were told that the aim of this exercise was to see if their heart rate changed. After the exercise, each participant was given \$2 and told that they could keep the money or roll a die for a "double or nothing." 
+
+The researchers were investigating whether people who hold "high-power poses" are more likely to take risks (such as the double or nothing bet) compared to those who hold "low-power poses." The data set `poses.csv` contains the data table created by the researchers.
+
+First, run the below code chunk to load the `poses.csv` data set.
+
+```{r include=FALSE}
+poses <- read.csv("data/poses.csv")
+```
+
+#### Part a
+Using correct mathematical notation, write down the hypotheses for a permutation test to determine whether people who hold "high-power poses" are more likely to take risks than those who hold ``low-power poses.''
+
+**Null hypothesis:**
+
+**Alternative hypothesis:**
+
+#### Part b
+Create a tidy two-way table displaying the number of subjects in each bet/pose group. (Hint: There is code in lab 4 that did this exact thing.)
+
+```{r}
+# Put your code here
+```
+
+
+#### Part c
+Calculate the proportion of the 22 participants who were assigned to "high-power poses" that took the bet, the proportion of the 20 participants who were assigned to "low-power poses" that took the bet, and the difference of proportions. 
+
+*Write your answer here, replacing this text.*
+
+
+#### Part d
+Use the `permTest` function to create a permutation distribution consisting of 9,999 simulations. Create a histogram of the permutation distribution with a superimposed marker representing the observed difference in the proportion of double-or-nothing bets between the high- and low-power pose groups.
+
+```{r fig.height=3, fig.width=5}
+# Put your code here
+```
+
+#### Part e
+Describe the shape of the randomization distribution you created in the previous part.
+
+*Write your answer here, replacing this text.*
+
+
+#### Part f
+Report the p-value calculated from your permutation distribution.
+
+*Write your answer here, replacing this text.*
+
+
+#### Part g 
+Based on your p-value, does it appear that there is evidence that people who hold "high-power poses" are more likely to take risks than those who hold "low-power poses?"
+
+*Write your answer here, replacing this text.*
+
+
+## Problem 3
+
+In this problem, we will explore properties of the sampling distribution and how it relates to the population distribution. The population we will study consists of all Major League Baseball (MLB) players in 2016. The file `mlb2016.csv` contains salary information for all 862 MLB players in 2016 (Source: http://www.usatoday.com/sports/mlb/salaries/). In this problem, we will consider player salaries.
+
+First, run the below code chunk to load the `mlb2016.csv` data set.
+
+```{r include=FALSE}
+mlb2016 <- read.csv("data/mlb2016.csv")
+```
+
+
+#### Part a 
+Calculate the population mean and standard deviation of the salaries for all 862 MLB players in 2016.
+
+```{r}
+# Put your code here
+```
+
+
+#### Part b
+Create a histogram of the salaries for all 862 MLB players in 2016. Describe the distribution of the salaries.
+
+```{r fig.height=3, fig.width=5}
+# Put your code here
+```
+
+*Write your description here, replacing this text.*
+
+
+#### Part c
+Use the following R code to obtain a single random sample of size $n=25$ from the data set. Calculate the mean and standard salary of the players included in the sample. Note that this would be one value in the sampling distribution.
+
+```{r}
+# Draw the random sample of size 25
+samp <- sample_n(mlb2016, size = 25)
+
+# Calculate the mean here
+```
+
+
+#### Part d
+Create a histogram of the salaries for the 25 sampled players. Describe the distribution of the salaries.
+
+```{r fig.height=3, fig.width=5}
+# Put your code here
+```
+
+*Write your description here, replacing this text.*
+
+
+#### Part e
+Use the following R code to simulate the sampling distribution of the sample mean for samples of size $n=25$. Calculate the mean and standard deviation of the salaries of the sampling distribution.
+
+```{r}
+sampling_dsn25 <- do(1000) * sample(mlb2016, size = 25) %>%
+  summarize(mean = mean(Salary))
+
+# Now calculate the mean and standard deviation
+```
+
+
+#### Part f
+Create a histogram of the simulated sampling distribution of the sample mean for samples of size $n=25$. Describe the distribution.
+
+```{r fig.height=3, fig.width=5}
+# Put your code here
+```
+
+*Write your description here, replacing this text.*
+
+
+#### Part g
+Use the following R code to simulate the sampling distribution of the sample mean for samples of size $n=50$. Calculate the mean and standard deviation of the salaries of the sampling distribution.
+
+```{r}
+sampling_dsn50 <- do(1000) * sample(mlb2016, size = 50) %>%
+  summarise(mean = mean(Salary))
+
+# Now calculate the mean and standard deviation
+```
+
+
+#### Part h
+Create a histogram of the simulated sampling distribution of the sample mean for samples of size $n=50$. Describe the distribution.
+
+```{r fig.height=3, fig.width=5}
+# Put your code here
+```
+
+*Write your description here, replacing this text.*
+
+
+#### Part i
+Use the following R code to simulate the sampling distribution of the sample mean for samples of size $n=100$. Calculate the mean and standard deviation of the salaries of the sampling distribution.
+
+```{r}
+sampling_dsn100 <- do(1000) * sample(mlb2016, size = 100) %>%
+  summarise(mean = mean(Salary))
+
+# Now calculate the mean and standard deviation
+```
+
+#### Part j
+Create a histogram of the simulated sampling distribution of the sample mean for samples of size $n=100$. Describe the distribution.
+
+```{r fig.height=3, fig.width=5}
+# Put your code here
+```
+
+*Write your description here, replacing this text.*
+
+
+#### Part k
+Compare the shapes of population distribution and the sampling distributions that you have simulated. Does the sample size impact the shape of the sampling distribution?
+
+*Write your answer here, replacing this text.*
+
+
+#### Part l
+Compare the means of the sampling distributions that you have simulated. How do they compare to the population mean? How does the sample size impact the mean of the sampling distribution?
+
+*Write your answer here, replacing this text.*
+
+
+#### Part m
+Compare the standard deviations (i.e. standard errors) of the sampling distributions that you have simulated. How do they compare to the population standard deviation? How does the sample size impact the standard error of the sampling distribution?
+
+*Write your answer here, replacing this text.*
+
