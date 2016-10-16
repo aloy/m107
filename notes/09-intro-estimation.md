@@ -79,3 +79,12 @@ For a bell-shaped sampling distribution
 
 ME ≈ 2 • SE for 95% confidence intervals
 
+<br>
+
+In our example SE ≈ 1913 for the sample of size n=50
+
+---
+
+# Interpreting confidence intervals
+
+95% of all samples yield intervals that contain the true parameter, so we say that we are "95% confident" or "95% sure" that one interval contains the truth.

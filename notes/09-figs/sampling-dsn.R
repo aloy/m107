@@ -62,3 +62,9 @@ ggsave(dsn1_mean, file = "samp_dsn50_mean.pdf", width = 5, height = 3)
 ggsave(dsn1, file = "samp_dsn50.pdf", width = 5, height = 3)
 ggsave(dsn2, file = "samp_dsn100.pdf", width = 5, height = 3)
 ggsave(dsn3, file = "samp_dsn250.pdf", width = 5, height = 3)
+
+
+# 95% Plug-in interval for n=50
+mean(sampling_dsn50$mean)
+sd(sampling_dsn50$mean)
+
