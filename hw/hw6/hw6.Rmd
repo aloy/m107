@@ -142,10 +142,11 @@ Calculate the population mean and standard deviation of the salaries for all 862
 
 
 #### Part b
-Create a histogram of the salaries for all 862 MLB players in 2016. Describe the distribution of the salaries.
+Below is a histogram of the salaries for all 862 MLB players in 2016. Describe the distribution of the salaries.
 
 ```{r fig.height=3, fig.width=5}
-# Put your code here
+ggplot(data = mlb2016, mapping = aes(x = Salary)) + 
+  geom_histogram()
 ```
 
 *Write your description here, replacing this text.*
@@ -163,10 +164,11 @@ samp <- sample_n(mlb2016, size = 25)
 
 
 #### Part d
-Create a histogram of the salaries for the 25 sampled players. Describe the distribution of the salaries.
+Below is a histogram of the salaries for the 25 sampled players. Describe the distribution of the salaries.
 
 ```{r fig.height=3, fig.width=5}
-# Put your code here
+ggplot(data = samp, mapping = aes(x = Salary)) + 
+  geom_histogram()
 ```
 
 *Write your description here, replacing this text.*
@@ -184,10 +186,12 @@ sampling_dsn25 <- do(1000) * sample(mlb2016, size = 25) %>%
 
 
 #### Part f
-Create a histogram of the simulated sampling distribution of the sample mean for samples of size $n=25$. Describe the distribution.
+Below is a histogram of the simulated sampling distribution of the sample mean for samples of size $n=25$. Describe the distribution.
 
 ```{r fig.height=3, fig.width=5}
-# Put your code here
+ggplot(data = sampling_dsn25, mapping = aes(x = mean)) + 
+  geom_histogram() +
+  labs(x = "Average Salary")
 ```
 
 *Write your description here, replacing this text.*
@@ -205,10 +209,12 @@ sampling_dsn50 <- do(1000) * sample(mlb2016, size = 50) %>%
 
 
 #### Part h
-Create a histogram of the simulated sampling distribution of the sample mean for samples of size $n=50$. Describe the distribution.
+Below is a histogram of the simulated sampling distribution of the sample mean for samples of size $n=50$. Describe the distribution.
 
 ```{r fig.height=3, fig.width=5}
-# Put your code here
+ggplot(data = sampling_dsn50, mapping = aes(x = mean)) + 
+  geom_histogram() +
+  labs(x = "Average Salary")
 ```
 
 *Write your description here, replacing this text.*
@@ -225,10 +231,12 @@ sampling_dsn100 <- do(1000) * sample(mlb2016, size = 100) %>%
 ```
 
 #### Part j
-Create a histogram of the simulated sampling distribution of the sample mean for samples of size $n=100$. Describe the distribution.
+Below is a histogram of the simulated sampling distribution of the sample mean for samples of size $n=100$. Describe the distribution.
 
 ```{r fig.height=3, fig.width=5}
-# Put your code here
+ggplot(data = sampling_dsn100, mapping = aes(x = mean)) + 
+  geom_histogram() +
+  labs(x = "Average Salary")
 ```
 
 *Write your description here, replacing this text.*
