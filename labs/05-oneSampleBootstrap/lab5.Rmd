@@ -11,10 +11,7 @@ Welcome to Lab 5!
 
 Today's lab will begin to explore the idea of building confidence intervals using the bootstrap.
 
-### 0.1 Administrative details
-Lab submissions are due by Friday, October 14 by 4:00 p.m. To submit your assignment, please upload both the .Rmd and .html files on Moodle.
-
-### 0.2 Setup
+### Setup
 You can download the .Rmd file for this lab and the data from the course [webpage](http://math107-lu.github.io/) as a zip file. If you are using a Mac, then you will need to use a browser other than Safari for the download. 
 
 If you are using the RStudio server, then you can upload the entire zip folder directly onto the server.
@@ -34,7 +31,7 @@ Brad Efron was annoyed by TV commercials. He suspected that there were more comm
 
 The data are contained in the file `TV.csv`.  The rows describe the half hour TV segments, and the columns describe:
 
-* **ID**: an ID number uniquley identifying segment,
+* **ID**: an ID number uniquely identifying segment,
 * **Times**: minutes of commercials per half-hour,
 * **Cable**: whether the channel was a `basic` channel or on `extended` cable.
 
@@ -55,7 +52,7 @@ summary(tv)
 
 As we already know, it is unrealistic for us to repeat this sampling process---randomly selecting 10 half hour segments of TV from both the basic and extended cable channels---a large number of times. Instead, we will allow the sample to "pull itself up by its bootstraps" and **use a bootstrap distribution to approximate the sampling distribution**. To utilize the bootstrap *we must assume that the sample is representative of the population so that the population can be "recreated" by "pasting together" many copies of the original sample*; that is, we must be able to *simulate* the population from the sample. 
 
-Given that the above assumption holds, we can approximate the sampling distribution by constructing a bootstrap distribution. For simplicity, let's start by considering the bootstrap distribution for the commercial length per half hour on basic cable. Since we are focusing on only one sample, we use the one-sample bootstrap procedure:
+Given that the above assumption holds, we can approximate the sampling distribution by constructing a bootstrap distribution. For simplicity, let's start by considering the bootstrap distribution for the commercial length per half hour on basic cable. Since we are focusing on only one sample, we use the **one-sample bootstrap procedure**:
 
 i) Draw a random sample of n observations, with replacement, from the original sample. This creates one bootstrap sample (also known as a resample).
 
@@ -85,7 +82,7 @@ bootstrap_sample1
 **Question 4.** Calculate the mean length of commercials from your first bootstrap sample. How does it compare to the original sample mean that you calculated in Question 3?
 
 
-To obtain a second bootstrap sample we repeat the sample process:
+To obtain a second bootstrap sample we repeat the process:
 
 ```{r}
 bootstrap_sample2 <- sample_n(basic, size = nrow(basic), replace = TRUE)
@@ -104,18 +101,18 @@ Since we already have the value of the original statistic in hand, we must deter
 
 This rule tells us a few important things:
 
-* If the center of the bootstrap distribution is approximately at the observed statistic, then the sampling distribution is centered approximately at the parameter. In this case, 
+* If the center of the bootstrap distribution is approximately at the observed statistic, then the sampling distribution is centered approximately at the parameter.
 
 * The shape of the bootstrap distribution will resemble the shape of the sampling distribution.
 
 * The spread of the bootstrap distribution is approximately the same as the spread of the sampling distribution.
 
-With this knowledge we can calculate a "plug-in" bootstrap confidence interval if the bootstrap distribution is approximately bell-shaped by using the standard deviation of the bootstrap distribution to approximate the standard error---that is, we simply plug in an estimate of what is unknown.
+With this knowledge we can calculate a **plug-in bootstrap confidence interval** if the bootstrap distribution is approximately bell-shaped by using the standard deviation of the bootstrap distribution to approximate the standard error---that is, we simply plug in an estimate of what is unknown.
 
 
 We could manually program a sampling procedure that would repeat the one-sample bootstrap procedure that we carried out above a large number of times, say 10,000, but this is already done for us in the `boot` function found in the `CarletonStats` R package.
 
-To create a bootstrap distribution for the mean commerical length in half-hour segments on basic channels, we use the following command
+To create a bootstrap distribution for the mean commercial length in half-hour segments on basic channels, we use the following command
 
 ```{r fig.height = 3.5, fig.width = 5}
 boot(basic$Times, B = 10000)
@@ -133,7 +130,7 @@ boot(basic$Times, B = 10000)
 **Question 10.** Give a one sentence interpretation of the confidence interval you just found in the context of the problem.
 
 
-**Question 11.** Create a new data frame by `filter`ing the data so that we only have extended cable segments and run the one-sample boostrap to create a bootstrap distribution of $B=10000$ boostrap statistics.
+**Question 11.** Create a new data frame by `filter`ing the data so that we only have extended cable segments and run the one-sample bootstrap to create a bootstrap distribution of $B=10000$ bootstrap statistics.
 
 **Question 12.** Describe the shape of the bootstrap distribution.
 
