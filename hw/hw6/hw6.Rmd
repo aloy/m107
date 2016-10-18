@@ -7,7 +7,7 @@ output: html_document
 
 ## Instructions
 
-Please complete your homework in this R markdown file. When you are don, please knit the document to Word and print a hard copy for submission. Make sure to change the `author:` so that you get credit for your work!
+Please complete your homework in this R markdown file. When you are done, please knit the document to Word and print a hard copy for submission. Make sure to change the `author:` so that you get credit for your work!
 
 The below code chunk loads all of the necessary R packages. Note that we will use the `mosaic` package. If you are using your personal computer, you will need to install this package **before** attempting to knit the document.
 
