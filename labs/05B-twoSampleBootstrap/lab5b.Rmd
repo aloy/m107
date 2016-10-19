@@ -1,13 +1,15 @@
 ---
-title: "Lab 5 Part II: The two-sample bootstrap"
-author: "Adam Loy"
-date: "October 19, 2016"
-output: html_document
+title: 'Lab 5 Part II: The two-sample bootstrap'
+author: "Prof. Adam Loy"
+date: "Wednesday, October 19, 2016"
+output:
+  html_document: default
+  pdf_document: default
 ---
 
 ## 0. Intro
 
-Welcome to Lab 5!
+Welcome back to Lab 5!
 
 Today's lab will continue to explore the idea of building confidence intervals using the bootstrap. Specifically, it will introduce how you can calculated a confidence interval for the difference in means.
 
@@ -48,13 +50,13 @@ summary(tv)
 
 ## 2. The two-sample bootstrap
 
-In the first part of this lab we computed two confidence intervals: one for the average commercial duration for basic TV channels, the other for the average commercial duration for extended cable channels. Instead of trying to determine whether there are more commercials, on average, on the basic channels using two intervals, we can create a *confidence interval for the difference in mean commercial time* in half hour blocks between basic and extended cable channels. The beauty of the bootstrap is that we can easily extend it to many different situations (i.e., the estimation of many different parameters). Since we are considering the difference in means, we must change the process slightly to utilize the two-sample bootstrap:
+In the first part of this lab we computed two confidence intervals: one for the average commercial duration for basic TV channels, the other for the average commercial duration for extended cable channels. Instead of trying to determine whether there are more commercials, on average, on the basic channels using two intervals, we can create a *confidence interval for the difference in mean commercial time* in half-hour blocks between basic and extended cable channels. The beauty of the bootstrap is that we can easily extend it to many different situations (i.e., the estimation of many different parameters). Since we are considering the difference in means, we must change the process slightly to utilize the two-sample bootstrap:
 
 i) Draw a random sample of $n_{1}$ observations, with replacement, from the original sample for the first group.
 
 ii) Draw a random sample of $n_{2}$ observations, with replacement, from the original sample for the second group.
 
-iii) Calculate the statistic of interest from these bootstrap samples. This statistic is called a bootstrap statistic.
+iii) Calculate the statistic of interest from these bootstrap samples (e.g., the difference in means). This statistic is called a bootstrap statistic.
 
 iv) Repeat steps i–iii many times, say 10,000.
 
@@ -67,15 +69,15 @@ Now that you are familiar with the process in theory, let's create a bootstrap d
 To begin, we can draw a single bootstrap sample from our original samples using commands in the `dplyr` package that we first used in lab 2.
 
 ```{r}
-tsboot1 <- group_by(tv, Cable) %>%
-  sample_frac(., size = 1, replace = TRUE)
+grouped_tv <- group_by(tv, Cable)
+tsboot1 <- sample_frac(grouped_tv, size = 1, replace = TRUE)
 ```
 
 Recall that the `group_by` function allows us to partition our data set so that we can apply functions to each group. Next, we use the `sample_frac` function to sample a fraction of the original data set within each group. Specifying `size=1` indicates that we want data sets of the same size as the originals and specifying `replace=TRUE` tells R to sample with replacement.
 
-**Question 1.** Calculate the mean for each group from your bootstrap sample and then calculate the difference in means. Compare your means with those of your group members to get a sense for the variability of the bootstrap statistics.
+**Question 1.** Calculate the mean for each group from your bootstrap sample and then calculate the difference in means. Compare your bootstrap statistics with those of your group members to get a sense for the variability of the bootstrap statistics.
 
-To create a bootstrap distribution for the difference in mean commercial length in half-hour segments on basic channels, we use the following command
+To create a bootstrap distribution for the difference in mean commercial length in half-hour segments on basic channels, we use the following command. Note that the formula specified takes the form: `Response_variable ~ Explanatory_variable`.
 
 ```{r fig.height = 3.5, fig.width = 5}
 boot(Times ~ Cable, data = tv, B = 10000)
@@ -91,7 +93,7 @@ boot(Times ~ Cable, data = tv, B = 10000)
 
 **Question 6.** Give a one sentence interpretation of the confidence interval you just found in the context of the problem.
 
-**Question 7.** 6. Does the confidence interval you just found provide evidence of a difference in mean commercial time in half hour blocks between basic and extended cable channels? Justify why or why not.
+**Question 7.** Does the confidence interval you just found provide evidence of a difference in mean commercial time in half hour blocks between basic and extended cable channels? Justify why or why not.
 
 ## 3. Wrapping up
 
