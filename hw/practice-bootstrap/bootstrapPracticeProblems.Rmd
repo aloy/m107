@@ -1,7 +1,10 @@
 ---
-title: "Optional Homework: Bootstrap Practice Problems"
-author: "Prof. Adam Loy"
-output: html_document
+title: 'Optional Homework: Bootstrap Practice Problems'
+author: "Fall 2016, Math 107, Prof. Adam Loy"
+date: "Due Wednesday, October 26 at the beginning of class"
+output:
+  html_document: default
+  pdf_document: default
 ---
 
 ## Instructions
@@ -78,6 +81,9 @@ Using the plug-in method, calculate a 95% bootstrap confidence interval for the 
 
 #### Part e
 Provide an interpretation of your interval from the previous part within the context of the problem.
+
+*Write your answer here, replacing this text.*
+
 
 [^2]: Twitter News Consumers: Young, Mobile and Educated. November 4, 2013. Pew Research.
 
