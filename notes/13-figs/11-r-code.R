@@ -107,11 +107,11 @@ arsenic_density <-
   labs(x="Sample mean arsenic concentration") +
   theme_minimal()
 
-ggsave(mosquitoes_perm_dsn, file="mosquitoes_perm_dsn.pdf", width = 5, height = 3)
-ggsave(yawning_perm_dsn, file="yawning_perm_dsn.pdf", width = 5, height = 3)
-ggsave(basic_tv_boot, file="basic_tv_boot.pdf", width = 5, height = 3)
-ggsave(tv_boot, file="tv_boot.pdf", width = 5, height = 3)
-ggsave(arsenic_boot, file="arsenic_boot.pdf", width = 5, height = 3)
+ggsave(mosquitoes_density, file="mosquitoes_density.pdf", width = 5, height = 3)
+ggsave(yawning_density, file="yawning_density.pdf", width = 5, height = 3)
+ggsave(basic_tv_density, file="basic_tv_density.pdf", width = 5, height = 3)
+ggsave(tv_density, file="tv_density.pdf", width = 5, height = 3)
+ggsave(arsenic_density, file="arsenic_density.pdf", width = 5, height = 3)
 
 
 ### GENERAL NORMAL DISTRIBUTION
