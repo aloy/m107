@@ -1,0 +1,43 @@
+---
+title: 'Lab 6: Simple linear regression in R'
+author: "Prof. Adam Loy"
+date: "Due: Friday, November 4, 2016 by 4 p.m."
+output:
+  html_document: default
+  pdf_document: default
+---
+
+## 0. Intro
+
+Welcome to Lab 6!
+
+Today's lab will explore how to fit simple linear regression models in R. In addition, it will explore how we can use the bootstrap to create confidence intervals for the y-intercept and slope, and how we can create prediction intervals for a new observation.
+
+### Setup
+You can download the .Rmd file for this lab and the data from the course [webpage](http://math107-lu.github.io/) as a zip file. If you are using a Mac, then you will need to use a browser other than Safari for the download. 
+
+If you are using the RStudio server, then you can upload the entire zip folder directly onto the server.
+
+We will use the following packages during this lab. Make sure that you have downloaded all of them before running the commands.
+
+
+```{r message=FALSE}
+library(ggplot2)
+library(car)
+library(mosaic)
+```
+
+
+## 1. The data
+
+
+
+## 2. Fitting a simple linear regression model in R
+
+## 3. Checking model fit
+
+## 4. Bootstrapping regression models
+
+## 5. Wrapping Up
+
+## 6. References
