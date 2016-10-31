@@ -1,0 +1,80 @@
+---
+title: "Homework 7"
+author: "Fall 2016, Math 107, Prof. Adam Loy"
+date: "Due Monday, November 7 by 4 p.m."
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Instructions
+
+## Problem 1
+
+Energy can be produced from wind using windmills. Choosing a site for a wind farm, the location
+of the windmills, can be a multi-million dollar gamble. If wind is inadequate at the site, then the
+energy produced over the lifetime of the wind farm can be much less than the cost of building
+the operation. Prediction of wind speed at a candidate site can be an important component in the
+decision to build or not to build. Since energy produced varies as the square of the wind speed,
+even small errors can have serious consequences.
+
+One possible way to predict wind speed at a candidate site is to use wind speed at
+a nearby reference site. A reference site is a nearby location where the wind speed should be
+similar to the candidate site. Airports sometimes serve as reference sites, but in our case, 
+the reference data come from the National Center for Environmental Modeling (NCAR, 2013). Both sites
+are in the northern part of South Dakota.
+
+The data set `windmill.csv` contains measurements of wind speed (in meters per second, m/s) 
+at the candidate site (CSpd) and at a accompanying reference site (RSpd).
+
+#### Part a.
+
+Identify the explanatory and response variables for this problem.
+
+#### Part b.
+
+Create a scatterplot of the wind speed at the candidate site vs. the wind speed at the accompanying reference site.
+
+#### Part c.
+
+Describe the relationship between the wind speed at the candidate site and the wind speed at the accompanying reference site.
+
+#### Part d.
+
+Calculate the correlation between the wind speed at the candidate site and the wind speed at the accompanying reference site.
+
+#### Part e.
+
+Fit the least squares regression line and print a summary of the model.
+
+#### Part f.
+
+Report the least squares regression equation.
+
+#### Part g.
+
+Interpret the estimate of the slope within the context of the problem.
+
+#### Part h.
+
+Interpret the estimate of the y-intercept within the context of the problem.
+
+#### Part i.
+
+Calculate a 95% bootstrap confidence interval for the slope. Based on this interval, is there statistically significant evidence that the slope is not zero? Explain.
+
+#### Part j.
+
+Predict the wind speed at the candidate site on a day when the wind speed at the reference site is 10 m/s.
+
+#### Part k. 
+
+Would you be comfortable using your model to predict the wind speed at the candidate site given the wind speed at the reference site is 30m/s? Explain.
+
+
+
+## Problem 2
