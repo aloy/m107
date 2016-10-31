@@ -81,7 +81,7 @@ Using R, we find r = -0.71
 
 ---
 
-# Calibrating your eyes
+# Calibrating your intuition
 
 
 [mih5.github.io/statapps/correlation_game/correlation_game.html](http://mih5.github.io/statapps/correlation_game/correlation_game.html)
