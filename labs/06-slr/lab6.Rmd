@@ -23,20 +23,94 @@ We will use the following packages during this lab. Make sure that you have down
 
 ```{r message=FALSE}
 library(ggplot2)
-library(car)
 library(mosaic)
+library(car)
 ```
 
 
 ## 1. The data
 
+How much is an extra square foot of space worth? In this lab, we investigate this question for homes in Saratoga County, New York. The data set contains the prices of 1000 homes. To begin we must load the data set.
+
+```{r}
+saratoga <- read.csv("data/saratoga.csv")
+```
+
+### 1.1. Exploring the data
+
+Before jumping into a regression analysis, it's a good idea to plot the variables involved to determine whether there is linear relationship between them.
+
+**Question 1.** Create a histogram of the price of the homes and describe the distribution.
+
+**Question 2.** Create a histogram of the living ares of the homes and describe the distribution.
+
+**Question 3.** Create a scatterplot of price vs. living area and describe the relationship. (Look at the column names carefully!)
+
+In addition to exploratory plots, we can quantify the strength and direction of the linear association between the price and living area using the correlation. To calculate the correlation in R we use the `cor` command from `mosaic` package. The basic syntax is `cor(y ~ x, data = data_frame)` where `y` is the response variable and `x` is the explanatory variable. For our data set this becomes
+
+```{r}
+cor(Price ~ Living.Area, data = saratoga)
+```
+
 
 
 ## 2. Fitting a simple linear regression model in R
 
+Having verified that a linear relationship is plausible between price and living area, we fit a regression model to further explore this relationship. in R, we use the `lm` function to fit a simple linear regression. The basic syntax follows the same pattern as before: `lm(y ~ x, data = data_frame)` where `y` is the response variable and `x` is the explanatory variable. For our data set this becomes
+
+```{r}
+mod <- lm(Price ~ Living.Area, data = saratoga)
+summary(mod)
+```
+
+You can also easily overlay the fitted regression line on a scatterplot by adding a layer:
+
+```{r fig.width=5, fig.height=3}
+ggplot(data = saratoga, mapping = aes(x = Living.Area, y = Price)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  labs(x = "Living area (sq. ft.)", y = "Price (dollars)")
+```
+
+
+
+**Question 4.** Report the fitted least squares regression equation.
+
+**Question 5.** Interpret the estimate of the slope within the context of the problem.
+
+**Question 6.** Interpret the estimate of the y-intercept within the context of the problem. Does this interpretation make sense in this context?
+
+
 ## 3. Checking model fit
 
+After fitting any regression model it is a good idea to double-check that a linear relationship is justified. This can be accomplished by examining a residual plot (a plot of the residuals vs. the fitted values). The residuals plot for a "good" regression model will look like a formless cloud with pattern, with all of the residuals centered around 0. Nonlinear patterns in a residual plot are indicative of a nonlinear relationship between the explanatory and response variable. 
+
+A residual plot for our regression model is created below. Notice that we are able to use our model, `mod`, as our data set.
+
+```{r fig.height=3, fig.width=5}
+ggplot(data = mod, mapping = aes(x = .fitted, y = .resid)) + 
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  geom_point() +
+  labs(x = "Fitted values", y = "Residuals")
+```
+
+**Question 7.** Is there any apparent pattern in the residual plot? What does this indicate about the linearity of the relationship between price and living area?
+
+Should I discuss the other things to check here too?
+
 ## 4. Bootstrapping regression models
+
+Motivate the bootstrap for CIs...
+
+Outline the algorithm (check the textbook)...
+
+```{r}
+mod_boot <- Boot(mod, R = 1999)
+summary(mod_boot)
+confint(mod_boot)
+```
+
+
 
 ## 5. Wrapping Up
 

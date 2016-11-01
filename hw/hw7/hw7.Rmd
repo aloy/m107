@@ -3,8 +3,8 @@ title: "Homework 7"
 author: "Fall 2016, Math 107, Prof. Adam Loy"
 date: "Due Monday, November 7 by 4 p.m."
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -53,7 +53,7 @@ Fit the least squares regression line and print a summary of the model.
 
 #### Part f.
 
-Report the least squares regression equation.
+Report the fitted least squares regression equation.
 
 #### Part g.
 
