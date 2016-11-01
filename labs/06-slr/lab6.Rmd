@@ -56,7 +56,7 @@ cor(Price ~ Living.Area, data = saratoga)
 
 ## 2. Fitting a simple linear regression model in R
 
-Having verified that a linear relationship is plausible between price and living area, we fit a regression model to further explore this relationship. in R, we use the `lm` function to fit a simple linear regression. The basic syntax follows the same pattern as before: `lm(y ~ x, data = data_frame)` where `y` is the response variable and `x` is the explanatory variable. For our data set this becomes
+Having verified that a linear relationship is plausible between price and living area, we fit a regression model to further explore this relationship. In R, we use the `lm` function to fit a simple linear regression. The basic syntax follows the same pattern as before: `lm(y ~ x, data = data_frame)` where `y` is the response variable and `x` is the explanatory variable. For our data set this becomes
 
 ```{r}
 mod <- lm(Price ~ Living.Area, data = saratoga)
@@ -73,7 +73,6 @@ ggplot(data = saratoga, mapping = aes(x = Living.Area, y = Price)) +
 ```
 
 
-
 **Question 4.** Report the fitted least squares regression equation.
 
 **Question 5.** Interpret the estimate of the slope within the context of the problem.
@@ -83,7 +82,11 @@ ggplot(data = saratoga, mapping = aes(x = Living.Area, y = Price)) +
 
 ## 3. Checking model fit
 
-After fitting any regression model it is a good idea to double-check that a linear relationship is justified. This can be accomplished by examining a residual plot (a plot of the residuals vs. the fitted values). The residuals plot for a "good" regression model will look like a formless cloud with pattern, with all of the residuals centered around 0. Nonlinear patterns in a residual plot are indicative of a nonlinear relationship between the explanatory and response variable. 
+After fitting any regression model it is a good idea to double-check that our linear model fits the data appropriately. This can be accomplished by examining plots of the residuals to check for (1) linearity, (2) constant variability, and (3) nearly normal residuals.
+
+### 3.1 Linearity
+
+While we have already checked linearity using a plot of the response vs. explanatory variables, it should be double-checked using a residual plot (a plot of the residuals vs. the fitted values). The residuals plot for a "good" regression model will look like a formless cloud with pattern, with all of the residuals centered around 0. Nonlinear patterns in a residual plot are indicative of a nonlinear relationship between the explanatory and response variable. 
 
 A residual plot for our regression model is created below. Notice that we are able to use our model, `mod`, as our data set.
 
@@ -96,22 +99,50 @@ ggplot(data = mod, mapping = aes(x = .fitted, y = .resid)) +
 
 **Question 7.** Is there any apparent pattern in the residual plot? What does this indicate about the linearity of the relationship between price and living area?
 
-Should I discuss the other things to check here too?
+
+### Constant variability
+
+We want the relationship between the response and explantory variable to be linear, but we also want the spread of the observations around the least squares regression line to be approximatley constant. This assumption will be important later when we discuss how to conduct inference for regression using the t distribution, but it's a good idea to get used to checking this assumption now.
+
+**Question 8.** Based on the residual plot, does the constant variability condition appear to be met?
+
+
+### Bell-shaped residual distribution
+
+Finally, we want the residuals to be symmetrically distributed about 0. While this can be checked from the above residual plot, it is often useful to create a histogram of the residuals to double-check this.
+
+**Question 9.** Create a histogram of the residuals. (Remember to use `mod` as your data frame and `.resid` as your variable.) Is the distribution of the residuals approximately bell shaped?
 
 ## 4. Bootstrapping regression models
 
-Motivate the bootstrap for CIs...
+Up to this point we have simply described what our simple linear regression model reveals about the 1,728 houses contained in our sample; however, if we drew a new sample from the population it may give a different fitted least squares regression equation. In order to draw inferences about this linear relationship back to the population of all houses in Saratoga County, New York we must either construct confidence intervals for the slope and intercept (also called regression coefficients), or we must run hypothesis tests. In this lab we will focus on constructing confidence intervals for regression coefficients using the bootstrap. Recall that confidence intervals can be used to test hypotheses as long as we keep track of how confidence and significance levels are related.
 
-Outline the algorithm (check the textbook)...
+In order to bootstrap a regression model we must take the following steps (you should understand these steps, but we will not manually implement them). Assuming that there are $n$ rows in our data set
 
-```{r}
-mod_boot <- Boot(mod, R = 1999)
+*Step 1.* Draw a random sample with replacement of size $n$ from the rows of the data set.
+
+*Step 2.* Fit the regression model to this new data set and save the values of the estimated coefficients or other summary statistics.
+
+*Step 3.* Repeat steps 1 and 2 $R$ times.
+
+Then we build confidence intervals either using the plug-in or percentile method.
+
+To bootstrap regression models in R, we use the `Boot` function found in the `car` package. The basic syntax is `Boot(model, R)` where `model` is the name of the original regression model fit to our data and `R` is the number of bootstrap samples to collect. To bootstrap our regression model we run the following code:
+
+```{r, message=FALSE}
+mod_boot <- Boot(mod, R = 999)
 summary(mod_boot)
-confint(mod_boot)
 ```
 
+**Question 10.** Create a 95% plug-in confidence interval for the slope.
+
+**Question 11.** Interpret the interval you just created in the context of the problem.
+
+**Question 12.** Based on your interval, is there statistically significant evidence that the slope is not 0 (i.e. that there is some linear relationship between the variables)? If so, at what significance level?
 
 
 ## 5. Wrapping Up
+
+Congratulations, you just just bootstrapped your first regression model in R! Be sure to review the steps and logic behind the bootstrap before next class.
 
 ## 6. References
