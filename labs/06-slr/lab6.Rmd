@@ -1,7 +1,7 @@
 ---
 title: 'Lab 6: Simple linear regression in R'
 author: "Prof. Adam Loy"
-date: "Due: Friday, November 4, 2016 by 4 p.m."
+date: "Due: Friday, November 4, 2016 by 4 p.m. on Moodle"
 output:
   html_document: default
   pdf_document: default
