@@ -118,7 +118,7 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">Homework 7</h1>
 <h4 class="author"><em>Fall 2016, Math 107, Prof. Adam Loy</em></h4>
-<h4 class="date"><em>Due Monday, November 7 by 4 p.m.</em></h4>
+<h4 class="date"><em>Due Tuesday, November 8 by 4 p.m.</em></h4>
 
 </div>
 
@@ -126,7 +126,7 @@ $(document).ready(function () {
 <div id="instructions" class="section level2">
 <h2>Instructions</h2>
 <p>Please complete your homework in this R markdown file. When you are done, please knit the document to Word and print a hard copy for submission. Make sure to change the <code>author:</code> so that you get credit for your work!</p>
-<p>The below code chunk loads all of the necessary R packages. Note that we will use the <code>mosaic</code> package. If you are using your personal computer, you will need to install this package <strong>before</strong> attempting to knit the document.</p>
+<p>The below code chunk loads all of the necessary R packages. Note that we will use the <code>car</code> package. If you are using your personal computer, you will need to install this package <strong>before</strong> attempting to knit the document.</p>
 <pre class="r"><code>library(ggplot2)
 library(mosaic)
 library(car)</code></pre>
@@ -136,6 +136,8 @@ library(car)</code></pre>
 <p>Energy can be produced from wind using windmills. Choosing a site for a wind farm, the location of the windmills, can be a multi-million dollar gamble. If wind is inadequate at the site, then the energy produced over the lifetime of the wind farm can be much less than the cost of building the operation. Prediction of wind speed at a candidate site can be an important component in the decision to build or not to build. Since energy produced varies as the square of the wind speed, even small errors can have serious consequences.</p>
 <p>One possible way to predict wind speed at a candidate site is to use wind speed at a nearby reference site. A reference site is a nearby location where the wind speed should be similar to the candidate site. Airports sometimes serve as reference sites, but in our case, the reference data come from the National Center for Environmental Modeling (NCAR, 2013). Both sites are in the northern part of South Dakota.</p>
 <p>The data set <code>windmill.csv</code> contains measurements of wind speed (in meters per second, m/s) at the candidate site (CSpd) and at a accompanying reference site (RSpd).</p>
+<p>First, run the below code chunk to load the <code>windmill.csv</code> data set.</p>
+<pre class="r"><code>windmill &lt;- read.csv(&quot;data/windmill.csv&quot;)</code></pre>
 <div id="part-a." class="section level4">
 <h4>Part a.</h4>
 <p>Identify the explanatory and response variables for this problem.</p>

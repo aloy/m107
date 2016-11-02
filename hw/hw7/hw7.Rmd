@@ -1,7 +1,7 @@
 ---
 title: "Homework 7"
 author: "Fall 2016, Math 107, Prof. Adam Loy"
-date: "Due Monday, November 7 by 4 p.m."
+date: "Due Tuesday, November 8 by 4 p.m."
 output:
   html_document: default
   pdf_document: default
@@ -40,7 +40,13 @@ the reference data come from the National Center for Environmental Modeling (NCA
 are in the northern part of South Dakota.
 
 The data set `windmill.csv` contains measurements of wind speed (in meters per second, m/s) 
-at the candidate site (CSpd) and at a accompanying reference site (RSpd).
+at the candidate site (CSpd) and at a accompanying reference site (RSpd). 
+
+First, run the below code chunk to load the `windmill.csv` data set.
+
+```{r}
+windmill <- read.csv("data/windmill.csv")
+```
 
 #### Part a.
 
