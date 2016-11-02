@@ -16,7 +16,7 @@ Today's lab will explore how to fit simple linear regression models in R. In add
 ### Setup
 You can download the .Rmd file for this lab and the data from the course [webpage](http://math107-lu.github.io/) as a zip file. If you are using a Mac, then you will need to use a browser other than Safari for the download. 
 
-If you are using the RStudio server, then you can upload the entire zip folder directly onto the server.
+If you are using the R Studio server, then you can upload the entire zip folder directly onto the server.
 
 We will use the following packages during this lab. Make sure that you have downloaded all of them before running the commands.
 
@@ -30,7 +30,7 @@ library(car)
 
 ## 1. The data
 
-How much is an extra square foot of space worth? In this lab, we investigate this question for homes in Saratoga County, New York. The data set contains the prices of 1000 homes. To begin we must load the data set.
+How much is an extra square foot of space worth? In this lab, we investigate this question for homes in Saratoga County, New York. The data set contains the prices of 1,728 homes. To begin we must load the data set.
 
 ```{r}
 saratoga <- read.csv("data/saratoga.csv")
@@ -86,7 +86,7 @@ After fitting any regression model it is a good idea to double-check that our li
 
 ### 3.1 Linearity
 
-While we have already checked linearity using a plot of the response vs. explanatory variables, it should be double-checked using a residual plot (a plot of the residuals vs. the fitted values). The residuals plot for a "good" regression model will look like a formless cloud with pattern, with all of the residuals centered around 0. Nonlinear patterns in a residual plot are indicative of a nonlinear relationship between the explanatory and response variable. 
+While we have already checked linearity using a plot of the response vs. explanatory variables, it should be double-checked using a residual plot (a plot of the residuals vs. the fitted values). The residual plot for a "good" regression model will look like a formless cloud with no pattern, and all of the residuals will be centered around 0. Nonlinear patterns in a residual plot are indicative of a nonlinear relationship between the explanatory and response variable. 
 
 A residual plot for our regression model is created below. Notice that we are able to use our model, `mod`, as our data set.
 
@@ -102,7 +102,7 @@ ggplot(data = mod, mapping = aes(x = .fitted, y = .resid)) +
 
 ### Constant variability
 
-We want the relationship between the response and explantory variable to be linear, but we also want the spread of the observations around the least squares regression line to be approximatley constant. This assumption will be important later when we discuss how to conduct inference for regression using the t distribution, but it's a good idea to get used to checking this assumption now.
+We want the relationship between the response and explanatory variable to be linear, but we also want the spread of the observations around the least squares regression line to be approximately constant. This assumption will be important later when we discuss how to conduct inference for regression using the t distribution, but it's a good idea to get used to checking this assumption now.
 
 **Question 8.** Based on the residual plot, does the constant variability condition appear to be met?
 
@@ -129,7 +129,7 @@ Then we build confidence intervals either using the plug-in or percentile method
 
 To bootstrap regression models in R, we use the `Boot` function found in the `car` package. The basic syntax is `Boot(model, R)` where `model` is the name of the original regression model fit to our data and `R` is the number of bootstrap samples to collect. To bootstrap our regression model we run the following code:
 
-```{r, message=FALSE}
+```{r, message=FALSE, cache=TRUE}
 mod_boot <- Boot(mod, R = 999)
 summary(mod_boot)
 ```
@@ -144,5 +144,3 @@ summary(mod_boot)
 ## 5. Wrapping Up
 
 Congratulations, you just just bootstrapped your first regression model in R! Be sure to review the steps and logic behind the bootstrap before next class.
-
-## 6. References

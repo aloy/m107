@@ -13,6 +13,17 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Instructions
 
+Please complete your homework in this R markdown file. When you are done, please knit the document to Word and print a hard copy for submission. Make sure to change the `author:` so that you get credit for your work!
+
+The below code chunk loads all of the necessary R packages. Note that we will use the `car` package. If you are using your personal computer, you will need to install this package **before** attempting to knit the document.
+
+```{r message=FALSE}
+library(ggplot2)
+library(mosaic)
+library(car)
+```
+
+
 ## Problem 1
 
 Energy can be produced from wind using windmills. Choosing a site for a wind farm, the location
@@ -35,46 +46,123 @@ at the candidate site (CSpd) and at a accompanying reference site (RSpd).
 
 Identify the explanatory and response variables for this problem.
 
+*Write your answer here, replacing this text.*
+
 #### Part b.
 
 Create a scatterplot of the wind speed at the candidate site vs. the wind speed at the accompanying reference site.
+
+```{r fig.height=3, fig.width=5}
+# INSERT YOUR CODE HERE
+```
+
 
 #### Part c.
 
 Describe the relationship between the wind speed at the candidate site and the wind speed at the accompanying reference site.
 
+*Write your answer here, replacing this text.*
+
+
 #### Part d.
 
 Calculate the correlation between the wind speed at the candidate site and the wind speed at the accompanying reference site.
+
+```{r}
+# INSERT YOUR CODE HERE
+```
 
 #### Part e.
 
 Fit the least squares regression line and print a summary of the model.
 
+```{r}
+# INSERT YOUR CODE HERE
+```
+
 #### Part f.
 
 Report the fitted least squares regression equation.
+
+*Write your answer here, replacing this text.*
 
 #### Part g.
 
 Interpret the estimate of the slope within the context of the problem.
 
+*Write your answer here, replacing this text.*
+
+
 #### Part h.
 
 Interpret the estimate of the y-intercept within the context of the problem.
 
+*Write your answer here, replacing this text.*
+
+
 #### Part i.
 
-Calculate a 95% bootstrap confidence interval for the slope. Based on this interval, is there statistically significant evidence that the slope is not zero? Explain.
+Calculate a 95% bootstrap confidence interval for the slope. 
 
-#### Part j.
+```{r}
+# INSERT YOUR CODE HERE
+```
+
+
+#### Part j. 
+
+Interpret the interval you just created in the context of the problem.
+
+*Write your answer here, replacing this text.*
+
+
+#### Part k.
+
+Based on this interval, is there statistically significant evidence that the slope is not zero? Explain.
+
+*Write your answer here, replacing this text.*
+
+
+#### Part l.
+
+What proportion of the variability in wind speed at the candidate site is explained by the regression model?
+
+*Write your answer here, replacing this text.*
+
+
+#### Part m.
 
 Predict the wind speed at the candidate site on a day when the wind speed at the reference site is 10 m/s.
 
-#### Part k. 
+*Write your answer here, replacing this text.*
+
+
+#### Part n. 
 
 Would you be comfortable using your model to predict the wind speed at the candidate site given the wind speed at the reference site is 30m/s? Explain.
 
+*Write your answer here, replacing this text.*
 
 
-## Problem 2
+#### Part o.
+
+Create a residual plot for your model. Is there any apparent pattern in the residual plot? What does this indicate about the linearity and constant variability?
+
+
+```{r fig.height=3, fig.width=5}
+# INSERT YOUR CODE HERE
+```
+
+*Write your answer here, replacing this text.*
+
+
+#### Part p.
+
+Create a histogram of the residuals. Describe the distribution of the residuals and what this indicates about the appropriateness of the model?
+
+
+```{r fig.height=3, fig.width=5}
+# INSERT YOUR CODE HERE
+```
+
+*Write your answer here, replacing this text.*
