@@ -118,7 +118,7 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">Lab 6: Simple linear regression in R</h1>
 <h4 class="author"><em>Prof. Adam Loy</em></h4>
-<h4 class="date"><em>Due: Friday, November 4, 2016 by 4 p.m.</em></h4>
+<h4 class="date"><em>Due: Friday, November 4, 2016 by 4 p.m. on Moodle</em></h4>
 
 </div>
 
@@ -132,9 +132,11 @@ $(document).ready(function () {
 <p>You can download the .Rmd file for this lab and the data from the course <a href="http://math107-lu.github.io/">webpage</a> as a zip file. If you are using a Mac, then you will need to use a browser other than Safari for the download.</p>
 <p>If you are using the R Studio server, then you can upload the entire zip folder directly onto the server.</p>
 <p>We will use the following packages during this lab. Make sure that you have downloaded all of them before running the commands.</p>
+<p><span class="math inline">\(\hat{y} = 51.59 - .0098 x\)</span></p>
 <pre class="r"><code>library(ggplot2)
 library(mosaic)
 library(car)</code></pre>
+<p><span class="math inline">\(\hat{y} = 51.59 - .0098 x\)</span></p>
 </div>
 </div>
 <div id="the-data" class="section level2">
@@ -222,8 +224,8 @@ summary(mod)</code></pre>
 <pre class="r"><code>mod_boot &lt;- Boot(mod, R = 999)
 summary(mod_boot)</code></pre>
 <pre><code>##               R original    bootBias    bootSE  bootMed
-## (Intercept) 999 13439.39 -116.878731 5922.7434 13139.55
-## Living.Area 999   113.12    0.038157    3.5827   113.25</code></pre>
+## (Intercept) 999 13439.39 -154.601539 5896.6143 13270.14
+## Living.Area 999   113.12    0.063768    3.6546   113.15</code></pre>
 <p><strong>Question 10.</strong> Create a 95% plug-in confidence interval for the slope.</p>
 <p><strong>Question 11.</strong> Interpret the interval you just created in the context of the problem.</p>
 <p><strong>Question 12.</strong> Based on your interval, is there statistically significant evidence that the slope is not 0 (i.e. that there is some linear relationship between the variables)? If so, at what significance level?</p>

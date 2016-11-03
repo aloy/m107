@@ -20,6 +20,8 @@ If you are using the R Studio server, then you can upload the entire zip folder 
 
 We will use the following packages during this lab. Make sure that you have downloaded all of them before running the commands.
 
+$\hat{y} = 51.59 - .0098 x$
+
 
 ```{r message=FALSE}
 library(ggplot2)
@@ -27,6 +29,8 @@ library(mosaic)
 library(car)
 ```
 
+
+$\hat{y} = 51.59 - .0098 x$
 
 ## 1. The data
 
