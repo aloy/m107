@@ -101,7 +101,7 @@ Percentile intervals
 
 		Bootstrap quantiles, type =  percent 
 
-                2.5 %    97.5 %
+                	    2.5 %    97.5 %
 		(Intercept) 0.2406487 12.243993
 		bigmac2003  0.5309925  1.058041
 
