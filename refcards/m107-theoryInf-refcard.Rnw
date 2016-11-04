@@ -1,0 +1,206 @@
+
+%\VignetteIndexEntry{Minimal R}
+%\VignettePackage{mosaic}
+%\VignetteKeywords{mosaic, vignettes, minimal}
+%\VignetteEngine{knitr::knitr} 
+
+\documentclass[10pt]{report}
+
+\usepackage[landscape,margin=.40in,top=.30in,bottom=.30in,includehead,includefoot]{geometry}
+
+\usepackage{multicol}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{longtable}
+
+\usepackage[utf8]{inputenc}
+
+%%%%  fancy family
+\usepackage{fancyvrb}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+
+\renewcommand{\chaptermark}[1]{\thispagestyle{fancy}\markboth{{#1}}{}}
+\renewcommand{\sectionmark}[1]{\markright{{#1}}{}}
+
+\chead{}
+\lhead[\sf \thepage]{\sf \leftmark}
+\rhead[\sf \leftmark]{\sf \thepage}
+
+\pagestyle{fancy}
+
+
+%%% some local defs
+
+\newcounter{myenumi}
+\newcommand{\saveenumi}{\setcounter{myenumi}{\value{enumi}}}
+\newcommand{\reuseenumi}{\setcounter{enumi}{\value{myenumi}}}
+
+\def\R{{\sf R}}
+\def\Rstudio{{\sf RStudio}}
+\def\RStudio{{\sf RStudio}}
+\def\term#1{\textbf{#1}}
+\def\tab#1{{\sf #1}}
+
+\providecommand{\variable}[1]{}
+\renewcommand{\variable}[1]{{\color{green!50!black}\texttt{#1}}}
+\providecommand{\dataframe}[1]{}
+\renewcommand{\dataframe}[1]{{\color{blue!80!black}\texttt{#1}}}
+\providecommand{\function}[1]{}
+\renewcommand{\function}[1]{{\color{purple!75!blue}\texttt{\StrSubstitute{#1}{()}{}()}}}
+\providecommand{\option}[1]{}
+\renewcommand{\option}[1]{{\color{brown!80!black}\texttt{#1}}}
+\providecommand{\pkg}[1]{}
+\renewcommand{\pkg}[1]{{\color{red!80!black}\texttt{#1}}}
+\providecommand{\code}[1]{}
+\renewcommand{\code}[1]{{\color{blue!80!black}\texttt{#1}}}
+
+\newcommand{\cran}{\href{http://www.R-project.org/}{CRAN}}
+\newcommand{\rterm}[1]{\textbf{#1}}
+
+\usepackage{textcomp}  % for \texttildelow
+\newcommand{\twiddle}{\raisebox{0.5ex}{\texttildelow}}
+
+
+\title{Theory-Based Inference for Intro Stats}
+
+\author{
+Adam Loy
+}
+
+\date{\today}
+
+
+\begin{document}
+\parindent=0pt
+
+
+<<setup,echo=FALSE,message=FALSE,include=FALSE>>=
+#source('setup.R')
+require(mosaic)
+require(mosaicData)
+require(parallel)
+trellis.par.set(theme=col.mosaic())
+set.seed(123)
+#knit_hooks$set(inline = function(x) {
+#	if (is.numeric(x)) return(knitr:::format_sci(x, 'latex'))
+#	x = as.character(x)
+#	h = knitr:::hilight_source(x, 'latex', list(prompt=FALSE, size='normalsize'))
+#	h = gsub("([_#$%&])", "\\\\\\1", h)
+#	h = gsub('(["\'])', '\\1{}', h)
+#	gsub('^\\\\begin\\{alltt\\}\\s*|\\\\end\\{alltt\\}\\s*$', '', h)
+#})
+opts_chunk$set(
+  size="small",
+	dev="pdf",
+	eval=FALSE,
+	tidy=FALSE,
+	fig.align='center',
+	fig.show='hold',
+	message=FALSE
+	)
+@ 
+
+
+\let\oldchapter=\chapter
+\def\chapter{\setcounter{page}{1}\oldchapter}
+
+
+%\begin{center}
+%\section*{Enough R for Intro Stats}
+%\end{center}
+
+\def\opt#1{#1}
+\def\squeeze{\vspace*{-4ex}}
+
+\chead{ \bfseries \Large Theory-Based Inference in {\sf R} for Intro Stats}
+\lhead{Math 107}
+\rhead{Spring 2016}
+
+This reference cards provides you with the recipes for working with the normal and t distributions to construct confidence intervals and carryout hypothesis tests. You will need to carefully consider what ingredients need to be changed for each recipe...
+
+% the randomization tests and bootstrap confidence intervals that are used in Math 107. You will need to carefully consider what ingredients need to be changed for each recipe. I have outlined the ingredients that will need to be changed below. Remember that all of the recipes rely on the \texttt{mosaic} package being loaded in your {\sf R} session.
+
+\bigskip
+
+\begin{multicols}{2}
+\section*{Distributions}
+
+In the below recipes \texttt{q} stands for some cutoff and \texttt{p} denotes 
+the percentile of interest (e.g., 0.975 denotes the 97.5th percentile.)
+
+<<>>=
+pnorm(q)  # area to the left of q
+qnorm(p)  # find the critical value/percentile
+pt(q, df) # area to the left of q
+qt(p, df) # find the critical value/percentile
+@
+
+\section*{Randomization Tests}
+\subsection*{One proportion}
+Change \texttt{n} and \texttt{prob} to match the problem.
+<<>>=
+null_dsn <- do(1000) * rflip(n, prob = 0.5)
+@
+\squeeze
+\subsection*{Two proportions}
+Change \texttt{responsevar}, \texttt{"level"}, \texttt{groupvar}, and \texttt{data\_set} to match the problem.
+<<>>=
+null_dsn <- do(1000) * 
+  diffmean(responsevar == "level" ~ shuffle(groupvar), data = data_set)
+@
+\squeeze
+\subsection*{Two means}
+Change \texttt{responsevar}, \texttt{groupvar}, and \texttt{data\_set} to match the problem.
+<<>>=
+null_dsn <- do(1000) * 
+  diffmean(responsevar ~ shuffle(groupvar), data = data_set)
+@
+\squeeze
+\subsection*{Calculating p-values}
+Change \texttt{colname} and \texttt{observed} to match the problem.
+<<>>=
+prop(~colname >= observed, data = null_dsn) # upper tail
+prop(~colname <= observed, data = null_dsn) # lower tail
+@
+
+\columnbreak
+\section*{Bootstrap Confidence Intervals}
+\subsection*{One mean}
+Change \texttt{variable} and \texttt{data\_set} to match the problem.
+<<>>=
+boot_dsn <- do(1000) * mean(~variable, data = resample(data_set))
+@
+\squeeze
+\subsection*{Two means}
+Change \texttt{responsevar}, \texttt{groupvar}, and \texttt{data\_set} to match the problem.
+<<>>=
+boot_dsn <- do(1000) * diffmean(responsevar ~ groupvar, data = resample(data_set))
+@
+\squeeze
+\subsection*{One proportion}
+Change \texttt{responsevar}, \texttt{"level"}, and \texttt{data\_set} to match the problem.
+<<>>=
+boot_dsn <- do(1000) * prop(~variable == "level", data = resample(data_set))
+@
+\squeeze
+\subsection*{Two proportions}
+Change \texttt{responsevar}, \texttt{"level"}, \texttt{groupvar}, and \texttt{data\_set} to match the problem.
+<<>>=
+boot_dsn <- do(1000) * 
+  diffmean(responsevar == "level" ~ groupvar, data = resample(data_set))
+@
+\squeeze
+\subsection*{Standard Error}
+Change \texttt{colname} to match the problem.
+<<>>=
+se <- sd(~colname, data = boot_dsn)
+@
+
+\end{multicols}
+
+
+\end{document}
+
+

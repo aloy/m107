@@ -1,0 +1,210 @@
+
+%\VignetteIndexEntry{Minimal R}
+%\VignettePackage{mosaic}
+%\VignetteKeywords{mosaic, vignettes, minimal}
+%\VignetteEngine{knitr::knitr} 
+
+\documentclass[10pt]{report}
+
+\usepackage[landscape,margin=.40in,top=.30in,bottom=.30in,includehead,includefoot]{geometry}
+
+\usepackage{multicol}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{longtable}
+
+\usepackage[utf8]{inputenc}
+
+%%%%  fancy family
+\usepackage{fancyvrb}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+
+\renewcommand{\chaptermark}[1]{\thispagestyle{fancy}\markboth{{#1}}{}}
+\renewcommand{\sectionmark}[1]{\markright{{#1}}{}}
+
+\chead{}
+\lhead[\sf \thepage]{\sf \leftmark}
+\rhead[\sf \leftmark]{\sf \thepage}
+
+\pagestyle{fancy}
+
+
+%%% some local defs
+
+\newcounter{myenumi}
+\newcommand{\saveenumi}{\setcounter{myenumi}{\value{enumi}}}
+\newcommand{\reuseenumi}{\setcounter{enumi}{\value{myenumi}}}
+
+\def\R{{\sf R}}
+\def\Rstudio{{\sf RStudio}}
+\def\RStudio{{\sf RStudio}}
+\def\term#1{\textbf{#1}}
+\def\tab#1{{\sf #1}}
+
+\providecommand{\variable}[1]{}
+\renewcommand{\variable}[1]{{\color{green!50!black}\texttt{#1}}}
+\providecommand{\dataframe}[1]{}
+\renewcommand{\dataframe}[1]{{\color{blue!80!black}\texttt{#1}}}
+\providecommand{\function}[1]{}
+\renewcommand{\function}[1]{{\color{purple!75!blue}\texttt{\StrSubstitute{#1}{()}{}()}}}
+\providecommand{\option}[1]{}
+\renewcommand{\option}[1]{{\color{brown!80!black}\texttt{#1}}}
+\providecommand{\pkg}[1]{}
+\renewcommand{\pkg}[1]{{\color{red!80!black}\texttt{#1}}}
+\providecommand{\code}[1]{}
+\renewcommand{\code}[1]{{\color{blue!80!black}\texttt{#1}}}
+
+\newcommand{\cran}{\href{http://www.R-project.org/}{CRAN}}
+\newcommand{\rterm}[1]{\textbf{#1}}
+
+\usepackage{textcomp}  % for \texttildelow
+\newcommand{\twiddle}{\raisebox{0.5ex}{\texttildelow}}
+
+
+\title{R Graphics for Intro Stats}
+
+\author{
+Adam Loy
+}
+
+\date{\today}
+
+
+\begin{document}
+\parindent=0pt
+
+
+<<setup,echo=FALSE,message=FALSE,include=FALSE>>=
+#source('setup.R')
+require(mosaic)
+require(mosaicData)
+require(parallel)
+trellis.par.set(theme=col.mosaic())
+set.seed(123)
+#knit_hooks$set(inline = function(x) {
+#	if (is.numeric(x)) return(knitr:::format_sci(x, 'latex'))
+#	x = as.character(x)
+#	h = knitr:::hilight_source(x, 'latex', list(prompt=FALSE, size='normalsize'))
+#	h = gsub("([_#$%&])", "\\\\\\1", h)
+#	h = gsub('(["\'])', '\\1{}', h)
+#	gsub('^\\\\begin\\{alltt\\}\\s*|\\\\end\\{alltt\\}\\s*$', '', h)
+#})
+opts_chunk$set(
+  size="small",
+	dev="pdf",
+	eval=FALSE,
+	tidy=FALSE,
+	fig.align='center',
+	fig.show='hold',
+	message=FALSE
+	)
+@ 
+
+
+\let\oldchapter=\chapter
+\def\chapter{\setcounter{page}{1}\oldchapter}
+
+
+%\begin{center}
+%\section*{Enough R for Intro Stats}
+%\end{center}
+
+\def\opt#1{#1}
+\def\squeeze{\vspace*{-4ex}}
+
+\chead{\sf \bfseries \Large R Graphics for Intro Stats}
+\lhead{Math 107}
+\rhead{Spring 2016}
+
+\section*{Notes}
+This reference cards provides you with the recipes for exploratory graphics that are used in Math 107. For each recipe, you will need to carefully consider what ingredients need to be changed, such as: the names of the data set (\texttt{data\_set}), the variable name(s) (\texttt{variable}, \texttt{group}, \texttt{xvariable}, \texttt{yvariable}), and any axis labels that are not interpretable.
+
+\begin{multicols}{2}
+\section*{Univariate Graphics}
+\subsection*{Bar chart}
+<<>>=
+ggplot(data = data_set) + 
+  geom_bar(aes(x = variable)) + 
+  xlab("Variable name")
+@
+\squeeze
+\subsection*{Histogram}
+<<>>=
+ggplot(data = data_set) + 
+  geom_histogram(mapping = aes(x = variable), binwidth = w, 
+                 colour = "gray20") + 
+  xlab("Variable name")
+@
+\squeeze
+\subsection*{Density}
+<<>>=
+ggplot(data = data_set) + 
+  geom_density(mapping = aes(x = variable)) + 
+  xlab("Variable name")
+@
+\squeeze
+\subsection*{Histogram + Density}
+<<>>=
+ggplot(data = data_set) + 
+  geom_density(mapping = aes(x = variable)) +
+  geom_histogram(aes(x = variable, y = ..density..), binwidth = w, 
+                 colour = "gray20") + 
+  xlab("Variable name")
+@
+\squeeze
+\subsection*{Boxplot}
+<<>>=
+ggplot(data = data_set) +
+  geom_boxplot(mapping = aes("var", variable)) +
+  xlab("") + 
+  ylab("Variable name")
+  scale_x_discrete(breaks = NULL) + 
+  coord_flip()
+@
+
+\columnbreak
+\section*{Multivariate Graphics}
+\subsection*{Side-by-side boxplots}
+<<>>=
+ggplot(data = data_set) +
+  geom_boxplot(mapping = aes(x = group, y = variable)) + 
+  xlab("Group") +
+  xlab("Variable name") 
+@
+\squeeze
+\subsection*{Facetted histograms}
+<<>>=
+ggplot(data = data_set) +
+  ggplot(aes(x = variable)) + 
+  geom_histogram(mapping = aes(x = variable), binwidth = w, 
+                 colour = "gray20") +
+  xlab("Variable name") +
+  facet_wrap(~ group)
+@
+\squeeze
+\subsection*{Scatterplot}
+<<>>=
+ggplot(data = data_set) +
+  geom_point(mapping = aes(x = xvariable, y = yvariable)) +
+  xlab("x-axis label") + 
+  ylab("y-axis label")
+@
+\squeeze
+\subsection*{Scatterplot + Smoother}
+<<>>=
+ggplot(data = data_set) +
+  geom_point(mapping = aes(x = xvariable, y = yvariable)) +
+  geom_smooth(mapping = aes(x = xvariable, y = yvariable), method = "lm") +
+  xlab("x-axis label") + 
+  ylab("y-axis label")
+@
+
+
+\end{multicols}
+
+
+\end{document}
+
+
