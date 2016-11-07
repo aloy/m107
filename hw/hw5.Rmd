@@ -1,7 +1,7 @@
 ---
-title: "Homework 5"
+title: "Homework 8"
 author: "Fall 2016, Math 107, Prof. Adam Loy"
-date: "Due Tuesday, October 11 by 4 p.m."
+date: "Due Friday, November 11 by 4 p.m."
 output:
   pdf_document: default
   html_document: default

@@ -35,7 +35,7 @@ boot_basic_cable <- bootstrap(data = filter(TV, Cable == "Basic"), statistic = m
 basic_tv_boot <- 
   ggplot(data = as.data.frame(boot_basic_cable$replicates), mapping = aes(x = `mean(Time)`)) +
   geom_histogram(fill = "SteelBlue", bins = 60) +
-  labs(x="Sample mean commercial duation") +
+  labs(x="Sample mean commercial duration") +
   theme_minimal()
 
 # Bootstrapping differences in commercial durations
@@ -52,7 +52,7 @@ tv_boot <-
 boot_arsenic <- resample::bootstrap(data = Bangladesh, statistic = mean(Arsenic), R = 10000)
 
 arsenic_boot <- 
-  ggplot(data = as.data.frame(boot_dsn$replicates), mapping = aes(x = `mean(Arsenic)`)) +
+  ggplot(data = as.data.frame(boot_arsenic$replicates), mapping = aes(x = `mean(Arsenic)`)) +
   geom_histogram(fill = "SteelBlue", bins = 60) +
   labs(x="Sample mean arsenic concentration") +
   theme_minimal()
@@ -88,7 +88,7 @@ basic_tv_density <-
   geom_histogram(fill = "SteelBlue", bins = 60, mapping = aes(x = `mean(Time)`, y = ..density..)) +
   stat_function(fun = dnorm, color = "#ff7f00",
                 args = list(mean=mean(boot_basic_cable$replicates), sd=sd(boot_basic_cable$replicates))) +
-  labs(x="Sample mean commercial duation") +
+  labs(x="Sample mean commercial duration") +
   theme_minimal()
 
 tv_density <- 
@@ -100,10 +100,10 @@ tv_density <-
   theme_minimal()
 
 arsenic_density <- 
-  ggplot(data = as.data.frame(boot_dsn$replicates), mapping = aes(x = `mean(Arsenic)`)) +
+  ggplot(data = as.data.frame(boot_arsenic$replicates), mapping = aes(x = `mean(Arsenic)`)) +
   geom_histogram(fill = "SteelBlue", bins = 60, mapping = aes(x = `mean(Arsenic)`, y = ..density..)) +
   stat_function(fun = dnorm, color = "#ff7f00",
-                args = list(mean=mean(boot_dsn$replicates), sd=sd(boot_dsn$replicates))) +
+                args = list(mean=mean(boot_arsenic$replicates), sd=sd(boot_arsenic$replicates))) +
   labs(x="Sample mean arsenic concentration") +
   theme_minimal()
 
@@ -126,3 +126,42 @@ normal_dsn <-
   labs(y = "density")
 
 ggsave(normal_dsn, file = "normal_density.pdf", width = 5, height = 3)
+
+### SHADED AREAS
+normal_prob_area_plot <- function(lb, ub, mean = 0, sd = 1, limits = c(mean - 3 * sd, mean + 3 * sd)) {
+  x <- seq(limits[1], limits[2], length.out = 100)
+  xmin <- max(lb, limits[1])
+  xmax <- min(ub, limits[2])
+  areax <- seq(xmin, xmax, length.out = 100)
+  area <- data.frame(x = areax, ymin = 0, ymax = dnorm(areax, mean = mean, sd = sd))
+  (ggplot() + 
+    geom_line(data.frame(x = x, y = dnorm(x, mean = mean, sd = sd)), mapping = aes(x = x, y = y)) + 
+    geom_ribbon(data = area, mapping = aes(x = x, ymin = ymin, ymax = ymax, alpha = 0.2)) + 
+    scale_x_continuous(limits = limits) +
+    theme_minimal() +
+    labs(x = "Z", y = "density"))
+}
+
+example_area <- normal_prob_area_plot(-Inf, 1.71)
+
+ggsave(example_area, file = "pnorm_area.pdf", width = 5, height = 3)
+
+### QUANTILES
+x <- seq(-3, 3, length.out = 100)
+xmin <- max(-Inf, -3)
+xmax <- min(2, 3)
+areax <- seq(xmin, xmax, length.out = 100)
+area <- data.frame(x = areax, ymin = 0, ymax = dnorm(areax))
+
+qnorm_sketch <-
+  ggplot() + 
+  geom_line(data.frame(x = x, y = dnorm(x)), mapping = aes(x = x, y = y)) + 
+  geom_ribbon(data = area, mapping = aes(x = x, ymin = ymin, ymax = ymax)) + 
+  scale_x_continuous(limits = c(-3,3)) +
+  theme_minimal() +
+  labs(x = "Z", y = "density") +
+  annotate("text", x = 0, y = 0.15, label = "p", size = 14, color = "white") +
+  # geom_segment(aes(x = 2, y = dnorm(2), xend = 2, yend = 0.1)) +
+  annotate("text", x = 2, y = 0.06, label = "?", size = 10, vjust = -.5)
+
+ggsave(qnorm_sketch, file = "qnorm_sketch.pdf", width = 5, height = 3)
