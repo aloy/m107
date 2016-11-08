@@ -1,10 +1,9 @@
 ---
-title: 'Lab 6: Simple linear regression in R'
+title: 'Lab 6 Solution: Simple linear regression in R'
 author: "Prof. Adam Loy"
-date: 'Due: Friday, November 4, 2016 by 4 p.m. on Moodle'
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 
 ## 0. Intro
@@ -20,17 +19,12 @@ If you are using the R Studio server, then you can upload the entire zip folder 
 
 We will use the following packages during this lab. Make sure that you have downloaded all of them before running the commands.
 
-$\hat{y} = 51.59 - .0098 x$
-
 
 ```{r message=FALSE}
 library(ggplot2)
 library(mosaic)
 library(car)
 ```
-
-
-$\hat{y} = 51.59 - .0098 x$
 
 ## 1. The data
 
@@ -45,6 +39,11 @@ saratoga <- read.csv("data/saratoga.csv")
 Before jumping into a regression analysis, it's a good idea to plot the variables involved to determine whether there is linear relationship between them.
 
 **Question 1.** Create a histogram of the price of the homes and describe the distribution.
+
+```{r}
+ggplot(data = saratoga)
+```
+
 
 **Question 2.** Create a histogram of the living ares of the homes and describe the distribution.
 
