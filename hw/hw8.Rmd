@@ -1,7 +1,7 @@
 ---
 title: "Homework 8"
 author: "Fall 2016, Math 107, Prof. Adam Loy"
-date: "Due Friday, November 11 by 4 p.m."
+date: "Due Monday, November 14 at the beginning of class"
 output:
   pdf_document: default
   html_document: default
@@ -38,12 +38,3 @@ The Capital Asset Pricing Model (CAPM) is a financial model that assumes returns
 
 a. In what proportion of years does this portfolio lose money, i.e. have a return less than 0%?
 b. What is the cutoff for the highest 15% of annual returns with this portfolio?
-
-## Problem 4
-
-Use R to find the following $z^*$ values based on a standard normal distribution.
-
-a. An 84% confidence interval.
-b. A 92% confidence interval.
-c. A 96% confidence interval.
-d. A 75% confidence interval.
