@@ -247,7 +247,7 @@ Question: Do college students sleep less than 8 hours per night?
 	t.test(~WeekdaySleep, data = SleepStudy, mu = 8, alternative = "less")
 
 ---
-
+# Reading `t.test` output
 			One Sample t-test
 
 		data:  SleepStudy$WeekdaySleep
