@@ -1,0 +1,169 @@
+---
+title: "Homework 9"
+author: "Fall 2016, Math 107, Prof. Adam Loy"
+date: "Due Wednesday, November 16 at the beginning of class"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Instructions
+
+Please complete your homework in this R markdown file. When you are done, please knit the document to Word and print a hard copy for submission. Make sure to change the `author:` so that you get credit for your work!
+
+The below code chunk loads all of the necessary R packages.
+
+```{r message=FALSE}
+library(ggplot2)
+library(mosaic)
+```
+
+## Problem 1
+An independent random sample is selected from an approximately normal population with unknown standard deviation. Find the degrees of freedom and use R to find the critical t-value ($t^*$) for the given sample size and confidence level.
+
+#### Part a.
+ $n=6$,$\rm{CL}=90\%$ 
+ 
+```{r}
+# INSERT YOUR CODE HERE
+```
+
+#### Part b.
+$n=21$,$\rm{CL}=98\%$
+
+```{r}
+# INSERT YOUR CODE HERE
+```
+
+#### Part c.
+$n=29$,$\rm{CL}=95\%$ 
+
+```{r}
+# INSERT YOUR CODE HERE
+```
+
+#### Part d.
+$n=12$,$\rm{CL}=99\%$
+
+```{r}
+# INSERT YOUR CODE HERE
+```
+
+
+## Problem 2
+An independent random sample is selected from an approximately normal population with an unknown 
+standard deviation. Find the p-value for the given set of hypotheses and $T$ 
+test statistic. Also determine if the null hypothesis would be rejected 
+at $\alpha = 0.05$.
+
+#### Part a.
+$H_A: \mu > \mu_0$, $n = 11$, $T = 1.91$
+
+```{r}
+# INSERT YOUR CODE HERE
+```
+
+*Write your answer here, replacing this text.*
+
+
+#### Part b.
+$H_A: \mu < \mu_0$, $n = 17$, $T = -3.45$
+
+```{r}
+# INSERT YOUR CODE HERE
+```
+
+*Write your answer here, replacing this text.*
+
+
+#### Part c.
+$H_A: \mu \ne \mu_0$, $n = 7$, $T = 0.83$
+
+```{r}
+# INSERT YOUR CODE HERE
+```
+
+*Write your answer here, replacing this text.*
+
+
+#### Part d.
+$H_A: \mu > \mu_0$, $n = 28$, $T = 2.13$
+
+```{r}
+# INSERT YOUR CODE HERE
+```
+
+*Write your answer here, replacing this text.*
+
+
+## Problem 3
+Researchers interested in lead exposure due to car exhaust sampled the blood 
+of 52 police officers subjected to constant inhalation of automobile exhaust 
+fumes while working traffic enforcement in a primarily urban environment. The 
+blood samples of these officers had an average lead concentration of 
+109.4 $\mu$g/l  and a SD of 36.4 $\mu$g/l; a previous study of individuals 
+from a nearby suburb, with no history of exposure, found an average blood 
+level concentration of 35 $\mu$g/l.[^1]
+
+The data set `leadexposure.csv` contains the measured lead concentration found in the blood samples. 
+
+First, run the below code chunk to load the `leadexposure.csv` data set.
+
+```{r}
+lead <- read.csv("data/leadexposure.csv")
+```
+
+
+#### Part a.
+Write down the hypotheses that would be appropriate for testing if the 
+police officers appear to have been exposed to a higher concentration of lead.
+
+*Write your answer here, replacing this text.*
+
+
+#### Part b.
+Explicitly state and check the conditions/assumptions necessary for inference on these 
+data.
+
+```{r}
+# INSERT YOUR CODE HERE
+```
+
+*Write your answer here, replacing this text.*
+
+
+#### Part c.
+Test the hypothesis that the downtown police officers have a higher lead 
+exposure than the group in the previous study. Interpret your results in context.
+
+```{r}
+# INSERT YOUR CODE HERE
+```
+
+*Write your answer here, replacing this text.*
+
+#### Part d.
+Based on your preceding result, without performing a calculation, would 
+a 99% confidence interval for the average blood concentration level of police 
+officers contain 35 $\mu$g/l?
+
+*Write your answer here, replacing this text.*
+
+
+#### Part e.
+Verify your answer to part (d) by constructing a 99% confidence interval 
+for the average blood concentration level of police officers. Provide an interpretation
+of this interval in the context of the problem.
+
+```{r}
+# INSERT YOUR CODE HERE
+```
+
+*Write your answer here, replacing this text.*
+
+
+[^1]: WI Mortada et al. "Study of lead exposure from automobile exhaust as a risk for nephrotoxicity among traffic policemen." In: *American journal of nephrology* 21.4 (2000), pp. 274–279.
