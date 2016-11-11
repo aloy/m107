@@ -3,8 +3,8 @@ title: "Homework 9"
 author: "Fall 2016, Math 107, Prof. Adam Loy"
 date: "Due Wednesday, November 16 at the beginning of class"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
