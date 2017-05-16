@@ -1,9 +1,9 @@
 ---
-title: 'Lab 6 Solution: Simple linear regression in R'
+title: 'Lab 6: Simple linear regression in R'
 author: "Prof. Adam Loy"
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
 ---
 
 ## 0. Intro
@@ -39,11 +39,6 @@ saratoga <- read.csv("data/saratoga.csv")
 Before jumping into a regression analysis, it's a good idea to plot the variables involved to determine whether there is linear relationship between them.
 
 **Question 1.** Create a histogram of the price of the homes and describe the distribution.
-
-```{r}
-ggplot(data = saratoga)
-```
-
 
 **Question 2.** Create a histogram of the living ares of the homes and describe the distribution.
 
