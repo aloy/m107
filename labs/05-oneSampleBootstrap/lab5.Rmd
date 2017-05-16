@@ -3,6 +3,7 @@ title: 'Lab 5: The one-sample bootstrap'
 author: "Prof. Adam Loy"
 date: "Monday, October 17, 2016"
 output:
+  pdf_document: default
   html_document: default
 ---
 

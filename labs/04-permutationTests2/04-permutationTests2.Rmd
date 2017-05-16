@@ -3,8 +3,8 @@ title: 'Lab 4: Comparing Two Proportions'
 author: "Prof. Adam Loy"
 date: "Wednesday, October 12, 2016"
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
   word_document: default
 ---
 

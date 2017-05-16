@@ -1,27 +1,24 @@
 ---
-output: 
+title: 'Math 107: Elementary Statistics'
+author: "Adam Loy"
+date: "Fall 2016"
+output:
+  word_document: default
   pdf_document:
-    keep_tex: true
     fig_caption: yes
+    keep_tex: yes
     latex_engine: pdflatex
     template: svm-latex-syllabus.tex
-geometry: margin=1in
-
-title: "Math 107: Elementary Statistics"
-author: Adam Loy
-date: "Fall 2016"
-
-email: "adam.m.loy@lawrence.edu"
-web: "math107-lu.github.io"
-officehours: "M 3:10-5:00; TR 1:50-3:20; F 3:10-4:20"
-office: "410 Briggs Hall"
-classroom: "224 Briggs Hall"
-classhours: "MWF 1:50-3:00"
-
+email: adam.m.loy@lawrence.edu
 fontfamily: mathpazo
 fontsize: 11pt
-header-includes:
-   - \linespread{1.05}
+geometry: margin=1in
+header-includes: \linespread{1.05}
+office: 410 Briggs Hall
+officehours: M 3:10-5:00; TR 1:50-3:20; F 3:10-4:20
+classroom: 224 Briggs Hall
+classhours: MWF 1:50-3:00
+web: math107-lu.github.io
 ---
 
 
